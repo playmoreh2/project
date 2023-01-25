@@ -2,10 +2,10 @@
       {
             "title": "Dashboard",
             "active": true,
-            "data_info": "./resource/template/summary/template_dashboard.html"
+            "data_info": "./guide/resource/template/summary/template_dashboard.html"
       },{
             "title": "Etc",
             "active": false,
-            "data_info": "./resource/template/summary/template_etc.html"
+            "data_info": "./guide/resource/template/summary/template_etc.html"
       }
 ]}

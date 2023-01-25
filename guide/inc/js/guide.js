@@ -2,9 +2,9 @@ $(document).ready(function(){
     switchMode(); // 배경
     
     // 메뉴 데이터 호출
-    var ctgParam = "./resource/menu/category/ctg_summary.json";
-    var gnbTemplt = "./resource/template/summary/template_summary.html";
-    var dataParam = "./resource/template/summary/template_dashboard.html";
+    var ctgParam = "./guide/resource/menu/category/ctg_summary.json";
+    var gnbTemplt = "./guide/resource/template/summary/template_summary.html";
+    var dataParam = "./guide/resource/template/summary/template_dashboard.html";
     comm.ctgCode = $(".lnb .navList").html();
     comm.ctgDepCode = $(".lnb .navList .subList").html();
 
@@ -24,11 +24,11 @@ $(document).ready(function(){
             switch (param){
                 case "menu_summary":
                     // 1번째 summary
-                    ctgParam = "./resource/menu/category/ctg_summary.json";
-                    gnbTemplt = "./resource/template/summary/template_summary.html";
+                    ctgParam = "./guide/resource/menu/category/ctg_summary.json";
+                    gnbTemplt = "./guide/resource/template/summary/template_summary.html";
                     comm.ctgTemplt(ctgParam);
 
-                    dataParam = "./resource/template/summary/template_dashboard.html";
+                    dataParam = "./guide/resource/template/summary/template_dashboard.html";
                     comm.dataTemplt(gnbTemplt, dataParam);
                     
                     comm.pageLtTxtUpdate(".lnb .nav > ul > li.on > button"); // 화면 처음 들어올때
@@ -36,11 +36,11 @@ $(document).ready(function(){
                     break;
                 case "menu_guide":
                     // 2번째 guide
-                    ctgParam = "./resource/menu/category/ctg_guide.json";
-                    gnbTemplt = "./resource/template/guide/template_guide.html";
+                    ctgParam = "./guide/resource/menu/category/ctg_guide.json";
+                    gnbTemplt = "./guide/resource/template/guide/template_guide.html";
                     comm.ctgTemplt(ctgParam);
 
-                    dataParam = "./resource/template/guide/template_guide_title.html";
+                    dataParam = "./guide/resource/template/guide/template_guide_title.html";
                     comm.dataTemplt(gnbTemplt, dataParam);
 
                     comm.pageLtTxtUpdate(".lnb .nav > ul > li.on > button"); // page list 처음 들어올때
@@ -48,8 +48,8 @@ $(document).ready(function(){
                     break;
                 case "menu_list":
                     // 3번째 page list
-                    ctgParam = "./resource/menu/category/ctg_page_list.json";
-                    gnbTemplt = "./resource/template/pageList/template_page_list.html";
+                    ctgParam = "./guide/resource/menu/category/ctg_page_list.json";
+                    gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
                     comm.ctgTemplt(ctgParam);
 
                     dataParam = $(".lnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
@@ -357,9 +357,9 @@ var comm = {
         // summary, guide 이벤트
         $(".lnb .nav > ul > li > button.tit:not(.btn_acco)").unbind("click").bind("click", function(e){
             if( $(".gnb li.on").find(".menu_summary").length > 0 ){
-                comm.template= "./resource/template/summary/template_summary.html";
+                comm.template= "./guide/resource/template/summary/template_summary.html";
             }else if( $(".gnb li.on").find(".menu_guide").length > 0 ){
-                comm.template= "./resource/template/guide/template_guide.html";
+                comm.template= "./guide/resource/template/guide/template_guide.html";
             };
             
             comm.param = $(e.target).data("info");
@@ -379,7 +379,7 @@ var comm = {
                 $(e.target).closest(".navList").find(".subList > li").removeClass("on");
                 $(e.target).closest("li").addClass("on");
                 comm.pageLtTxtUpdate(e.target);
-                comm.dataTemplt("./resource/template/pageList/template_page_list.html", comm.param);
+                comm.dataTemplt("./guide/resource/template/pageList/template_page_list.html", comm.param);
             };
         });
     },
@@ -460,7 +460,7 @@ var comm = {
         comm.dataArrayFnsh = [];
 
         $.ajax({
-            url: "./resource/menu/category/ctg_page_list.json"+"?"+Math.round(100000*Math.random()),
+            url: "./guide/resource/menu/category/ctg_page_list.json"+"?"+Math.round(100000*Math.random()),
             type: "get",
             dataType : "json",
             async : false,

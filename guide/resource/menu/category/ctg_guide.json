@@ -2,30 +2,30 @@
       {
             "title": "Title",
             "active": true,
-            "data_info": "./resource/template/guide/template_guide_title.html"
+            "data_info": "./guide/resource/template/guide/template_guide_title.html"
       },{
             "title": "Button",
             "active": false,
-            "data_info": "./resource/template/guide/template_guide_button.html"
+            "data_info": "./guide/resource/template/guide/template_guide_button.html"
       },{
             "title": "Table",
             "active": false,
-            "data_info": "./resource/template/guide/template_guide_table.html"
+            "data_info": "./guide/resource/template/guide/template_guide_table.html"
       },{
             "title": "Accordion",
             "active": false,
-            "data_info": "./resource/template/guide/template_guide_accordion.html"
+            "data_info": "./guide/resource/template/guide/template_guide_accordion.html"
       },{
             "title": "Popup",
             "active": false,
-            "data_info": "./resource/template/guide/template_guide_popup.html"
+            "data_info": "./guide/resource/template/guide/template_guide_popup.html"
       },{
             "title": "Swipe",
             "active": false,
-            "data_info": "./resource/template/guide/template_guide_swipe.html"
+            "data_info": "./guide/resource/template/guide/template_guide_swipe.html"
       },{
             "title": "Etc",
             "active": false,
-            "data_info": "./resource/template/guide/template_guide_etc.html"
+            "data_info": "./guide/resource/template/guide/template_guide_etc.html"
       }
 ]}
