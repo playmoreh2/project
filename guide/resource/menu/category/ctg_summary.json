@@ -1,0 +1,11 @@
+{"root_comment":[
+      {
+            "title": "Dashboard",
+            "active": true,
+            "data_info": "./resource/template/summary/template_dashboard.html"
+      },{
+            "title": "Etc",
+            "active": false,
+            "data_info": "./resource/template/summary/template_etc.html"
+      }
+]}

@@ -1,0 +1,75 @@
+{"root_comment":[
+    {
+       "depth1": "공통",
+       "depth2": "헤더",
+       "depth3": "",
+       "depth4": "",
+       "check": "u",
+       "complete": "23.01.10",
+       "modify": "23.01.10",
+       "pageId": "ABCD230110",
+       "comment": "공통 가이드 필요",
+       "link": "./aaa/aaa.html",
+       "finish": false
+    },{
+       "depth1": "공통",
+       "depth2": "헤더",
+       "depth3": "",
+       "depth4": "",
+       "check": "",
+       "complete": "23.01.10",
+       "modify": "23.01.10",
+       "pageId": "ABCD230110",
+       "comment": "공통 가이드 필요",
+       "link": "./aaa/bbb.html",
+       "finish": true
+    },{
+       "depth1": "공통",
+       "depth2": "푸터",
+       "depth3": "",
+       "depth4": "",
+       "check": "u",
+       "complete": "",
+       "modify": "",
+       "pageId": "ABCD15561",
+       "comment": "",
+       "link": "./aaa/ccc.html",
+       "finish": true
+   },{
+       "depth1": "공통",
+       "depth2": "검색",
+       "depth3": "",
+       "depth4": "",
+       "check": "u",
+       "complete": "23.01.10",
+       "modify": "23.01.10",
+       "pageId": "ABCD230110",
+       "comment": "",
+       "link": "./aaa/ccc.html",
+       "finish": true
+   },{
+       "depth1": "메인",
+       "depth2": "",
+       "depth3": "",
+       "depth4": "",
+       "check": "",
+       "complete": "23.01.10",
+       "modify": "",
+       "pageId": "ABCD132165",
+       "comment": "",
+       "link": "./aaa/ccc.html",
+       "finish": true
+   },{
+       "depth1": "mo상품",
+       "depth2": "",
+       "depth3": "",
+       "depth4": "",
+       "check": "u",
+       "complete": "23.01.10",
+       "modify": "23.01.10",
+       "pageId": "ABCD230110",
+       "comment": "",
+       "link": "./aaa/ccc.html",
+       "finish": true
+   }
+]}
