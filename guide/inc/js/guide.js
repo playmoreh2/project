@@ -433,13 +433,13 @@ var comm = {
     },
     guideCustom : function(){
         for( var i=0; i<$(".guide_area").length; i++ ){
-            $(".guide_area:eq("+i+") .code_view .code xmp").html($(".guide_area:eq("+i+") .guid_view .code").html());
+            $(".guide_area:eq("+i+") .code_view .code xmp").html($(".guide_area:eq("+i+") .guide_view .code").html());
         };
     },
     copyTo : function(){
         comm.guideCustom();
         $(".guide_area .btn_copy").unbind("click").bind("click", function(e){
-            var val = $(e.target).closest(".guide_area").find(".guid_view .code").html();
+            var val = $(e.target).closest(".guide_area").find(".guide_view .code").html();
             var dataTag = document.createElement("textarea");
             dataTag.className = "copyVal";
             document.body.append(dataTag);

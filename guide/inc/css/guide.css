@@ -225,12 +225,13 @@ strong {font-weight:normal;}
 .content .guide_area .code_view {}
 .content .guide_area .code_view .btn_area {text-align:right;}
 
-.content .guide_area .guid_view {}
-.content .guide_area .guid_view .code {}
-.content .guide_area .guid_view .btn_area {}
+.content .guide_area .guide_view {margin:10px 0; padding:10px; border-radius:7px;}
+.dark .content .guide_area .guide_view {background-color:#fff;}
+.content .guide_area .guide_view .code {}
+.content .guide_area .guide_view .btn_area {}
 .content .guide_area .code_view {}
 .content .guide_area .code_view .code {display:none; color:#fff; background-color:#000;}
-.content .guide_area .code_view .code xmp {margin:0;}
+.content .guide_area .code_view .code xmp {margin:0; padding:10px;}
 .content .guide_area .code_view .btn_area {margin-top:10px;}
 .content .guide_area .code_view .btn_area .btn_open {}
 .content .guide_area .code_view .btn_area .btn_close {}
