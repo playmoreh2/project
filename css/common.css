@@ -1,15 +1,4 @@
 @charset "UTF-8";
-/* 기본 폰트크기도 여기서 컨트롤 하는게 좋을것 같습니다.
-혹시 나중에 수정되면 여기서 한번에 컨트롤 하시는게 좋을것 같습니다.
-변수명 정할때는 숫자로 하시면 안됩니다. ex)$fontSize22 */
-/*! normalize.css v7.0.0 | MIT License | github.com/jonathantneal/normalize.css */
-/* Document
-   ========================================================================== */
-/**
- * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in
- *    IE on Windows Phone and in iOS.
- */
 @import '../css/swiper.min.css';
 html {
   font-family: "Spoqa Han Sans Neo", "Roboto", sans-serif;
