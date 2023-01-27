@@ -3,11 +3,12 @@ $(document).ready(function(){
 
     // 검색
     if( $("body.guide.search").length > 0 ){
+        comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
         search.depCode = $(".content .cont .page_list tbody").html();
         $(".guide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
         $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
-            
+            $(".guide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
             let srchVal = $(".srch_wrap .ipt_wrap input.ipt").val();
             if( srchVal !== "" ){
@@ -16,6 +17,10 @@ $(document).ready(function(){
             }else{
                 alert("검색어를 입력해주세요.");
             };
+        });
+
+        $(".navList.rdo input:radio[name=rdo]").bind("change", function(e){
+            comm.pageLtTxtUpdate($(e.target));
         });
     };
     
@@ -93,6 +98,7 @@ var comm = {
     dataArray : [], // dashboard data
     dataArrayFnsh : [], // dashboard data 완료
 	time : null, // setTimeout
+	time2 : null, // setTimeout
     totalNum : [],
     finishNum : [],
     ctgTemplt : function(ctgParam){ // category
@@ -405,40 +411,52 @@ var comm = {
     },
     pageLtTxtUpdate : function(e){
         // 추후 수정예정
-        var crumbTxt = "";
-        if( $(e).closest(".subList").length > 0 ) crumbTxt = " > " + $(e).closest(".subList").find("> li.on > button").text();
+        var crumbTxt1 = "";
+        var crumbTxt2 = "";
+        if( $(".guide.search .navList.rdo").length > 0 ){
+            crumbTxt1 = $(e).closest("li").find("> label.tit").text();
+        }else{
+            crumbTxt1 = $(e).closest(".part").find("> button.tit").html().split('<')[0];
+        };
+
+        if( $(e).closest(".subList").length > 0 ) crumbTxt2 = " > " + $(e).closest(".subList").find("> li.on > button").text();
         
         $(".content > .top > h3").html(
             $(".lnb .nav h2").text()
             + " > "
-            + $(e).closest(".part").find("> button.tit").html().split('<')[0]
-            + crumbTxt
+            + crumbTxt1
+            + crumbTxt2
         );
     },
-    progressState : function(e){
-        $(".content .page_list .progress .graph").css({
-            "transition": "all 1.5s ease-in-out",
-            "width": ($(".gnb li.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1)+"%" : 100+"%"
-        });
+    progressData : function(e){
+        if( $(".content .page_list .progress .graph").attr("style") != undefined ){
+            $(".content .page_list .progress .graph").removeAttr("style");
+            $(".content .page_list .progress .count_wrap .count > em").text(0);
+        };
 
         return ($(".gnb li.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1) : 100;
     },
     countState : function(e){
-		$('.guide .content .count').each(function(idx, item){
+        $('.guide .content .count').each(function(idx, item){
             let val = 0;
             if( $(".page_summary").length > 0 && val != null ){
                 val = ((comm.finishNum[idx]/comm.totalNum[idx])*100).toFixed(1);
             }else if( $(".page_list").length > 0 ){
-                val = comm.progressState();
+                val = comm.progressData();
             };
             
-            var valChk = Math.ceil(val);
-			var num = 0;
-			var time = (100/val); // 동일한 카운팅 시간 설정
-			setTimeout(function(){
+            let valChk = Math.ceil(val);
+			let num = 0;
+			let time = (100/val); // 동일한 카운팅 시간 설정
+            
+			// setTimeout(function(){
                 var cntNum = setInterval(function(){
                     num++;
 					$(item).find('> em').text(num);
+                    $(".content .page_list .progress .graph").css({
+                        "width": num+"%"
+                    });
+
 					if(num == valChk){
                         $(item).find('> em').text(val); // 최종결과 값
 						clearInterval(cntNum);
@@ -447,8 +465,8 @@ var comm = {
 							$(item).find('> em').addClass("finish");
 						};
 					};
-				}, time*6);
-			}, 600);
+				}, time*10);
+			// }, 600);
 		});
     },
     guideCustom : function(){
@@ -567,8 +585,14 @@ var comm = {
         // 막대그래프 높이
         let totalData0 = 0;
         let totalData1 = 0;
+
+        // 데이터 삽입 - 전체 진척률
         clearTimeout(comm.time);
-        comm.time = setTimeout(function(){
+        comm.time = setTimeout(comm.countState, 0);
+        // comm.countState()
+        
+        clearTimeout(comm.time2);
+        comm.time2 = setTimeout(function(){
             for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
                 $(".dashboard_area .inner > [class^='total_']:eq("+i+") .graph .state").animate({
                     height: ((comm.finishNum[i]/comm.totalNum[i])*100).toFixed(1)+"%",
@@ -578,7 +602,7 @@ var comm = {
                 totalData1 += comm.totalNum[i];
             };
             
-            // 데이터 삽입 - 전체 진척률
+            // 데이터 삽입 - 전체 진척률            
             $(".dashboard_area .total .summary .num > em").text(totalData0);
             $(".dashboard_area .total .summary .num .total_num").text(totalData1);
             
@@ -587,9 +611,7 @@ var comm = {
                 opacity: 1
             }, 1400);
 
-            comm.countState();
-
-            // 전체 진척률 (추후 수정)
+            // // 전체 진척률 (추후 수정)
             function totalRatio(){
                 let val = totalData0/totalData1*100;
                 var valChk = Math.ceil(val);
@@ -607,12 +629,13 @@ var comm = {
                                 $('.guide .content .total .total_count').find('> em').addClass("finish");
                             };
                         };
-                    }, time*6);
+                    }, time*10);
                 }, 600);
             };
             totalRatio();
 
         }, 300);
+
     },
 };
 
