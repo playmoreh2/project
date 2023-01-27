@@ -7,8 +7,9 @@ $(document).ready(function(){
         $(".guide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
         $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
-            let srchVal = $(".content .srch_wrap .ipt_wrap input.ipt").val();
+            let srchVal = $(".srch_wrap .ipt_wrap input.ipt").val();
             if( srchVal !== "" ){
+                $(".srch_wrap button.btn_srch").attr("disabled", true);
                 search.searchFn(srchVal);
             }else{
                 alert("검색어를 입력해주세요.");
@@ -413,12 +414,12 @@ var comm = {
         );
     },
     progressState : function(e){
-        // console.log( (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1) );
         $(".content .page_list .progress .graph").css({
             "transition": "all 1.5s ease-in-out",
-            "width": (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1)+"%"
+            "width": ($(".gnb li.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1)+"%" : 100+"%"
         });
-        return (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1);
+
+        return ($(".gnb li.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1) : 100;
     },
     countState : function(e){
 		$('.guide .content .count').each(function(idx, item){
@@ -613,6 +614,7 @@ var comm = {
     },
 };
 
+// 검색
 var search = {
     dataArraySrch : [],
     dataArraySrchMenu : [],
@@ -663,7 +665,6 @@ var search = {
         
         search.dataArraySrchMenu = [];
         if(search.dataArraySrch != null && search.dataArraySrch.length > 0 && search.dataArraySrchMenu.length == 0){ // data check
-
             for( var i=0; i<search.dataArraySrch.length; i++ ){
                 search.dataArraySrch[i].reduce(function (total, val, idx, array){
 
@@ -784,11 +785,11 @@ var search = {
                         };
                     });
                     
-                    clearTimeout(comm.time);
-                    comm.time = setTimeout(comm.countState, 600);
                 };
             };
-
+            clearTimeout(comm.time);
+            comm.time = setTimeout(comm.countState, 20);
+            $(".srch_wrap button.btn_srch").attr("disabled", false);
         };
     },
 };
