@@ -1,11 +1,7 @@
 $(document).ready(function(){
     switchMode(); // 배경
 
-    // 검색
     if( $("body.guide.search").length > 0 ){
-        search.depCode = $(".content .cont .page_list tbody").html();
-        $(".guide.search .cont .page_list tbody").empty(); // 마크업 삭제
-
         $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
             let srchVal = $(".content .srch_wrap .ipt_wrap input.ipt").val();
             if( srchVal !== "" ){
@@ -16,7 +12,6 @@ $(document).ready(function(){
         });
     };
     
-    // summary, guide, pagelist
     if( $("body.guide.search").length == 0 ){
         // 메뉴 데이터 호출
         var ctgParam = "./guide/resource/menu/category/ctg_summary.json";
@@ -89,7 +84,7 @@ var comm = {
     param : null, // data 디폴트
     dataArray : [], // dashboard data
     dataArrayFnsh : [], // dashboard data 완료
-	time : null, // setTimeout
+	time : null,
     totalNum : [],
     finishNum : [],
     ctgTemplt : function(ctgParam){ // category
@@ -249,7 +244,7 @@ var comm = {
                                             $(".page_list tbody tr").eq(idx).find("td.comment").append(
                                                 listData[idx].comment
                                             );
-                                            
+
                                             // 완료 페이지 여부
                                             if( listData[idx].finish == true ){
                                                 $(".page_list tbody tr").eq(idx).addClass("finish");
@@ -273,7 +268,7 @@ var comm = {
                                     if(code != null && data != null && data != ""){ // html && data 있을 때
                                         $(".content .cont .page_summary").html(data);
                                         if( $(".dashboard_area").length > 0 ){
-                                            comm.ratio(); // dashboard 호출
+                                            comm.dashBoard(); // dashboard 호출
                                         };
                                     };
                                 }else if( $(".content .cont .page_guide").length > 0 ){ // guide type
@@ -314,6 +309,7 @@ var comm = {
         });
     },
     pageLtMerge : function() {
+
 		// variable 정의
 		var first = true;
 		var prevRowspan1 = 1;
@@ -472,6 +468,10 @@ var comm = {
         });  
     },
     dashBoard : function(){
+        // console.log( "dashBoard", $(".dashboard_area [class^='menu_'] .dashBoard") );
+        comm.dataArray = [];
+        comm.dataArrayFnsh = [];
+
         $.ajax({
             url: "./guide/resource/menu/category/ctg_page_list.json"+"?"+Math.round(100000*Math.random()),
             type: "get",
@@ -541,255 +541,70 @@ var comm = {
                             });
                         };
                     });
+                    
+                    // 배열에서 "true" 개수 구하기
+                    for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
+                        comm.finishNum.push(comm.dataArrayFnsh[i].reduce((cnt, element) => cnt + (true === element), 0));
+                        comm.totalNum.push(comm.dataArrayFnsh[i].length);
+
+                        // 데이터 삽입 - pc/mo 진척률
+                        $(".dashboard_area .inner > [class^='total_']:eq("+i+") .summary .num > em").text(comm.finishNum[i]);
+                        $(".dashboard_area .inner > [class^='total_']:eq("+i+") .summary .num .total_num").text(comm.totalNum[i]);
+                    };
+
+                    // 막대그래프 높이
+                    let totalData0 = 0;
+                    let totalData1 = 0;
+                    clearTimeout(comm.time);
+                    comm.time = setTimeout(function(){
+                        for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
+                            $(".dashboard_area .inner > [class^='total_']:eq("+i+") .graph .state").animate({
+                                height: ((comm.finishNum[i]/comm.totalNum[i])*100).toFixed(1)+"%",
+                                opacity: 1
+                            }, 1400);
+                            totalData0 += comm.finishNum[i];
+                            totalData1 += comm.totalNum[i];
+                        };
+                        
+                        // 데이터 삽입 - 전체 진척률
+                        $(".dashboard_area .total .summary .num > em").text(totalData0);
+                        $(".dashboard_area .total .summary .num .total_num").text(totalData1);
+                        
+                        $(".dashboard_area .inner > .total .graph .state").animate({
+                            height: ((totalData0/totalData1)*100).toFixed(1)+"%",
+                            opacity: 1
+                        }, 1400);
+
+                        comm.countState();
+
+                        // 전체 진척률 (추후 수정)
+                        function totalRatio(){
+                            let val = totalData0/totalData1*100;
+                            var valChk = Math.ceil(val);
+                            var num = 0;
+                            var time = (100/val); // 동일한 카운팅 시간 설정
+                            setTimeout(function(){
+                                var cntNum = setInterval(function(){
+                                    num++;
+                                    $('.guide .content .total .total_count').find('> em').text(num);
+                                    if(num == valChk){
+                                        $('.guide .content .total .total_count').find('> em').text(val); // 최종결과 값
+                                        clearInterval(cntNum);
+                                        if(num == 100){
+                                            $('.guide .content .total .total_count').find('> em').text(parseInt(val));
+                                            $('.guide .content .total .total_count').find('> em').addClass("finish");
+                                        };
+                                    };
+                                }, time*6);
+                            }, 600);
+                        };
+                        totalRatio();
+
+                    }, 300);
                 
                 };
             }
         });
-    },
-    ratio : function(){
-        if(comm.dataArray != null && comm.dataArray.length == 0){
-            comm.dashBoard();
-        };
-        console.log( comm.dataArray );
-        // 배열에서 "true" 개수 구하기
-        for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
-            comm.finishNum.push(comm.dataArrayFnsh[i].reduce((cnt, element) => cnt + (true === element), 0));
-            comm.totalNum.push(comm.dataArrayFnsh[i].length);
-            
-            // 데이터 삽입 - pc/mo 진척률
-            $(".dashboard_area .inner > [class^='total_']:eq("+i+") .summary .num > em").text(comm.finishNum[i]);
-            $(".dashboard_area .inner > [class^='total_']:eq("+i+") .summary .num .total_num").text(comm.totalNum[i]);
-        };
-
-        // 막대그래프 높이
-        let totalData0 = 0;
-        let totalData1 = 0;
-        clearTimeout(comm.time);
-        comm.time = setTimeout(function(){
-            for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
-                $(".dashboard_area .inner > [class^='total_']:eq("+i+") .graph .state").animate({
-                    height: ((comm.finishNum[i]/comm.totalNum[i])*100).toFixed(1)+"%",
-                    opacity: 1
-                }, 1400);
-                totalData0 += comm.finishNum[i];
-                totalData1 += comm.totalNum[i];
-            };
-            
-            // 데이터 삽입 - 전체 진척률
-            $(".dashboard_area .total .summary .num > em").text(totalData0);
-            $(".dashboard_area .total .summary .num .total_num").text(totalData1);
-            
-            $(".dashboard_area .inner > .total .graph .state").animate({
-                height: ((totalData0/totalData1)*100).toFixed(1)+"%",
-                opacity: 1
-            }, 1400);
-
-            comm.countState();
-
-            // 전체 진척률 (추후 수정)
-            function totalRatio(){
-                let val = totalData0/totalData1*100;
-                var valChk = Math.ceil(val);
-                var num = 0;
-                var time = (100/val); // 동일한 카운팅 시간 설정
-                setTimeout(function(){
-                    var cntNum = setInterval(function(){
-                        num++;
-                        $('.guide .content .total .total_count').find('> em').text(num);
-                        if(num == valChk){
-                            $('.guide .content .total .total_count').find('> em').text(val); // 최종결과 값
-                            clearInterval(cntNum);
-                            if(num == 100){
-                                $('.guide .content .total .total_count').find('> em').text(parseInt(val));
-                                $('.guide .content .total .total_count').find('> em').addClass("finish");
-                            };
-                        };
-                    }, time*6);
-                }, 600);
-            };
-            totalRatio();
-
-        }, 300);
-    },
-};
-
-var search = {
-    dataArraySrch : [],
-    dataArraySrchMenu : [],
-    depCode : "",
-    srchDataCall : function(){
-        comm.dashBoard(); // 기본 데이터 정보 수집
-
-        let join0 = [];
-        let join1 = [];
-        if(comm.dataArray != null && comm.dataArray.length > 0 && search.dataArraySrch.length == 0){ // data check
-            $.each(comm.dataArray, function(idx, item){
-                for( var i=0; i<item.length; i++ ){
-                    $.ajax({
-                        url: item[i]+"?"+Math.round(100000*Math.random()),
-                        type: "get",
-                        dataType : "json",
-                        async : false,
-                        cache : false,
-                        success: function(data){
-                            let listData = data["root_comment"];
-                            for( var j=0; j<listData.length; j++ ){
-                                if( idx == 0 ){
-                                    join0.push(listData[j]);
-                                }else if( idx == 1 ){
-                                    join1.push(listData[j]);
-                                };
-                            };
-                            
-                            search.dataArraySrch = [join0, join1];
-                            // console.log("search", search.dataArraySrch);
-                        },
-                        error: function(){
-                            $(".content .cont").empty();
-                            $(".content .cont").append(
-                                '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
-                                );
-                        },
-                        complete: function(){
-                            
-                        }
-                    });
-                };
-            });
-        };
-    },
-    searchFn : function(srchVal){
-        search.srchDataCall(); // 검색 데이터 정보 수집
-        
-        search.dataArraySrchMenu = [];
-        if(search.dataArraySrch != null && search.dataArraySrch.length > 0 && search.dataArraySrchMenu.length == 0){ // data check
-
-            for( var i=0; i<search.dataArraySrch.length; i++ ){
-                search.dataArraySrch[i].reduce(function (total, val, idx, array){
-
-                    switch ( $(".navList.rdo input:radio[name=rdo]:checked").val() ){
-                        case "menu":
-                            // 메뉴명 검색
-                            if( val.depth1 == srchVal || val.depth2 == srchVal || val.depth3 == srchVal || val.depth4 == srchVal ){
-                                return search.dataArraySrchMenu.push( val );
-                            };
-                            break;
-                        case "id":
-                            // 화면id 검색
-                            if( val.pageId == srchVal ){
-                                return search.dataArraySrchMenu.push( val );
-                            };
-                            break;
-                        case "text":
-                            // 텍스트 검색
-                            $.ajax({
-                                url: val.link,
-                                type: "get",
-                                dataType : "html",
-                                async : false,
-                                cache : false,
-                                success: function(data){
-                                    if( data.search(srchVal) > -1 ){
-                                        search.dataArraySrchMenu.push(val);
-                                    };
-                                },
-                                error: function(){
-                                    console.log("json data error : ", val);
-                                },
-                            });
-                            break;
-                        case "class":
-                            // class 검색
-                            $.ajax({
-                                url: val.link,
-                                type: "get",
-                                dataType : "html",
-                                async : false,
-                                cache : false,
-                                success: function(data){       
-                                    if( $(".dataTag").length == 0 ){
-                                        var dataTag = document.createElement("div");
-                                        dataTag.className = "dataTag";
-                                        document.body.append(dataTag);
-                                    };
-                                    
-                                    $(".dataTag").html( $(data).children() );
-                                },
-                                error: function(){
-                                    console.log("json data error : ", val);
-                                },
-                                complete: function(){
-                                    if( $(".dataTag " + srchVal).length > 0 ){
-                                        search.dataArraySrchMenu.push(val);
-                                    };
-                                    $(".dataTag").html("");
-                                },
-                            });
-                    };
-                }, 0);
-            };
-            
-            if( search.dataArraySrchMenu.length == 0 ){
-                $(".content .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
-            }else{
-                // page list 삽입
-                if( $(".guide.search .cont .page_list").length > 0 ){
-                    $.each(search.dataArraySrchMenu, function(idx, item){
-                        if(search.depCode != null && search.dataArraySrchMenu != null){ // html && data 있을 때
-                            $(".content .cont .page_list tbody").append(search.depCode);
-                            console.log(item.depth1);
-                            // 링크
-                            $(".page_list tbody tr").eq(idx).find("td.link > a").attr({
-                                'href':item.link
-                            });
-                            
-                            // text 삽입
-                            $(".page_list tbody tr").eq(idx).find("td.no").append(
-                                idx+1
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_1").append(
-                                item.depth1
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_2").append(
-                                item.depth2
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_3").append(
-                                item.depth3
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_4").append(
-                                item.depth4
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.chk").append(
-                                item.check.toUpperCase()
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.complete").append(
-                                item.complete
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.modify").append(
-                                item.modify
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.pageID").append(
-                                item.pageId
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.comment").append(
-                                item.comment
-                            );
-                            
-                            // // 완료 페이지 여부
-                            if( item.finish == true ){
-                                $(".page_list tbody tr").eq(idx).addClass("finish");
-                            }else{
-                                $(".page_list tbody tr").eq(idx).addClass("ing");
-                            };
-                        };
-                    });
-                    
-                    clearTimeout(comm.time);
-                    comm.time = setTimeout(comm.countState, 600);
-                };
-            };
-
-        };
     },
 };
 

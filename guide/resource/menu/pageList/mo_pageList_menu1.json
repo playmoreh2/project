@@ -21,19 +21,19 @@
        "modify": "23.01.10",
        "pageId": "ABCD230110",
        "comment": "",
-       "link": "./aaa/ccc.html",
+       "link": "./aaa/EEEEEEEEEEEEEEEEEEEEEEEE.html",
        "finish": true
    },{
-       "depth1": "전시",
+       "depth1": "mo 전시",
        "depth2": "상품상세1",
        "depth3": "",
        "depth4": "",
        "check": "u",
        "complete": "",
        "modify": "",
-       "pageId": "ABCD13213",
+       "pageId": "MCDAMAL0300P01",
        "comment": "",
-       "link": "./aaa/ccc.html",
+       "link": "./html/mo_mypage/MCDAMAL0300P01.html",
        "finish": true
    },{
        "depth1": "전시",
