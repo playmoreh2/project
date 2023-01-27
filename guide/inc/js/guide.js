@@ -7,6 +7,8 @@ $(document).ready(function(){
         $(".guide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
         $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
+            
+
             let srchVal = $(".srch_wrap .ipt_wrap input.ipt").val();
             if( srchVal !== "" ){
                 $(".srch_wrap button.btn_srch").attr("disabled", true);
@@ -783,12 +785,12 @@ var search = {
                                 $(".page_list tbody tr").eq(idx).addClass("ing");
                             };
                         };
-                    });
-                    
+                    });                    
                 };
             };
             clearTimeout(comm.time);
-            comm.time = setTimeout(comm.countState, 20);
+            comm.time = setTimeout(comm.countState, 10);
+            
             $(".srch_wrap button.btn_srch").attr("disabled", false);
         };
     },
