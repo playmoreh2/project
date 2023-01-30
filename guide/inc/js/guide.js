@@ -1,6 +1,6 @@
 $(document).ready(function(){
     switchMode(); // 배경
-
+    
     // 검색
     if( $("body.cvGuide.search").length > 0 ){
         comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
@@ -31,18 +31,60 @@ $(document).ready(function(){
     // summary, guide, pagelist
     if( $("body.cvGuide.search").length == 0 ){
         // 메뉴 데이터 호출
-        var ctgParam = "./guide/resource/menu/category/ctg_summary.json";
-        var gnbTemplt = "./guide/resource/template/summary/template_summary.html";
-        var dataParam = "./guide/resource/template/summary/template_dashboard.html";
         comm.ctgCode = $(".cvLnb .navList").html();
         comm.ctgDepCode = $(".cvLnb .navList .subList").html();
+        
+        // 로드시 ajax 호출
+        switch (comm.getParameterName("client")){
+            case "summary":
+                // 1번째 summary
+                $(".cvGnb > ul > li").removeClass("on");
+                $(".cvGnb li button.menu_summary").closest("li").addClass("on");
 
-        comm.ctgTemplt(ctgParam);
-        comm.dataTemplt(gnbTemplt, dataParam);
-        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
-        comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                comm.ctgTemplt(comm.ctgParam);
+                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                break;
+            case "guide":
+                // 2번째 guide
+                $(".cvGnb > ul > li").removeClass("on");
+                $(".cvGnb li button.menu_guide").closest("li").addClass("on");
 
-        // gnb ajax 호출
+                comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
+                comm.gnbTemplt = "./guide/resource/template/guide/template_guide.html";
+                comm.ctgTemplt(comm.ctgParam);
+
+                comm.dataParam = "./guide/resource/template/guide/template_guide_title.html";
+                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                
+                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                break;
+            case "pageList":
+                // 3번째 page list
+                $(".cvGnb > ul > li").removeClass("on");
+                $(".cvGnb li button.menu_list").closest("li").addClass("on");
+                
+                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list.json";
+                comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
+                comm.ctgTemplt(comm.ctgParam);
+                
+                comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                
+                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                break;
+            default :
+                // 기본
+                comm.ctgTemplt(comm.ctgParam);
+                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+        };
+
+        // click 이벤트 gnb ajax 호출
         $(".cvGnb li > button[class^=menu_]").unbind("click").bind("click", function(e){
             // console.log($(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class"));
             if( $(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class") ){
@@ -53,36 +95,36 @@ $(document).ready(function(){
                 switch (param){
                     case "menu_summary":
                         // 1번째 summary
-                        ctgParam = "./guide/resource/menu/category/ctg_summary.json";
-                        gnbTemplt = "./guide/resource/template/summary/template_summary.html";
-                        comm.ctgTemplt(ctgParam);
+                        comm.ctgParam = "./guide/resource/menu/category/ctg_summary.json";
+                        comm.gnbTemplt = "./guide/resource/template/summary/template_summary.html";
+                        comm.ctgTemplt(comm.ctgParam);
 
-                        dataParam = "./guide/resource/template/summary/template_dashboard.html";
-                        comm.dataTemplt(gnbTemplt, dataParam);
+                        comm.dataParam = "./guide/resource/template/summary/template_dashboard.html";
+                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                         
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
                         break;
                     case "menu_guide":
                         // 2번째 guide
-                        ctgParam = "./guide/resource/menu/category/ctg_guide.json";
-                        gnbTemplt = "./guide/resource/template/guide/template_guide.html";
-                        comm.ctgTemplt(ctgParam);
-
-                        dataParam = "./guide/resource/template/guide/template_guide_title.html";
-                        comm.dataTemplt(gnbTemplt, dataParam);
-
+                        comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
+                        comm.gnbTemplt = "./guide/resource/template/guide/template_guide.html";
+                        comm.ctgTemplt(comm.ctgParam);
+                        
+                        comm.dataParam = "./guide/resource/template/guide/template_guide_title.html";
+                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                        
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
                         break;
                     case "menu_list":
                         // 3번째 page list
-                        ctgParam = "./guide/resource/menu/category/ctg_page_list.json";
-                        gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
-                        comm.ctgTemplt(ctgParam);
+                        comm.ctgParam = "./guide/resource/menu/category/ctg_page_list.json";
+                        comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
+                        comm.ctgTemplt(comm.ctgParam);
 
-                        dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                        comm.dataTemplt(gnbTemplt, dataParam);
+                        comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
 
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
@@ -95,6 +137,9 @@ $(document).ready(function(){
 
 // 공통 template/data 함수
 var comm = {
+    ctgParam : "./guide/resource/menu/category/ctg_summary.json",
+    gnbTemplt : "./guide/resource/template/summary/template_summary.html",
+    dataParam : "./guide/resource/template/summary/template_dashboard.html",
     ctgCode : "",
     ctgDepCode : "",
     template : null, // template 디폴트
@@ -179,7 +224,10 @@ var comm = {
                 };
 
 				// pagelist 탭에서 각 메뉴 진척률 가져오기
-                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){                    
+                if(comm.getParameterName("client") == "pageList" && comm.dataArray != null && comm.dataArray.length == 0){
+                    comm.dashBoard();
+                };
+                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
                             $.ajax({
@@ -637,31 +685,33 @@ var comm = {
             // 데이터 삽입 - 전체 진척률
             comm.countState();
 
-            // // 전체 진척률 (추후 수정)
-            function totalRatio(){
-                let val = totalData0/totalData1*100;
-                var valChk = Math.ceil(val);
-                var num = 0;
-                var time = (100/val); // 동일한 카운팅 시간 설정
-                var cntNum = setInterval(function(){
-                    num++;
-                    $('.cvGuide .cvContent .total .total_count').find('> em').text(num);
-                    if(num == valChk){
-                        $('.cvGuide .cvContent .total .total_count').find('> em').text(val); // 최종결과 값
-                        clearInterval(cntNum);
-                        if(num == 100){
-                            $('.cvGuide .cvContent .total .total_count').find('> em').text(parseInt(val));
-                            $('.cvGuide .cvContent .total .total_count').find('> em').addClass("finish");
-                        };
+            // 전체 진척률 (추후 수정)
+            let totalVal = totalData0/totalData1*100;
+            var totalValChk = Math.ceil(totalVal);
+            var totalNum = 0;
+            var totalCntNum = setInterval(function(){
+                totalNum++;
+                $('.cvGuide .cvContent .total .total_count').find('> em').text(totalNum);
+                if(totalNum == totalValChk){
+                    $('.cvGuide .cvContent .total .total_count').find('> em').text(totalVal); // 최종결과 값
+                    clearInterval(totalCntNum);
+                    if(totalNum == 100){
+                        $('.cvGuide .cvContent .total .total_count').find('> em').text(parseInt(val));
+                        $('.cvGuide .cvContent .total .total_count').find('> em').addClass("finish");
                     };
-                }, time*10);
-            };
-            totalRatio();
+                };
+            }, (100/totalVal)*10);
         }, 600);
 
     },
     getParamSrch : function(param){ // get 방식
         location.href="index.html?client="+param;
+    },
+    getParameterName : function(path){ // parameter value 가져오기
+        path = path.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + path + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
 };
 
