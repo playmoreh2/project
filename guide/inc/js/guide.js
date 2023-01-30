@@ -223,10 +223,11 @@ var comm = {
                     $(".cvLnb .navList > li:eq(0)").find(".subList > li").eq(0).addClass("on");
                 };
 
-				// pagelist 탭에서 각 메뉴 진척률 가져오기
-                if(comm.getParameterName("client") == "pageList" && comm.dataArray != null && comm.dataArray.length == 0){
+                if(ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length == 0){
                     comm.dashBoard();
+                    alert(1)
                 };
+				// pagelist 탭에서 각 메뉴 진척률 가져오기
                 if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
@@ -255,8 +256,7 @@ var comm = {
                             });
                         };
                     });  
-                };
-                
+                };  
             },
             error: function(){
                 $(".cvContent .cont").empty();
