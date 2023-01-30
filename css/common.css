@@ -5713,7 +5713,7 @@ h3 {
   display: revert;
 }
 
-.convGuide_area {
+.cvGuide_area {
   width: 100%;
   list-style: none;
   -webkit-box-pack: justify;
@@ -19017,13 +19017,13 @@ h2 + .sort_wrap {
   border-radius: 15px;
   overflow: hidden;
 }
-.convGuideComponent .tableTotal_Wrap.type3 {
+.cvGuideComponent .tableTotal_Wrap.type3 {
   border: 1px solid #e5e5e5;
   background-color: #f5f5f5;
   margin-top: 64px;
 }
 @media screen and (min-width: 1921px) {
-  .convGuideComponent .tableTotal_Wrap.type3 {
+  .cvGuideComponent .tableTotal_Wrap.type3 {
     margin-top: 80px;
   }
 }

@@ -2,13 +2,13 @@ $(document).ready(function(){
     switchMode(); // 배경
 
     // 검색
-    if( $("body.convGuide.search").length > 0 ){
+    if( $("body.cvGuide.search").length > 0 ){
         comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
         search.depCode = $(".content .cont .page_list tbody").html();
-        $(".convGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
+        $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
         $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
-            $(".convGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
+            $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
             let srchVal = $(".srch_wrap .ipt_wrap input.ipt").val();
             if( srchVal !== "" ){
@@ -25,7 +25,7 @@ $(document).ready(function(){
     };
     
     // summary, guide, pagelist
-    if( $("body.convGuide.search").length == 0 ){
+    if( $("body.cvGuide.search").length == 0 ){
         // 메뉴 데이터 호출
         var ctgParam = "./guide/resource/menu/category/ctg_summary.json";
         var gnbTemplt = "./guide/resource/template/summary/template_summary.html";
@@ -39,12 +39,12 @@ $(document).ready(function(){
         comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
 
         // gnb ajax 호출
-        $(".gnb li > button[class^=menu_]").unbind("click").bind("click", function(e){
-            // console.log($(e.target).attr("class") !== $(".gnb li.on > button[class^=menu_]").attr("class"));
-            if( $(e.target).attr("class") !== $(".gnb li.on > button[class^=menu_]").attr("class") ){
+        $("cvGuideli > button[class^=menu_]").unbind("click").bind("click", function(e){
+            // console.log($(e.target).attr("class") !== $("cvGuideli.on > button[class^=menu_]").attr("class"));
+            if( $(e.target).attr("class") !== $("cvGuideli.on > button[class^=menu_]").attr("class") ){
                 var param = $(e.target).attr("class");
                 
-                $(".gnb > ul > li").removeClass("on");
+                $("cvGuide> ul > li").removeClass("on");
                 $(e.target).closest("li").addClass("on");
                 switch (param){
                     case "menu_summary":
@@ -111,7 +111,7 @@ var comm = {
                 const listData = data["root_comment"];
                 // console.log('통신 성공', listData);
                 
-                $(".lnb .nav > h2").text($(".gnb li.on").text());
+                $(".lnb .nav > h2").text($("cvGuideli.on").text());
 
                 $(".lnb .navList").empty(); // 마크업 삭제
     
@@ -175,7 +175,7 @@ var comm = {
                 };
 
 				// pagelist 탭에서 각 메뉴 진척률 가져오기
-                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".gnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){                    
+                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $("cvGuideli.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){                    
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
                             $.ajax({
@@ -333,9 +333,9 @@ var comm = {
                     },
                     complete: function(){
                         // guide 소스보기 아코디언 click 이벤트
-                        $(".convGuide_area .code_view .btn_acco").unbind("click").bind("click", function(e){
+                        $(".cvGuide_area .code_view .btn_acco").unbind("click").bind("click", function(e){
                             acco.accoClick(this, function(e){
-                                if( $(".page_guide .convGuide_area").length > 0 ){
+                                if( $(".page_guide .cvGuide_area").length > 0 ){
                                     if( $(e).text() == "코드 보기" ){
                                         $(e).text("코드 닫기");
                                     }else{
@@ -412,9 +412,9 @@ var comm = {
     pageLtUpdate : function(){
         // summary, guide 이벤트
         $(".lnb .nav > ul > li > button.tit:not(.btn_acco)").unbind("click").bind("click", function(e){
-            if( $(".gnb li.on").find(".menu_summary").length > 0 ){
+            if( $("cvGuideli.on").find(".menu_summary").length > 0 ){
                 comm.template= "./guide/resource/template/summary/template_summary.html";
-            }else if( $(".gnb li.on").find(".menu_guide").length > 0 ){
+            }else if( $("cvGuideli.on").find(".menu_guide").length > 0 ){
                 comm.template= "./guide/resource/template/guide/template_guide.html";
             };
             
@@ -443,7 +443,7 @@ var comm = {
         // 추후 수정예정
         var crumbTxt1 = "";
         var crumbTxt2 = "";
-        if( $(".convGuide.search .navList.rdo").length > 0 ){
+        if( $(".cvGuide.search .navList.rdo").length > 0 ){
             crumbTxt1 = $(e).closest("li").find("> label.tit").text();
         }else{
             crumbTxt1 = $(e).closest(".part").find("> button.tit").html().split('<')[0];
@@ -464,10 +464,10 @@ var comm = {
             $(".content .page_list .progress .count_wrap .count > em").text(0);
         };
 
-        return ($(".gnb li.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1) : 100;
+        return ($("cvGuideli.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1) : 100;
     },
     countState : function(e){
-        $('.convGuide .content .count').each(function(idx, item){
+        $('.cvGuide .content .count').each(function(idx, item){
             let val = 0;
             if( $(".page_summary").length > 0 && val != null ){
                 val = ((comm.finishNum[idx]/comm.totalNum[idx])*100).toFixed(1);
@@ -498,21 +498,21 @@ var comm = {
 		});
     },
     guideCustom : function(){
-        for( var i=0; i<$(".convGuide_area").length; i++ ){
-            $(".convGuide_area:eq("+i+") .code_view .code xmp").html($(".convGuide_area:eq("+i+") .convGuide_view .code").html());
+        for( var i=0; i<$(".cvGuide_area").length; i++ ){
+            $(".cvGuide_area:eq("+i+") .code_view .code xmp").html($(".cvGuide_area:eq("+i+") .cvGuide_view .code").html());
         };
     },
     copyTo : function(){
         comm.guideCustom();
-        $(".convGuide_area .btn_copy").unbind("click").bind("click", function(e){
-            var val = $(e.target).closest(".convGuide_area").find(".convGuide_view .code").html();
+        $(".cvGuide_area .btn_copy").unbind("click").bind("click", function(e){
+            var val = $(e.target).closest(".cvGuide_area").find(".cvGuide_view .code").html();
             var dataTag = document.createElement("textarea");
             dataTag.className = "copyVal";
             document.body.append(dataTag);
             dataTag.value = val;
             dataTag.select();
             if( document.execCommand('copy') ){
-                $("body.convGuide .content").append('<div class="pop_alert"><p>복사되었습니다!</p></div>');
+                $("body.cvGuide .content").append('<div class="pop_alert"><p>복사되었습니다!</p></div>');
                 $(".pop_alert").fadeOut(3000, function(){
                     $(this).remove();
                 });
@@ -641,13 +641,13 @@ var comm = {
                 var time = (100/val); // 동일한 카운팅 시간 설정
                 var cntNum = setInterval(function(){
                     num++;
-                    $('.convGuide .content .total .total_count').find('> em').text(num);
+                    $('.cvGuide .content .total .total_count').find('> em').text(num);
                     if(num == valChk){
-                        $('.convGuide .content .total .total_count').find('> em').text(val); // 최종결과 값
+                        $('.cvGuide .content .total .total_count').find('> em').text(val); // 최종결과 값
                         clearInterval(cntNum);
                         if(num == 100){
-                            $('.convGuide .content .total .total_count').find('> em').text(parseInt(val));
-                            $('.convGuide .content .total .total_count').find('> em').addClass("finish");
+                            $('.cvGuide .content .total .total_count').find('> em').text(parseInt(val));
+                            $('.cvGuide .content .total .total_count').find('> em').addClass("finish");
                         };
                     };
                 }, time*10);
@@ -775,7 +775,7 @@ var search = {
                 $(".content .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
             }else{
                 // page list 삽입
-                if( $(".convGuide.search .cont .page_list").length > 0 ){
+                if( $(".cvGuide.search .cont .page_list").length > 0 ){
                     $.each(search.dataArraySrchMenu, function(idx, item){
                         if(search.depCode != null && search.dataArraySrchMenu != null){ // html && data 있을 때
                             $(".content .cont .page_list tbody").append(search.depCode);
@@ -892,10 +892,10 @@ var acco = {
 function switchMode(){
     $('.btn_switch input').bind('click', function(){
         if ($('.btn_switch input').is(':checked')){
-            $('body.convGuide').addClass('dark');
+            $('body.cvGuide').addClass('dark');
             $('header .logo img').attr('src', './guide/inc/img/logo.png');
         }else{
-            $('body.convGuide').removeClass('dark');
+            $('body.cvGuide').removeClass('dark');
             $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
         };
     })
