@@ -2,13 +2,13 @@ $(document).ready(function(){
     switchMode(); // 배경
 
     // 검색
-    if( $("body.guide.search").length > 0 ){
+    if( $("body.convGuide.search").length > 0 ){
         comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
         search.depCode = $(".content .cont .page_list tbody").html();
-        $(".guide.search .cont .page_list tbody").empty(); // 마크업 삭제
+        $(".convGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
         $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
-            $(".guide.search .cont .page_list tbody").empty(); // 마크업 삭제
+            $(".convGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
             let srchVal = $(".srch_wrap .ipt_wrap input.ipt").val();
             if( srchVal !== "" ){
@@ -25,7 +25,7 @@ $(document).ready(function(){
     };
     
     // summary, guide, pagelist
-    if( $("body.guide.search").length == 0 ){
+    if( $("body.convGuide.search").length == 0 ){
         // 메뉴 데이터 호출
         var ctgParam = "./guide/resource/menu/category/ctg_summary.json";
         var gnbTemplt = "./guide/resource/template/summary/template_summary.html";
@@ -333,9 +333,9 @@ var comm = {
                     },
                     complete: function(){
                         // guide 소스보기 아코디언 click 이벤트
-                        $(".guide_area .code_view .btn_acco").unbind("click").bind("click", function(e){
+                        $(".convGuide_area .code_view .btn_acco").unbind("click").bind("click", function(e){
                             acco.accoClick(this, function(e){
-                                if( $(".page_guide .guide_area").length > 0 ){
+                                if( $(".page_guide .convGuide_area").length > 0 ){
                                     if( $(e).text() == "코드 보기" ){
                                         $(e).text("코드 닫기");
                                     }else{
@@ -443,7 +443,7 @@ var comm = {
         // 추후 수정예정
         var crumbTxt1 = "";
         var crumbTxt2 = "";
-        if( $(".guide.search .navList.rdo").length > 0 ){
+        if( $(".convGuide.search .navList.rdo").length > 0 ){
             crumbTxt1 = $(e).closest("li").find("> label.tit").text();
         }else{
             crumbTxt1 = $(e).closest(".part").find("> button.tit").html().split('<')[0];
@@ -467,7 +467,7 @@ var comm = {
         return ($(".gnb li.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1) : 100;
     },
     countState : function(e){
-        $('.guide .content .count').each(function(idx, item){
+        $('.convGuide .content .count').each(function(idx, item){
             let val = 0;
             if( $(".page_summary").length > 0 && val != null ){
                 val = ((comm.finishNum[idx]/comm.totalNum[idx])*100).toFixed(1);
@@ -498,21 +498,21 @@ var comm = {
 		});
     },
     guideCustom : function(){
-        for( var i=0; i<$(".guide_area").length; i++ ){
-            $(".guide_area:eq("+i+") .code_view .code xmp").html($(".guide_area:eq("+i+") .guide_view .code").html());
+        for( var i=0; i<$(".convGuide_area").length; i++ ){
+            $(".convGuide_area:eq("+i+") .code_view .code xmp").html($(".convGuide_area:eq("+i+") .convGuide_view .code").html());
         };
     },
     copyTo : function(){
-        comm.guideCustom();
-        $(".guide_area .btn_copy").unbind("click").bind("click", function(e){
-            var val = $(e.target).closest(".guide_area").find(".guide_view .code").html();
+        comm.convGuideCustom();
+        $(".convGuide_area .btn_copy").unbind("click").bind("click", function(e){
+            var val = $(e.target).closest(".convGuide_area").find(".convGuide_view .code").html();
             var dataTag = document.createElement("textarea");
             dataTag.className = "copyVal";
             document.body.append(dataTag);
             dataTag.value = val;
             dataTag.select();
             if( document.execCommand('copy') ){
-                $("body.guide .content").append('<div class="pop_alert"><p>복사되었습니다!</p></div>');
+                $("body.convGuide .content").append('<div class="pop_alert"><p>복사되었습니다!</p></div>');
                 $(".pop_alert").fadeOut(3000, function(){
                     $(this).remove();
                 });
@@ -641,13 +641,13 @@ var comm = {
                 var time = (100/val); // 동일한 카운팅 시간 설정
                 var cntNum = setInterval(function(){
                     num++;
-                    $('.guide .content .total .total_count').find('> em').text(num);
+                    $('.convGuide .content .total .total_count').find('> em').text(num);
                     if(num == valChk){
-                        $('.guide .content .total .total_count').find('> em').text(val); // 최종결과 값
+                        $('.convGuide .content .total .total_count').find('> em').text(val); // 최종결과 값
                         clearInterval(cntNum);
                         if(num == 100){
-                            $('.guide .content .total .total_count').find('> em').text(parseInt(val));
-                            $('.guide .content .total .total_count').find('> em').addClass("finish");
+                            $('.convGuide .content .total .total_count').find('> em').text(parseInt(val));
+                            $('.convGuide .content .total .total_count').find('> em').addClass("finish");
                         };
                     };
                 }, time*10);
@@ -775,7 +775,7 @@ var search = {
                 $(".content .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
             }else{
                 // page list 삽입
-                if( $(".guide.search .cont .page_list").length > 0 ){
+                if( $(".convGuide.search .cont .page_list").length > 0 ){
                     $.each(search.dataArraySrchMenu, function(idx, item){
                         if(search.depCode != null && search.dataArraySrchMenu != null){ // html && data 있을 때
                             $(".content .cont .page_list tbody").append(search.depCode);
@@ -892,10 +892,10 @@ var acco = {
 function switchMode(){
     $('.btn_switch input').bind('click', function(){
         if ($('.btn_switch input').is(':checked')){
-            $('body.guide').addClass('dark');
+            $('body.convGuide').addClass('dark');
             $('header .logo img').attr('src', './guide/inc/img/logo.png');
         }else{
-            $('body.guide').removeClass('dark');
+            $('body.convGuide').removeClass('dark');
             $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
         };
     })
