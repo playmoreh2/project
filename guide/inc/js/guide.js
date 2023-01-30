@@ -34,12 +34,12 @@ $(document).ready(function(){
         var ctgParam = "./guide/resource/menu/category/ctg_summary.json";
         var gnbTemplt = "./guide/resource/template/summary/template_summary.html";
         var dataParam = "./guide/resource/template/summary/template_dashboard.html";
-        comm.ctgCode = $(".lnb .navList").html();
-        comm.ctgDepCode = $(".lnb .navList .subList").html();
+        comm.ctgCode = $(".cvLnb .navList").html();
+        comm.ctgDepCode = $(".cvLnb .navList .subList").html();
 
         comm.ctgTemplt(ctgParam);
         comm.dataTemplt(gnbTemplt, dataParam);
-        comm.pageLtTxtUpdate(".lnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
         comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
 
         // gnb ajax 호출
@@ -60,7 +60,7 @@ $(document).ready(function(){
                         dataParam = "./guide/resource/template/summary/template_dashboard.html";
                         comm.dataTemplt(gnbTemplt, dataParam);
                         
-                        comm.pageLtTxtUpdate(".lnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
                         break;
                     case "menu_guide":
@@ -72,7 +72,7 @@ $(document).ready(function(){
                         dataParam = "./guide/resource/template/guide/template_guide_title.html";
                         comm.dataTemplt(gnbTemplt, dataParam);
 
-                        comm.pageLtTxtUpdate(".lnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
                         break;
                     case "menu_list":
@@ -81,10 +81,10 @@ $(document).ready(function(){
                         gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
                         comm.ctgTemplt(ctgParam);
 
-                        dataParam = $(".lnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                        dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
                         comm.dataTemplt(gnbTemplt, dataParam);
 
-                        comm.pageLtTxtUpdate(".lnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
                 };
             };
@@ -115,28 +115,28 @@ var comm = {
                 const listData = data["root_comment"];
                 // console.log('통신 성공', listData);
                 
-                $(".lnb .nav > h2").text($("cvGuideli.on").text());
+                $(".cvLnb .nav > h2").text($("cvGuideli.on").text());
 
-                $(".lnb .navList").empty(); // 마크업 삭제
+                $(".cvLnb .navList").empty(); // 마크업 삭제
     
                 $.each(listData, function(idx, item){
                     if(comm.ctgCode !== "" && comm.ctgDepCode !== "" && listData != null){ // html && data 있을 때
-                        $(".lnb .navList").append(comm.ctgCode);
-                        $(".lnb .navList > li").eq(idx).find(".subList").empty();
-                        // console.log("UI Data", listData[idx].title, $(".lnb .navList > li").eq(idx), listData[idx].menu.length);
+                        $(".cvLnb .navList").append(comm.ctgCode);
+                        $(".cvLnb .navList > li").eq(idx).find(".subList").empty();
+                        // console.log("UI Data", listData[idx].title, $(".cvLnb .navList > li").eq(idx), listData[idx].menu.length);
                         
                         // text 삽입
-                        $(".lnb .navList > li").eq(idx).find("button.tit").append(
+                        $(".cvLnb .navList > li").eq(idx).find("button.tit").append(
                             listData[idx].title
                         );
                         if( listData[idx].active != undefined && listData[idx].data_info != undefined ){
                             // class 추가
                             if( listData[idx].active == true ){
-                                $(".lnb .navList > li").removeClass("on");
-                                $(".lnb .navList > li:eq("+idx+")").addClass("on");
+                                $(".cvLnb .navList > li").removeClass("on");
+                                $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
                             };
                             // attr 추가
-                            $(".lnb .navList > li").eq(idx).find("button.tit").attr({
+                            $(".cvLnb .navList > li").eq(idx).find("button.tit").attr({
                                 "data-info": listData[idx].data_info,
                                 "title": listData[idx].title+" 메뉴 보기"
                             });
@@ -144,24 +144,24 @@ var comm = {
                         
                         // 서브메뉴가 있을 때 실행
                         if( listData[idx].menu != null && listData[idx].menu.length > 0 ){
-                            $(".lnb .navList > li:eq("+idx+")").find("button.tit").addClass("btn_acco");
-                            $(".lnb .navList > li:eq("+idx+")").find("button.tit").append('<span class="blind">펼치기</span>');
+                            $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").addClass("btn_acco");
+                            $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").append('<span class="blind">펼치기</span>');
                             for( var i=0; i<listData[idx].menu.length; i++ ){
-                                $(".lnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
-                                // console.log("UI Data", $(".lnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
+                                $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
+                                // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
 
                                 // class 추가
                                 if( listData[idx].menu[i].active == true ){
-                                    $(".lnb .navList > li").find(".subList > li").removeClass("on");
-                                    $(".lnb .navList > li:eq("+idx+")").find(".subList > li").eq(i).addClass("on");
+                                    $(".cvLnb .navList > li").find(".subList > li").removeClass("on");
+                                    $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li").eq(i).addClass("on");
                                 };
                                 // attr 추가
-                                $(".lnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").attr({
+                                $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").attr({
                                     "data-info": listData[idx].menu[i].data_info,
                                     "title": listData[idx].menu[i].so_menu+" 메뉴 보기"
                                 });                                    
                                 // text 삽입
-                                $(".lnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").append(
+                                $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").append(
                                     listData[idx].menu[i].so_menu
                                 );
                             };
@@ -174,8 +174,8 @@ var comm = {
 
                 });
                 // 메뉴 활성화 하지 않을 경우 디폴트 첫 번째 메뉴 활성화
-                if( $(".lnb .navList > li").find(".subList > li.on").length == 0 ){
-                    $(".lnb .navList > li:eq(0)").find(".subList > li").eq(0).addClass("on");
+                if( $(".cvLnb .navList > li").find(".subList > li.on").length == 0 ){
+                    $(".cvLnb .navList > li:eq(0)").find(".subList > li").eq(0).addClass("on");
                 };
 
 				// pagelist 탭에서 각 메뉴 진척률 가져오기
@@ -193,11 +193,11 @@ var comm = {
                                     let cnt = 0;
                                     for( var j=0; j<infoData.length; j++ ){
                                         // console.log("infoData", infoData[j].finish, infoData.length, j);
-                                        // console.log("infoData", $(".lnb .nav > ul > li:eq("+i+") > .subList > li:eq("+j+")"));
-                                        $(".lnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.num > .total_num").text(infoData.length);
-                                        $(".lnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.num > em").html(cnt += infoData[j].finish);
+                                        // console.log("infoData", $(".cvLnb .nav > ul > li:eq("+i+") > .subList > li:eq("+j+")"));
+                                        $(".cvLnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.num > .total_num").text(infoData.length);
+                                        $(".cvLnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.num > em").html(cnt += infoData[j].finish);
                                     };
-                                    $(".lnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.count > em").html(((cnt/infoData.length)*100).toFixed(1));
+                                    $(".cvLnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.count > em").html(((cnt/infoData.length)*100).toFixed(1));
                                 },
                                 error: function(){
                                     $(".content .cont").append(
@@ -218,8 +218,8 @@ var comm = {
             },
             complete: function(){
                 // 카테고리 아코디언 click 이벤트
-                if( $(".lnb .nav .subList").length > 0 && $(".lnb .nav > ul > li > button.tit.btn_acco").length > 0 ){
-                    $(".lnb .navList button.tit").unbind("click").bind("click", function(e){
+                if( $(".cvLnb .nav .subList").length > 0 && $(".cvLnb .nav > ul > li > button.tit.btn_acco").length > 0 ){
+                    $(".cvLnb .navList button.tit").unbind("click").bind("click", function(e){
                         acco.accoClick(this);
                     });                    
                 };
@@ -415,7 +415,7 @@ var comm = {
 	},
     pageLtUpdate : function(){
         // summary, guide 이벤트
-        $(".lnb .nav > ul > li > button.tit:not(.btn_acco)").unbind("click").bind("click", function(e){
+        $(".cvLnb .nav > ul > li > button.tit:not(.btn_acco)").unbind("click").bind("click", function(e){
             if( $("cvGuideli.on").find(".menu_summary").length > 0 ){
                 comm.template= "./guide/resource/template/summary/template_summary.html";
             }else if( $("cvGuideli.on").find(".menu_guide").length > 0 ){
@@ -433,7 +433,7 @@ var comm = {
         });
 
         // page list 이벤트
-        $(".lnb .subList > li > button").unbind("click").bind("click", function(e){
+        $(".cvLnb .subList > li > button").unbind("click").bind("click", function(e){
             comm.param = $(e.target).data("info");
             if( $(e.target).closest("li").hasClass("on") == false && comm.param != undefined ){
                 $(e.target).closest(".navList").find(".subList > li").removeClass("on");
@@ -456,7 +456,7 @@ var comm = {
         if( $(e).closest(".subList").length > 0 ) crumbTxt2 = " > " + $(e).closest(".subList").find("> li.on > button").text();
         
         $(".content > .top > h3").html(
-            $(".lnb .nav h2").text()
+            $(".cvLnb .nav h2").text()
             + " > "
             + crumbTxt1
             + crumbTxt2
