@@ -893,10 +893,10 @@ function switchMode(){
     $('.btn_switch input').bind('click', function(){
         if ($('.btn_switch input').is(':checked')){
             $('body.guide').addClass('dark');
-            $('header .logo img').attr('src', './inc/img/logo.png');
+            $('header .logo img').attr('src', './guide/inc/img/logo.png');
         }else{
             $('body.guide').removeClass('dark');
-            $('header .logo img').attr('src', './inc/img/logo_red.png');
+            $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
         };
     })
 };
