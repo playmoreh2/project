@@ -309,7 +309,8 @@
         "modify": "23.01.10",
         "pageId": "ABCD230110",
         "comment": "",
-        "link": "./aaa/ccc.html"
+        "link": "./aaa/ccc.html",
+        "finish": false
     },{
         "depth1": "회원",
         "depth2": "회원가입",
