@@ -503,7 +503,7 @@ var comm = {
         };
     },
     copyTo : function(){
-        comm.convGuideCustom();
+        comm.guideCustom();
         $(".convGuide_area .btn_copy").unbind("click").bind("click", function(e){
             var val = $(e.target).closest(".convGuide_area").find(".convGuide_view .code").html();
             var dataTag = document.createElement("textarea");
