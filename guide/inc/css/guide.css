@@ -2,7 +2,7 @@
 @import url('fonts.css');
 
 /*================================================ Common ================================================*/
-:root{
+:root .convGuide{
   --c-white: #ffffff;
   --c-white-soft: #f9f9f9;
   --c-white-mute: #e0e0e0;
@@ -67,7 +67,7 @@
   --box-shadow: 0 14px 44px rgba(0, 0, 0, .12), 0 3px 9px rgba(0, 0, 0, .12);
   --box-shadow-light: 0 14px 44px rgba(250, 250, 250, .12), 0 3px 9px rgba(250, 250, 250, .12);
 }
-:root{
+:root .convGuide{
   --c-bg: var(--c-white);
   --c-bg-soft: var(--c-white-soft);
   --c-bg-mute: var(--c-white-mute);
@@ -87,7 +87,7 @@
   --c-link: var(--c-blue);
   --c-finish: var(--c-green);
 }
-.dark{
+.dark.convGuide{
   --c-bg: var(--c-black);
   --c-bg-soft: var(--c-black-soft);
   --c-bg-mute: var(--c-black-mute);
@@ -109,27 +109,27 @@
   --box-shadow:var(--box-shadow-light);
 }
 body {background: var(--c-bg); font-size:13px; font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; color: var(--c-text-1); letter-spacing:-0.003em; word-break:keep-all; word-wrap:break-word;}
-.bold, .gnb li, .lnb .nav h2, .lnb .nav > ul > li > a, .lnb .depth > li.on > a, .content > .top > h3, .guide [class^='tit'], 
-.guide .section .btn, .guide .lnb .nav .selectLnb select, .tbl thead th, .tbl td .menuTitle, .tbl td .menuTitle.hover, 
-.tbl.mobile .d1, .guide.single .sch .btn, .guide ul.desc > li:before, .accoWrap .acco .accoHead strong {font-family:'Roboto Regular', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
+.bold, .gnb li, .lnb .nav h2, .lnb .nav > ul > li > a, .lnb .depth > li.on > a, .content > .top > h3, .convGuide [class^='tit'], 
+.convGuide .section .btn, .convGuide .lnb .nav .selectLnb select, .tbl thead th, .tbl td .menuTitle, .tbl td .menuTitle.hover, 
+.tbl.mobile .d1, .convGuide.single .sch .btn, .convGuide ul.desc > li:before, .accoWrap .acco .accoHead strong {font-family:'Roboto Regular', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
 .normal, .copyWrap .copy .inner .tit, .badge {font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
 .gnb button {font-family:'Roboto Regular', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
 .lnb a {font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
 
 strong {font-weight:normal;}
 
-.guide select {appearance:none;}
+.convGuide select {appearance:none;}
 
 /*================================================ Layout ================================================*/
-.guide {position:relative;}
-.guide a {color:var(--c-link);}
+.convGuide {position:relative;}
+.convGuide a {color:var(--c-link);}
 
-.guide header {position:fixed; left:240px; right:0; top:0; border-bottom:1px solid var(--c-divider-light); background-color: var(--c-bg); z-index:11;}
-.guide header, .guide header .logo {height:60px;}
-.guide header .logo {display:flex; justify-content:center; align-items:center; position:fixed; top:0; left:0; width:240px; border-bottom:1px solid var(--c-divider-light); background-color: var(--c-bg); box-sizing:border-box;}
-.guide header .logo a {display:block; padding:0 20px;}
-.guide header .logo a > img {max-width:100%;}
-.guide header .util {position:absolute; top:0; right:30px; height:60px;}
+.convGuide header {position:fixed; left:240px; right:0; top:0; border-bottom:1px solid var(--c-divider-light); background-color: var(--c-bg); z-index:11;}
+.convGuide header, .convGuide header .logo {height:60px;}
+.convGuide header .logo {display:flex; justify-content:center; align-items:center; position:fixed; top:0; left:0; width:240px; border-bottom:1px solid var(--c-divider-light); background-color: var(--c-bg); box-sizing:border-box;}
+.convGuide header .logo a {display:block; padding:0 20px;}
+.convGuide header .logo a > img {max-width:100%;}
+.convGuide header .util {position:absolute; top:0; right:30px; height:60px;}
 
 /* gnb */
 .gnb {padding-left:30px; letter-spacing:-2em;}
@@ -215,19 +215,19 @@ strong {font-weight:normal;}
 .dashboard_area .inner [class^='total'] .summary .num > em {font-weight:700;}
 
 /* guide */
-.content .guide_area:first-child {border-top:0;}
-.content .guide_area {padding:20px 0; border-top:1px solid var(--c-bg-mute);}
-.content .guide_area .tit {font-size:18px; vertical-align:middle;}
+.content .convGuide_area:first-child {border-top:0;}
+.content .convGuide_area {padding:20px 0; border-top:1px solid var(--c-bg-mute);}
+.content .convGuide_area .tit {font-size:18px; vertical-align:middle;}
 .content button[class^='btn_']:not(.btn_srch) {min-width:100px; padding:0 12px; line-height:32px; font-size:13px; font-weight:700; border:1px solid var(--c-divider); border-radius:50px; color:var(--c-text-1);}
 .btn_copy {margin-left:10px;}
 .btn_copy:before {content:""; display:inline-block; width:24px; height:24px; margin:-3px 4px 0 0; background:url('../img/ico_copy.png') no-repeat 0 0; background-size:24px auto; vertical-align:middle;}
-.content .guide_area .code_view .btn_area {text-align:right;}
+.content .convGuide_area .code_view .btn_area {text-align:right;}
 
-.content .guide_area .guide_view {margin:10px 0; padding:10px; border-radius:7px;}
-.dark .content .guide_area .guide_view {background-color:#fff;}
-.content .guide_area .code_view .code {display:none; color:#fff; background-color:#000;}
-.content .guide_area .code_view .code xmp {margin:0; padding:10px;}
-.content .guide_area .code_view .btn_area {margin-top:10px;}
+.content .convGuide_area .convGuide_view {margin:10px 0; padding:10px; border-radius:7px;}
+.dark .content .convGuide_area .convGuide_view {background-color:#fff;}
+.content .convGuide_area .code_view .code {display:none; color:#fff; background-color:#000;}
+.content .convGuide_area .code_view .code xmp {margin:0; padding:10px;}
+.content .convGuide_area .code_view .btn_area {margin-top:10px;}
 
 .content .pop_alert {display:flex; align-items:center; justify-content:center; position:fixed; top:50%; left:50%; width:180px; height:80px; margin-top:-40px; padding:0 12px; background-color:var(--c-bg); border:1px solid #000; border-radius:6px; text-align:center; z-index:99;}
 .content .pop_alert > p {color:#000; font-size:18px; font-weight:500;}
