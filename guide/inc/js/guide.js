@@ -4,7 +4,7 @@ $(document).ready(function(){
     // 검색
     if( $("body.cvGuide.search").length > 0 ){
         comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
-        search.depCode = $(".content .cont .page_list tbody").html();
+        search.depCode = $(".cvContent .cont .page_list tbody").html();
         $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
         $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
@@ -200,7 +200,7 @@ var comm = {
                                     $(".cvLnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.count > em").html(((cnt/infoData.length)*100).toFixed(1));
                                 },
                                 error: function(){
-                                    $(".content .cont").append(
+                                    $(".cvContent .cont").append(
                                         '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
                                     );
                                 }
@@ -211,8 +211,8 @@ var comm = {
                 
             },
             error: function(){
-                $(".content .cont").empty();
-                $(".content .cont").append(
+                $(".cvContent .cont").empty();
+                $(".cvContent .cont").append(
                     '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경 또는 리소스 여부 다시 확인하여 주십시오.</p>'
                 );
             },
@@ -227,7 +227,7 @@ var comm = {
         });
     },
     dataTemplt : function(gnbTemplt, dataParam){ // template
-        $(".content .cont").load(gnbTemplt, function(e){
+        $(".cvContent .cont").load(gnbTemplt, function(e){
             const code = e;
             const extenType = dataParam.split('.').pop().toLowerCase() == "json" ? "json" : "html"; //확장자 분리, 체크
             
@@ -245,15 +245,15 @@ var comm = {
                                 const listData = data["root_comment"];
                                 
                                 // page list type
-                                if( $(".content .cont .page_list tbody").length > 0 ){
-                                    var depCode = $(".content .cont .page_list tbody").html();
+                                if( $(".cvContent .cont .page_list tbody").length > 0 ){
+                                    var depCode = $(".cvContent .cont .page_list tbody").html();
                                     // console.log('통신 성공', listData, code, depCode);
-                                    $(".content .cont .page_list tbody").empty(); // 마크업 삭제
+                                    $(".cvContent .cont .page_list tbody").empty(); // 마크업 삭제
                                     
                                     $.each(listData, function(idx, item){
                                         // console.log('통신 성공', item, idx);
                                         if(code != null && depCode != null && listData != null){ // html && data 있을 때
-                                            $(".content .cont .page_list tbody").append(depCode);
+                                            $(".cvContent .cont .page_list tbody").append(depCode);
                                             // console.log("UI Data", listData[idx].link, $(".page_list tbody tr").eq(idx));
             
                                             // 링크
@@ -309,29 +309,29 @@ var comm = {
                                 break;
                             case "html":
                                 // html type
-                                if( $(".content .cont .page_summary").length > 0 ){ // summary type
+                                if( $(".cvContent .cont .page_summary").length > 0 ){ // summary type
                                     // console.log('통신 성공', code);                
-                                    $(".content .cont .page_summary").empty(); // 마크업 삭제
+                                    $(".cvContent .cont .page_summary").empty(); // 마크업 삭제
                                     
                                     if(code != null && data != null && data != ""){ // html && data 있을 때
-                                        $(".content .cont .page_summary").html(data);
+                                        $(".cvContent .cont .page_summary").html(data);
                                         if( $(".dashboard_area").length > 0 ){
                                             comm.ratio(); // dashboard 호출
                                         };
                                     };
-                                }else if( $(".content .cont .page_guide").length > 0 ){ // guide type
-                                    $(".content .cont .page_guide").empty(); // 마크업 삭제
+                                }else if( $(".cvContent .cont .page_guide").length > 0 ){ // guide type
+                                    $(".cvContent .cont .page_guide").empty(); // 마크업 삭제
                                     
                                     if(code != null && data != null && data != ""){ // html && data 있을 때
-                                        $(".content .cont .page_guide").html($(data).children());
+                                        $(".cvContent .cont .page_guide").html($(data).children());
                                         comm.copyTo(); // 추후 가이드 완료 후 위치 수정예정
                                     };
                                 };
                         };
                     },
                     error: function(){
-                        $(".content .cont").empty();
-                        $(".content .cont").append(
+                        $(".cvContent .cont").empty();
+                        $(".cvContent .cont").append(
                             '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경 또는 리소스 여부를 다시 확인하여 주십시오.</p>'
                         );
                     },
@@ -455,7 +455,7 @@ var comm = {
 
         if( $(e).closest(".subList").length > 0 ) crumbTxt2 = " > " + $(e).closest(".subList").find("> li.on > button").text();
         
-        $(".content > .top > h3").html(
+        $(".cvContent > .top > h3").html(
             $(".cvLnb .nav h2").text()
             + " > "
             + crumbTxt1
@@ -463,15 +463,15 @@ var comm = {
         );
     },
     progressData : function(e){
-        if( $(".content .page_list .progress .graph").attr("style") != undefined ){
-            $(".content .page_list .progress .graph").removeAttr("style");
-            $(".content .page_list .progress .count_wrap .count > em").text(0);
+        if( $(".cvContent .page_list .progress .graph").attr("style") != undefined ){
+            $(".cvContent .page_list .progress .graph").removeAttr("style");
+            $(".cvContent .page_list .progress .count_wrap .count > em").text(0);
         };
 
-        return ($("cvGuideli.on .menu_list").length > 0) ? (($(".content .page_list tbody tr.finish").length/$(".content .page_list tbody tr").length)*100).toFixed(1) : 100;
+        return ($("cvGuideli.on .menu_list").length > 0) ? (($(".cvContent .page_list tbody tr.finish").length/$(".cvContent .page_list tbody tr").length)*100).toFixed(1) : 100;
     },
     countState : function(e){
-        $('.cvGuide .content .count').each(function(idx, item){
+        $('.cvGuide .cvContent .count').each(function(idx, item){
             let val = 0;
             if( $(".page_summary").length > 0 && val != null ){
                 val = ((comm.finishNum[idx]/comm.totalNum[idx])*100).toFixed(1);
@@ -553,8 +553,8 @@ var comm = {
                 comm.dataArray = [dataGroup0, dataGroup1]
             },
             error: function(){
-                $(".content .cont").empty();
-                $(".content .cont").append(
+                $(".cvContent .cont").empty();
+                $(".cvContent .cont").append(
                     '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
                 );
             },
@@ -583,8 +583,8 @@ var comm = {
                                     comm.dataArrayFnsh = [join0, join1];
                                 },
                                 error: function(){
-                                    $(".content .cont").empty();
-                                    $(".content .cont").append(
+                                    $(".cvContent .cont").empty();
+                                    $(".cvContent .cont").append(
                                         '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
                                     );
                                 }
@@ -645,13 +645,13 @@ var comm = {
                 var time = (100/val); // 동일한 카운팅 시간 설정
                 var cntNum = setInterval(function(){
                     num++;
-                    $('.cvGuide .content .total .total_count').find('> em').text(num);
+                    $('.cvGuide .cvContent .total .total_count').find('> em').text(num);
                     if(num == valChk){
-                        $('.cvGuide .content .total .total_count').find('> em').text(val); // 최종결과 값
+                        $('.cvGuide .cvContent .total .total_count').find('> em').text(val); // 최종결과 값
                         clearInterval(cntNum);
                         if(num == 100){
-                            $('.cvGuide .content .total .total_count').find('> em').text(parseInt(val));
-                            $('.cvGuide .content .total .total_count').find('> em').addClass("finish");
+                            $('.cvGuide .cvContent .total .total_count').find('> em').text(parseInt(val));
+                            $('.cvGuide .cvContent .total .total_count').find('> em').addClass("finish");
                         };
                     };
                 }, time*10);
@@ -695,8 +695,8 @@ var search = {
                             // console.log("search", search.dataArraySrch);
                         },
                         error: function(){
-                            $(".content .cont").empty();
-                            $(".content .cont").append(
+                            $(".cvContent .cont").empty();
+                            $(".cvContent .cont").append(
                                 '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
                             );
                         }
@@ -777,13 +777,13 @@ var search = {
             };
             
             if( search.dataArraySrchMenu.length == 0 ){
-                $(".content .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
+                $(".cvContent .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
             }else{
                 // page list 삽입
                 if( $(".cvGuide.search .cont .page_list").length > 0 ){
                     $.each(search.dataArraySrchMenu, function(idx, item){
                         if(search.depCode != null && search.dataArraySrchMenu != null){ // html && data 있을 때
-                            $(".content .cont .page_list tbody").append(search.depCode);
+                            $(".cvContent .cont .page_list tbody").append(search.depCode);
                             console.log(item.depth1);
                             // 링크
                             $(".page_list tbody tr").eq(idx).find("td.link > a").attr({

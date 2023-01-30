@@ -28,7 +28,7 @@
 .txtS {font-size:1.3rem !important;}
 .txtXS {font-size:1.2rem !important;}
 
-.content [class*=txt]:not(ol):not(ul):not([class*=List]) + [class*=txt]:not(ol):not(ul):not([class*=List]),
+.cvContent [class*=txt]:not(ol):not(ul):not([class*=List]) + [class*=txt]:not(ol):not(ul):not([class*=List]),
 .popCont [class*=txt]:not(ol):not(ul):not([class*=List]) + [class*=txt]:not(ol):not(ul):not([class*=List]) {margin-top:8px;}
 
 /* txtItem */
