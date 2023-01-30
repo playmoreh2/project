@@ -43,9 +43,9 @@ $(document).ready(function(){
         comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
 
         // gnb ajax 호출
-        $("cvGuideli > button[class^=menu_]").unbind("click").bind("click", function(e){
-            // console.log($(e.target).attr("class") !== $("cvGuideli.on > button[class^=menu_]").attr("class"));
-            if( $(e.target).attr("class") !== $("cvGuideli.on > button[class^=menu_]").attr("class") ){
+        $("cvGuide li > button[class^=menu_]").unbind("click").bind("click", function(e){
+            // console.log($(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class"));
+            if( $(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class") ){
                 var param = $(e.target).attr("class");
                 
                 $("cvGuide> ul > li").removeClass("on");
@@ -115,7 +115,7 @@ var comm = {
                 const listData = data["root_comment"];
                 // console.log('통신 성공', listData);
                 
-                $(".cvLnb .nav > h2").text($("cvGuideli.on").text());
+                $(".cvLnb .nav > h2").text($(".cvGnb li.on").text());
 
                 $(".cvLnb .navList").empty(); // 마크업 삭제
     
@@ -179,7 +179,7 @@ var comm = {
                 };
 
 				// pagelist 탭에서 각 메뉴 진척률 가져오기
-                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $("cvGuideli.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){                    
+                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){                    
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
                             $.ajax({
@@ -416,9 +416,9 @@ var comm = {
     pageLtUpdate : function(){
         // summary, guide 이벤트
         $(".cvLnb .nav > ul > li > button.tit:not(.btn_acco)").unbind("click").bind("click", function(e){
-            if( $("cvGuideli.on").find(".menu_summary").length > 0 ){
+            if( $(".cvGnb li.on").find(".menu_summary").length > 0 ){
                 comm.template= "./guide/resource/template/summary/template_summary.html";
-            }else if( $("cvGuideli.on").find(".menu_guide").length > 0 ){
+            }else if( $(".cvGnb li.on").find(".menu_guide").length > 0 ){
                 comm.template= "./guide/resource/template/guide/template_guide.html";
             };
             
@@ -468,7 +468,7 @@ var comm = {
             $(".cvContent .page_list .progress .count_wrap .count > em").text(0);
         };
 
-        return ($("cvGuideli.on .menu_list").length > 0) ? (($(".cvContent .page_list tbody tr.finish").length/$(".cvContent .page_list tbody tr").length)*100).toFixed(1) : 100;
+        return ($(".cvGnb li.on .menu_list").length > 0) ? (($(".cvContent .page_list tbody tr.finish").length/$(".cvContent .page_list tbody tr").length)*100).toFixed(1) : 100;
     },
     countState : function(e){
         $('.cvGuide .cvContent .count').each(function(idx, item){
