@@ -12,8 +12,12 @@ $(document).ready(function(){
 
             let srchVal = $(".srch_wrap .ipt_wrap input.ipt").val();
             if( srchVal !== "" ){
-                $(".srch_wrap button.btn_srch").attr("disabled", true);
-                search.searchFn(srchVal);
+                if( srchVal.length < 2 ){
+                    alert("두 글자 이상 입력해 주세요.");
+                }else{
+                    $(".srch_wrap button.btn_srch").attr("disabled", true);
+                    search.searchFn(srchVal);
+                };
             }else{
                 alert("검색어를 입력해주세요.");
             };
@@ -670,9 +674,9 @@ var search = {
         let join1 = [];
         if(comm.dataArray != null && comm.dataArray.length > 0 && search.dataArraySrch.length == 0){ // data check
             $.each(comm.dataArray, function(idx, item){
-                // for( var i=0; i<item.length; i++ ){
+                for( var i=0; i<item.length; i++ ){
                     $.ajax({
-                        url: item[idx]+"?"+Math.round(100000*Math.random()),
+                        url: item[i]+"?"+Math.round(100000*Math.random()),
                         type: "get",
                         dataType : "json",
                         async : false,
@@ -694,10 +698,10 @@ var search = {
                             $(".content .cont").empty();
                             $(".content .cont").append(
                                 '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
-                                );
+                            );
                         }
                     });
-                // };
+                };
             });
         };
     },
@@ -708,11 +712,12 @@ var search = {
         if(search.dataArraySrch != null && search.dataArraySrch.length > 0 && search.dataArraySrchMenu.length == 0){ // data check
             for( var i=0; i<search.dataArraySrch.length; i++ ){
                 search.dataArraySrch[i].reduce(function (total, val, idx, array){
-
                     switch ( $(".navList.rdo input:radio[name=rdo]:checked").val() ){
                         case "menu":
                             // 메뉴명 검색
-                            if( val.depth1 == srchVal || val.depth2 == srchVal || val.depth3 == srchVal || val.depth4 == srchVal ){
+                            // if( val.depth1 == srchVal || val.depth2 == srchVal || val.depth3 == srchVal || val.depth4 == srchVal ){ // 정확한 글자수 체크
+                            // console.log(`find val.depth1 : "${srchVal}" find index : "${srchVal}" result number : ${val.depth1.indexOf(srchVal)}`);
+                            if( val.depth1.match(srchVal) == srchVal || val.depth2.match(srchVal) == srchVal || val.depth3.match(srchVal) == srchVal || val.depth4.match(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
                                 return search.dataArraySrchMenu.push( val );
                             };
                             break;
