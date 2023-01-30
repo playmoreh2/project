@@ -660,6 +660,9 @@ var comm = {
         }, 600);
 
     },
+    getParamSrch : function(param){ // get 방식
+        location.href="index.html?client="+param;
+    },
 };
 
 // 검색

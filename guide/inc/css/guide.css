@@ -194,6 +194,7 @@ strong {font-weight:normal;}
 .content .cont {color:var(--c-text-1);}
 
 .content .noData {margin-top:200px; text-align:center;}
+.content .page_list .noData {height:250px; line-height:250px; margin-top:0;}
 
 /* dashboard */
 .dashboard_area {width:100%;}
