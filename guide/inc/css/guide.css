@@ -129,7 +129,7 @@ strong {font-weight:normal;}
 .cvGuide header .logo {display:flex; justify-content:center; align-items:center; position:fixed; top:0; left:0; width:240px; border-bottom:1px solid var(--c-divider-light); background-color: var(--c-bg); box-sizing:border-box;}
 .cvGuide header .logo a {display:block; padding:0 20px;}
 .cvGuide header .logo a > img {max-width:100%;}
-.cvGuide header .util {position:absolute; top:0; right:30px; height:60px;}
+.cvGuide header .cvUtil {position:absolute; top:0; right:30px; height:60px;}
 
 /* gnb */
 .cvGnb {padding-left:30px; letter-spacing:-2em;}
@@ -140,20 +140,20 @@ strong {font-weight:normal;}
 .cvGnb li.on button, .cvGnb li button:hover, .cvGnb li button:focus {color:var(--c-text-1);}
 .cvGnb li.on button:after, .cvGnb li button:hover:after, .cvGnb li button:focus:after {transform: scale(1,1)}
 
-/* util */
+/* cvUtil */
 .cvUtil .btn_switch {position: absolute; top:50%; right:0; width:40px; height:22px; overflow: hidden; transform: translateY(-50%);}
-.knobs,
-.layer {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
-.btn_switch,
-.btn_switch .layer {border-radius: 50px;}
-.btn_switch input[type=checkbox] {position: relative; width: 100%; height: 100%; padding: 0; margin: 0; opacity: 0; cursor: pointer; z-index: 3;}
-.knobs {z-index: 2;}
-.layer {width: 100%; background-color:var(--c-bg-mute); border:1px solid var(--c-divider); transition: 0.3s ease all; z-index: 1;}
-.btn_switch .knobs:before {content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background-color: var(--c-bg); border-radius: 50%; transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;}
-.btn_switch input[type=checkbox]:checked + .knobs:before {content: ""; left: 20px;}
-.btn_switch .knobs,
-.btn_switch .knobs:before,
-.btn_switch .layer {transition: 0.3s ease all;}
+.cvUtil .knobs,
+.cvUtil .layer {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
+.cvUtil .btn_switch,
+.cvUtil .btn_switch .layer {border-radius: 50px;}
+.cvUtil .btn_switch input[type=checkbox] {position: relative; width: 100%; height: 100%; padding: 0; margin: 0; opacity: 0; cursor: pointer; z-index: 3;}
+.cvUtil .knobs {z-index: 2;}
+.cvUtil .layer {width: 100%; background-color:var(--c-bg-mute); border:1px solid var(--c-divider); transition: 0.3s ease all; z-index: 1;}
+.cvUtil .btn_switch .knobs:before {content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background-color: var(--c-bg); border-radius: 50%; transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;}
+.cvUtil .btn_switch input[type=checkbox]:checked + .knobs:before {content: ""; left: 20px;}
+.cvUtil .btn_switch .knobs,
+.cvUtil .btn_switch .knobs:before,
+.cvUtil .btn_switch .layer {transition: 0.3s ease all;}
 
 .container {position:relative;}
 /* lnb */
