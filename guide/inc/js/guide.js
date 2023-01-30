@@ -98,7 +98,6 @@ var comm = {
     dataArray : [], // dashboard data
     dataArrayFnsh : [], // dashboard data 완료
 	time : null, // setTimeout
-	time2 : null, // setTimeout
     totalNum : [],
     finishNum : [],
     ctgTemplt : function(ctgParam){ // category
@@ -173,6 +172,40 @@ var comm = {
                 // 메뉴 활성화 하지 않을 경우 디폴트 첫 번째 메뉴 활성화
                 if( $(".lnb .navList > li").find(".subList > li.on").length == 0 ){
                     $(".lnb .navList > li:eq(0)").find(".subList > li").eq(0).addClass("on");
+                };
+
+				// pagelist 탭에서 각 메뉴 진척률 가져오기
+                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".gnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){
+                    console.log(comm.dataArray, "ssssss");
+                    
+                    $.each(comm.dataArray, function(idx, item){
+                        for( var i=0; i<item.length; i++ ){
+                            $.ajax({
+                                url: item[i]+"?"+Math.round(100000*Math.random()),
+                                type: "get",
+                                dataType : "json",
+                                async : false,
+                                cache : false,
+                                success: function(data){
+                                    let infoData = data["root_comment"];
+                                    let cnt = 0;
+                                    for( var j=0; j<infoData.length; j++ ){
+                                        // console.log("infoData", infoData[j].finish, infoData.length, j);
+                                        // console.log("infoData", $(".lnb .nav > ul > li:eq("+i+") > .subList > li:eq("+j+")"));
+                                        $(".lnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.num > .total_num").text(infoData.length);
+                                        $(".lnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.num > em").html(cnt += infoData[j].finish);
+                                    };
+                                    $(".lnb .nav > ul > li:eq("+idx+") > .subList > li:eq("+i+")").find("span.count > em").html(((cnt/infoData.length)*100).toFixed(1));
+                                },
+                                error: function(){
+                                    $(".content .cont").append(
+                                        '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
+                                    );
+                                }
+                            });
+                        };
+                    });
+                    
                 };
                 
             },
@@ -449,24 +482,22 @@ var comm = {
 			let num = 0;
 			let time = (100/val); // 동일한 카운팅 시간 설정
             
-			// setTimeout(function(){
-                var cntNum = setInterval(function(){
-                    num++;
-					$(item).find('> em').text(num);
-                    $(".content .page_list .progress .graph").css({
-                        "width": num+"%"
-                    });
+			var cntNum = setInterval(function(){
+                num++;
+                $(item).find("> em").text(num);
+                $(item).closest(".progress").find(".graph").css({
+                    "width": num+"%"
+                });
 
-					if(num == valChk){
-                        $(item).find('> em').text(val); // 최종결과 값
-						clearInterval(cntNum);
-						if(num == 100){
-							$(item).find('> em').text(parseInt(val));
-							$(item).find('> em').addClass("finish");
-						};
-					};
-				}, time*10);
-			// }, 600);
+                if(num == valChk){
+                    $(item).find("> em").text(val); // 최종결과 값
+                    clearInterval(cntNum);
+                    if(num == 100){
+                        $(item).find("> em").text(parseInt(val));
+                        $(item).find("> em").addClass("finish");
+                    };
+                };
+            }, time*10);
 		});
     },
     guideCustom : function(){
@@ -548,21 +579,17 @@ var comm = {
                                         };
                                     };
                                     
-                                    comm.dataArrayFnsh = [join0, join1];                                    
+                                    comm.dataArrayFnsh = [join0, join1];
                                 },
                                 error: function(){
                                     $(".content .cont").empty();
                                     $(".content .cont").append(
                                         '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
                                     );
-                                },
-                                complete: function(){
-                                    
                                 }
                             });
                         };
-                    });
-                
+                    });                
                 };
             }
         });
@@ -585,14 +612,9 @@ var comm = {
         // 막대그래프 높이
         let totalData0 = 0;
         let totalData1 = 0;
-
-        // 데이터 삽입 - 전체 진척률
-        clearTimeout(comm.time);
-        comm.time = setTimeout(comm.countState, 0);
-        // comm.countState()
         
-        clearTimeout(comm.time2);
-        comm.time2 = setTimeout(function(){
+        clearTimeout(comm.time);
+        comm.time = setTimeout(function(){
             for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
                 $(".dashboard_area .inner > [class^='total_']:eq("+i+") .graph .state").animate({
                     height: ((comm.finishNum[i]/comm.totalNum[i])*100).toFixed(1)+"%",
@@ -602,7 +624,7 @@ var comm = {
                 totalData1 += comm.totalNum[i];
             };
             
-            // 데이터 삽입 - 전체 진척률            
+            // 데이터 삽입 - 전체 진척률
             $(".dashboard_area .total .summary .num > em").text(totalData0);
             $(".dashboard_area .total .summary .num .total_num").text(totalData1);
             
@@ -611,30 +633,30 @@ var comm = {
                 opacity: 1
             }, 1400);
 
+            // 데이터 삽입 - 전체 진척률
+            comm.countState();
+
             // // 전체 진척률 (추후 수정)
             function totalRatio(){
                 let val = totalData0/totalData1*100;
                 var valChk = Math.ceil(val);
                 var num = 0;
                 var time = (100/val); // 동일한 카운팅 시간 설정
-                setTimeout(function(){
-                    var cntNum = setInterval(function(){
-                        num++;
-                        $('.guide .content .total .total_count').find('> em').text(num);
-                        if(num == valChk){
-                            $('.guide .content .total .total_count').find('> em').text(val); // 최종결과 값
-                            clearInterval(cntNum);
-                            if(num == 100){
-                                $('.guide .content .total .total_count').find('> em').text(parseInt(val));
-                                $('.guide .content .total .total_count').find('> em').addClass("finish");
-                            };
+                var cntNum = setInterval(function(){
+                    num++;
+                    $('.guide .content .total .total_count').find('> em').text(num);
+                    if(num == valChk){
+                        $('.guide .content .total .total_count').find('> em').text(val); // 최종결과 값
+                        clearInterval(cntNum);
+                        if(num == 100){
+                            $('.guide .content .total .total_count').find('> em').text(parseInt(val));
+                            $('.guide .content .total .total_count').find('> em').addClass("finish");
                         };
-                    }, time*10);
-                }, 600);
+                    };
+                }, time*10);
             };
             totalRatio();
-
-        }, 300);
+        }, 600);
 
     },
 };
@@ -651,9 +673,9 @@ var search = {
         let join1 = [];
         if(comm.dataArray != null && comm.dataArray.length > 0 && search.dataArraySrch.length == 0){ // data check
             $.each(comm.dataArray, function(idx, item){
-                for( var i=0; i<item.length; i++ ){
+                // for( var i=0; i<item.length; i++ ){
                     $.ajax({
-                        url: item[i]+"?"+Math.round(100000*Math.random()),
+                        url: item[idx]+"?"+Math.round(100000*Math.random()),
                         type: "get",
                         dataType : "json",
                         async : false,
@@ -676,12 +698,9 @@ var search = {
                             $(".content .cont").append(
                                 '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
                                 );
-                        },
-                        complete: function(){
-                            
                         }
                     });
-                };
+                // };
             });
         };
     },
@@ -811,8 +830,8 @@ var search = {
                     });                    
                 };
             };
-            clearTimeout(comm.time);
-            comm.time = setTimeout(comm.countState, 10);
+            
+            setTimeout(comm.countState, 100);
             
             $(".srch_wrap button.btn_srch").attr("disabled", false);
         };
