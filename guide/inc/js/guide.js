@@ -175,9 +175,7 @@ var comm = {
                 };
 
 				// pagelist 탭에서 각 메뉴 진척률 가져오기
-                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".gnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){
-                    console.log(comm.dataArray, "ssssss");
-                    
+                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".gnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){                    
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
                             $.ajax({
@@ -204,8 +202,7 @@ var comm = {
                                 }
                             });
                         };
-                    });
-                    
+                    });  
                 };
                 
             },
@@ -830,7 +827,7 @@ var search = {
                     });                    
                 };
             };
-            
+
             setTimeout(comm.countState, 100);
             
             $(".srch_wrap button.btn_srch").attr("disabled", false);

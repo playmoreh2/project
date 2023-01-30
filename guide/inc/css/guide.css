@@ -179,10 +179,12 @@ strong {font-weight:normal;}
 .lnb .nav > ul > li.on .fa-plus {display: none}
 /* for 2depth */
 .lnb .nav > ul > li > .subList {display:none; margin:12px 0;}
-.lnb .nav > ul > li > .subList > li {margin-top:8px;}
-.lnb .nav > ul > li > .subList > li > button {font-size:14px; color:var(--c-text-2)}
-.lnb .nav > ul > li > .subList > li.on > button {color:var(--c-text-1); font-weight:700;}
 .lnb .nav > ul > li > .subList > li:first-child {margin-top:0;}
+.lnb .nav > ul > li > .subList > li {margin-top:8px;}
+.lnb .nav > ul > li > .subList > li {display:flex; flex-wrap:wrap;}
+.lnb .nav > ul > li > .subList > li > button {flex:0 1 auto; text-align:left; font-size:14px; color:var(--c-text-2);}
+.lnb .nav > ul > li > .subList > li.on > button {color:var(--c-text-1); font-weight:700;}
+.lnb .nav > ul > li > .subList > li .progressInfo {display:inline-block; flex:0 0 auto; margin-left:auto;}
 
 .content {position:relative; float: right; width: calc(100% - 240px); padding:100px 30px 50px 30px; box-sizing:border-box;}
 .content > .top {display:block; margin-bottom:20px;}
