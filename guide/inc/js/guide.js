@@ -895,7 +895,7 @@ var acco = {
 
 // 배경
 function switchMode(){
-    $('.btn_switch input').bind('click', function(){
+    $('.cvUtil .btn_switch input').bind('click', function(){
         if ($('.btn_switch input').is(':checked')){
             $('body.cvGuide').addClass('dark');
             $('header .logo img').attr('src', './guide/inc/img/logo.png');
