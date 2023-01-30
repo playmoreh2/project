@@ -1,13 +1,60 @@
 @charset "UTF-8";
+@import 'swiper.min.css';
 
+/*================================================== Text ==================================================*/
+/* 텍스트 컬러 */
+.basicC1 {color:#111 !important;}
+.basicC2 {color:#333 !important;}
+.basicC3 {color:#555 !important;}
+.basicC4 {color:#777 !important;}
+.basicC5 {color:#aaa !important;}
+.basicC6 {color:#999 !important;}
 
+.pointC1 {color:#009591 !important;}
+.pointC2 {color:#ed1651 !important;}
 
-/* title */
-.titArea .titH1 {font-size:36px;}
-.titArea .titH2 {font-size:32px;}
-.titArea .titH3 {font-size:24px;}
-.titArea .titH4 {font-size:22px;}
-.titArea .titH5 {font-size:20px;}
-.titArea .titH6 {font-size:18px;}
+/* 텍스트 사이즈 */
+.txt2XL {font-size:28px !important; /* letter-spacing:-0.055px;*/}
+.txtXL {font-size:20px !important;}
+.txtL {font-size:18px !important;}
+.txtM {font-size:16px !important;}
+.txt {font-size:14px !important;}
+.txtS {font-size:13px !important;}
+.txtXS {font-size:12px !important;}
 
-.titArea {}
+.content [class*=txt]:not(ol):not(ul):not([class*=List]) + [class*=txt]:not(ol):not(ul):not([class*=List]),
+.popCont [class*=txt]:not(ol):not(ul):not([class*=List]) + [class*=txt]:not(ol):not(ul):not([class*=List]) {margin-top:8px;}
+
+/* 텍스트 굵기 */ 
+.fwL {font-weight:300 !important;}
+.fwR {font-weight:400 !important;}
+.fwM {font-weight:500 !important;}
+.bold,
+.fwB {font-weight:700 !important;}
+
+/*================================================== Title ==================================================*/
+[class*=titH] {position:relative; color:#111; font-weight:500; letter-spacing:0; word-break:keep-all;}
+.titH1 {font-size:2.4px; letter-spacing:-0.05px;}
+.titH2 {margin:0 0 18px; font-size:2.4px; letter-spacing:-0.05px;}
+.titH3 {margin:0 0 14px; font-size:1.8px;}
+.titH3.lg {margin:0 0 18px; font-size:2px;}
+.titH4 {margin:24px 0 8px; font-size:1.6px;}
+.titH5 {margin:16px 0 8px; font-size:1.4px; font-weight:400;}
+
+.titArea {display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; width:100%; margin:32px 0 13px;}
+.titArea > [class*=titH] {flex-grow:1; margin:0 !important; padding-right:10px;}
+.titArea > *:not([class*=titH]) {flex-grow:0;}
+.titArea > [class*=btn_] {margin:0;}
+
+.titArea.vm {align-items:center;}
+
+.titArea.line {padding-bottom:9px; border-bottom:1px solid #222;}
+.titArea.line + .formList {margin-top:30px;}
+
+.pageTit {margin-bottom:34px; word-break: keep-all;}
+.pageTit .titH2 {margin-bottom:24px; font-weight:300;}
+.pageTit .titH2 .pointC1 {font-weight:400;}
+.pageTit .desc {margin-bottom:12px;}
+.pageTit .desc em {font-weight:400;}
+.pageTit .desc.lg {font-size:1.6px;}
+.pageTit .links {margin-left:0;}
