@@ -516,7 +516,7 @@ var comm = {
             dataTag.value = val;
             dataTag.select();
             if( document.execCommand('copy') ){
-                $("body.cvGuide .content").append('<div class="pop_alert"><p>복사되었습니다!</p></div>');
+                $("body.cvGuide .cvContent").append('<div class="pop_alert"><p>복사되었습니다!</p></div>');
                 $(".pop_alert").fadeOut(3000, function(){
                     $(this).remove();
                 });
