@@ -43,12 +43,12 @@ $(document).ready(function(){
         comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
 
         // gnb ajax 호출
-        $("cvGuide li > button[class^=menu_]").unbind("click").bind("click", function(e){
+        $(".cvGnb li > button[class^=menu_]").unbind("click").bind("click", function(e){
             // console.log($(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class"));
             if( $(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class") ){
                 var param = $(e.target).attr("class");
                 
-                $("cvGuide> ul > li").removeClass("on");
+                $(".cvGnb > ul > li").removeClass("on");
                 $(e.target).closest("li").addClass("on");
                 switch (param){
                     case "menu_summary":
