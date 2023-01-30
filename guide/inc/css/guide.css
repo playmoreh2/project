@@ -272,13 +272,3 @@ cvContainer {position:relative;}
 .srch_wrap .btn_srch:after {content:""; position:absolute; right:0; width:2px; height:7px; background-color:#000;}
 .srch_wrap .btn_srch:before {top:8px; width:12px; height:12px; border:2px solid #000; border-radius:50%; background-color:transparent;}
 .srch_wrap .btn_srch:after {top:20px; width:2px; height:7px; background-color:#000; transform:rotate(-45deg);}
-
-
-/* guide css (추후 소스 이동) */
-.titArea {}
-.titArea .titH1 {font-size:36px;}
-.titArea .titH2 {font-size:32px;}
-.titArea .titH3 {font-size:24px;}
-.titArea .titH4 {font-size:22px;}
-.titArea .titH5 {font-size:20px;}
-.titArea .titH6 {font-size:18px;}

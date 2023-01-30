@@ -1,1 +1,13 @@
 @charset "UTF-8";
+
+
+
+/* title */
+.titArea .titH1 {font-size:36px;}
+.titArea .titH2 {font-size:32px;}
+.titArea .titH3 {font-size:24px;}
+.titArea .titH4 {font-size:22px;}
+.titArea .titH5 {font-size:20px;}
+.titArea .titH6 {font-size:18px;}
+
+.titArea {}
