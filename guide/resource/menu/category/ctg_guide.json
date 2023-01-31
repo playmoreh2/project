@@ -1,7 +1,7 @@
 {"root_comment":[
       {
             "title": "Text",
-            "active": true,
+            "active": false,
             "data_info": "./guide/resource/template/guide/template_guide_text.html"
       },
       {
