@@ -4,8 +4,8 @@
             "active": true,
             "data_info": "./guide/resource/template/summary/template_dashboard.html"
       },{
-            "title": "Etc",
+            "title": "Description",
             "active": false,
-            "data_info": "./guide/resource/template/summary/template_etc.html"
+            "data_info": "./guide/resource/template/summary/template_description.html"
       }
 ]}
