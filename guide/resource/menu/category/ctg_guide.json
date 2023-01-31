@@ -13,9 +13,21 @@
             "active": false,
             "data_info": "./guide/resource/template/guide/template_guide_button.html"
       },{
+            "title": "Form",
+            "active": false,
+            "data_info": "./guide/resource/template/guide/template_guide_form.html"
+      },{
+            "title": "Location",
+            "active": false,
+            "data_info": "./guide/resource/template/guide/template_guide_location.html"
+      },{
             "title": "Table",
             "active": false,
             "data_info": "./guide/resource/template/guide/template_guide_table.html"
+      },{
+            "title": "BBS",
+            "active": false,
+            "data_info": "./guide/resource/template/guide/template_guide_bbs.html"
       },{
             "title": "Accordion",
             "active": false,
