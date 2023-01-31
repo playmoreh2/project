@@ -225,7 +225,6 @@ var comm = {
 
                 if(ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length == 0){
                     comm.dashBoard();
-                    alert(1)
                 };
 				// pagelist 탭에서 각 메뉴 진척률 가져오기
                 if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){
@@ -363,8 +362,13 @@ var comm = {
                                     
                                     if(code != null && data != null && data != ""){ // html && data 있을 때
                                         $(".cvContent .cont .page_summary").html(data);
+                                        // dashboard 호출
                                         if( $(".dashboard_area").length > 0 ){
-                                            comm.ratio(); // dashboard 호출
+                                            comm.ratio();
+                                        };
+                                        // description 호출
+                                        if( $(".desc_area").length > 0 ){
+                                            comm.copyTo();
                                         };
                                     };
                                 }else if( $(".cvContent .cont .page_guide").length > 0 ){ // guide type
@@ -495,7 +499,7 @@ var comm = {
         // 추후 수정예정
         var crumbTxt1 = "";
         var crumbTxt2 = "";
-        if( $(".cvGuide.search .navList.rdo").length > 0 ){
+        if( $(".cvGuide.search .navList.rdo").length > 0 ){ // 검색
             crumbTxt1 = $(e).closest("li").find("> label.tit").text();
         }else{
             crumbTxt1 = $(e).closest(".part").find("> button.tit").html().split('<')[0];
@@ -549,14 +553,14 @@ var comm = {
             }, time*10);
 		});
     },
-    guideCustom : function(){
-        for( var i=0; i<$(".cvGuide_area").length; i++ ){
-            $(".cvGuide_area:eq("+i+") .code_view .code xmp").html($(".cvGuide_area:eq("+i+") .cvGuide_view .code").html());
-        };
-    },
     copyTo : function(){
-        comm.guideCustom();
-        $(".cvGuide_area .btn_copy").unbind("click").bind("click", function(e){
+        if( $(".page_guide .code_view .code xmp").length > 0 ){
+            for( var i=0; i<$(".cvGuide_area").length; i++ ){
+                $(".cvGuide_area:eq("+i+") .code_view .code xmp").html($(".cvGuide_area:eq("+i+") .cvGuide_view .code").html());
+            };
+        };
+        
+        $(".cvGuide_area:not(.not) .btn_copy").unbind("click").bind("click", function(e){
             var val = $(e.target).closest(".cvGuide_area").find(".cvGuide_view .code").html();
             var dataTag = document.createElement("textarea");
             dataTag.className = "copyVal";
@@ -705,7 +709,8 @@ var comm = {
 
     },
     getParamSrch : function(param){ // get 방식
-        location.href="index.html?client="+param;
+        // window.location.href="index.html?client="+param;
+        window.open("./index.html?client="+param);
     },
     getParameterName : function(path){ // parameter value 가져오기
         path = path.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
