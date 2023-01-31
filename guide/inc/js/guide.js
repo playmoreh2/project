@@ -2,7 +2,7 @@ $(document).ready(function(){
     switchMode(); // 배경
     
     // 검색
-    if( $("body.cvGuide.search").length > 0 ){
+    if($("body.cvGuide.search").length > 0){
         comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
         search.depCode = $(".cvContent .cont .page_list tbody").html();
         $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
@@ -29,7 +29,7 @@ $(document).ready(function(){
     };
     
     // summary, guide, pagelist
-    if( $("body.cvGuide.search").length == 0 ){
+    if($("body.cvGuide.search").length == 0){
         // 메뉴 데이터 호출
         comm.ctgCode = $(".cvLnb .navList").html();
         comm.ctgDepCode = $(".cvLnb .navList .subList").html();
@@ -137,18 +137,18 @@ $(document).ready(function(){
 
 // 공통 template/data 함수
 var comm = {
-    ctgParam : "./guide/resource/menu/category/ctg_summary.json",
-    gnbTemplt : "./guide/resource/template/summary/template_summary.html",
-    dataParam : "./guide/resource/template/summary/template_dashboard.html",
+    ctgParam : "./guide/resource/menu/category/ctg_summary.json", // 디폴트
+    gnbTemplt : "./guide/resource/template/summary/template_summary.html", // 디폴트
+    dataParam : "./guide/resource/template/summary/template_dashboard.html", // 디폴트
     ctgCode : "",
     ctgDepCode : "",
     template : null, // template 디폴트
     param : null, // data 디폴트
-    dataArray : [], // dashboard data
-    dataArrayFnsh : [], // dashboard data 완료
+    dataArray : [], // 전체 메뉴 data 수집
+    dataArrayFnsh : [], // 전체 메뉴 완료 data 수집
 	time : null, // setTimeout
-    totalNum : [],
-    finishNum : [],
+    totalNum : [], // 전체 페이지 개수
+    finishNum : [], // 완료 페이지 개수
     ctgTemplt : function(ctgParam){ // category
         $.ajax({
             url: ctgParam+"?"+Math.round(100000*Math.random()),
@@ -223,10 +223,11 @@ var comm = {
                     $(".cvLnb .navList > li:eq(0)").find(".subList > li").eq(0).addClass("on");
                 };
 
+                // pagelist 탭 카테고리에서 각 메뉴 진척률 데이터 호출
                 if(ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length == 0){
-                    comm.dashBoard();
+                    comm.dataCall();
                 };
-				// pagelist 탭에서 각 메뉴 진척률 가져오기
+				// pagelist 탭 카테고리에서 각 메뉴 진척률 가져오기
                 if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
@@ -576,7 +577,7 @@ var comm = {
             $(".copyVal").remove();
         });  
     },
-    dashBoard : function(){
+    dataCall : function(){
         $.ajax({
             url: "./guide/resource/menu/category/ctg_page_list.json"+"?"+Math.round(100000*Math.random()),
             type: "get",
@@ -613,7 +614,7 @@ var comm = {
             complete: function(){
                 let join0 = [];
                 let join1 = [];
-                if(comm.dataArray != null && comm.dataArray.length > 0 && comm.dataArrayFnsh.length == 0){ // data check
+                if(comm.dataArray != null && comm.dataArray.length > 0 && comm.dataArrayFnsh.length == 0 && $(".dashboard_area").length > 0){ // data check
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
                             $.ajax({
@@ -648,8 +649,8 @@ var comm = {
         });
     },
     ratio : function(){
-        if(comm.dataArray != null && comm.dataArray.length == 0){
-            comm.dashBoard();
+        if(comm.dataArray != null && comm.dataArrayFnsh != null && comm.dataArrayFnsh.length == 0){
+            comm.dataCall();
         };
         console.log( comm.dataArray );
         // 배열에서 "true" 개수 구하기
@@ -726,7 +727,7 @@ var search = {
     dataArraySrchMenu : [],
     depCode : "",
     srchDataCall : function(){
-        comm.dashBoard(); // 기본 데이터 정보 수집
+        comm.dataCall(); // 기본 데이터 정보 수집
 
         let join0 = [];
         let join1 = [];
