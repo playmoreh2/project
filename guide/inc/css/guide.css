@@ -108,7 +108,7 @@
   --c-finish: var(--c-green-dark);
   --box-shadow:var(--box-shadow-light);
 }
-body.cvGuide {background: var(--c-bg); font-size:13px; font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; color: var(--c-text-1); letter-spacing:-0.003em; word-break:keep-all; word-wrap:break-word;}
+body {background: var(--c-bg); font-size:13px; font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; color: var(--c-text-1); letter-spacing:-0.003em; word-break:keep-all; word-wrap:break-word;}
 .bold, .cvGnb li, .cvLnb .nav h2, .cvLnb .nav > ul > li > a, .cvLnb .depth > li.on > a, .cvContent > .top > h3, .cvGuide [class^='tit'], 
 .cvGuide .section .btn, .cvGuide .cvLnb .nav .selectLnb select, .tbl thead th, .tbl td .menuTitle, .tbl td .menuTitle.hover, 
 .tbl.mobile .d1, .cvGuide.single .sch .btn, .cvGuide ul.desc > li:before, .accoWrap .acco .accoHead strong {font-family:'Roboto Regular', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
@@ -224,7 +224,7 @@ cvContainer {position:relative;}
 .btn_copy:before {content:""; display:inline-block; width:24px; height:24px; margin:-3px 4px 0 0; background:url('../img/ico_copy.png') no-repeat 0 0; background-size:24px auto; vertical-align:middle;}
 .cvContent .cvGuide_area .code_view .btn_area {text-align:right;}
 
-.cvContent .cvGuide_area .cvGuide_view {margin:10px 0; padding:10px; border-radius:7px;}
+.cvContent .cvGuide_area .cvGuide_view {margin:10px 0; padding:10px; border-radius:7px; color: #666; font-size: 16px; font-family: 'OneShinhan', '원신한', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-weight: 300;}
 .dark .cvContent .cvGuide_area .cvGuide_view {background-color:#fff;}
 .cvContent .cvGuide_area .code_view .code {display:none; color:#fff; background-color:#000;}
 .cvContent .cvGuide_area .code_view .code xmp {margin:0; padding:10px;}

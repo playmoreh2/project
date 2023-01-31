@@ -18,8 +18,7 @@
 .txtXL {font-size:20px !important;}
 .txtL {font-size:18px !important;}
 .txtM {font-size:16px !important;}
-.txt {font-size:14px !important;}
-.txtS {font-size:13px !important;}
+.txtS {font-size:14px !important;}
 .txtXS {font-size:12px !important;}
 
 .content [class*=txt]:not(ol):not(ul):not([class*=List]) + [class*=txt]:not(ol):not(ul):not([class*=List]),
@@ -34,12 +33,12 @@
 
 /*================================================== Title ==================================================*/
 [class*=titH] {position:relative; color:#111; font-weight:500; letter-spacing:0; word-break:keep-all;}
-.titH1 {font-size:2.4px; letter-spacing:-0.05px;}
-.titH2 {margin:0 0 18px; font-size:2.4px; letter-spacing:-0.05px;}
-.titH3 {margin:0 0 14px; font-size:1.8px;}
-.titH3.lg {margin:0 0 18px; font-size:2px;}
-.titH4 {margin:24px 0 8px; font-size:1.6px;}
-.titH5 {margin:16px 0 8px; font-size:1.4px; font-weight:400;}
+.titH1 {font-size:24px; letter-spacing:-0.05px;}
+.titH2 {margin:0 0 18px; font-size:24px; letter-spacing:-0.05px;}
+.titH3 {margin:0 0 14px; font-size:18px;}
+.titH3.lg {margin:0 0 18px; font-size:20px;}
+.titH4 {margin:24px 0 8px; font-size:16px;}
+.titH5 {margin:16px 0 8px; font-size:14px; font-weight:400;}
 
 .titArea {display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; width:100%; margin:32px 0 13px;}
 .titArea > [class*=titH] {flex-grow:1; margin:0 !important; padding-right:10px;}
