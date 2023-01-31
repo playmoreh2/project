@@ -83,7 +83,7 @@ $(document).ready(function(){
                 comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
         };
-
+        
         // click 이벤트 gnb ajax 호출
         $(".cvGnb li > button[class^=menu_]").unbind("click").bind("click", function(e){
             // console.log($(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class"));
@@ -149,6 +149,7 @@ var comm = {
 	time : null, // setTimeout
     totalNum : [], // 전체 페이지 개수
     finishNum : [], // 완료 페이지 개수
+    ctgPageLtTag : "", // 카테고리 tag 저장
     ctgTemplt : function(ctgParam){ // category
         $.ajax({
             url: ctgParam+"?"+Math.round(100000*Math.random()),
@@ -163,72 +164,79 @@ var comm = {
                 $(".cvLnb .nav > h2").text($(".cvGnb li.on").text());
 
                 $(".cvLnb .navList").empty(); // 마크업 삭제
-    
-                $.each(listData, function(idx, item){
-                    if(comm.ctgCode !== "" && comm.ctgDepCode !== "" && listData != null){ // html && data 있을 때
-                        $(".cvLnb .navList").append(comm.ctgCode);
-                        $(".cvLnb .navList > li").eq(idx).find(".subList").empty();
-                        // console.log("UI Data", listData[idx].title, $(".cvLnb .navList > li").eq(idx), listData[idx].menu.length);
-                        
-                        // text 삽입
-                        $(".cvLnb .navList > li").eq(idx).find("button.tit").append(
-                            listData[idx].title
-                        );
-                        if( listData[idx].active != undefined && listData[idx].data_info != undefined ){
-                            // class 추가
-                            if( listData[idx].active == true ){
-                                $(".cvLnb .navList > li").removeClass("on");
-                                $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
-                            };
-                            // attr 추가
-                            $(".cvLnb .navList > li").eq(idx).find("button.tit").attr({
-                                "data-info": listData[idx].data_info,
-                                "title": listData[idx].title+" 메뉴 보기"
-                            });
-                        };
-                        
-                        // 서브메뉴가 있을 때 실행
-                        if( listData[idx].menu != null && listData[idx].menu.length > 0 ){
-                            $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").addClass("btn_acco");
-                            $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").append('<span class="blind">펼치기</span>');
-                            for( var i=0; i<listData[idx].menu.length; i++ ){
-                                $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
-                                // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
-
+                
+                if(comm.ctgPageLtTag == "" || ctgParam !== "./guide/resource/menu/category/ctg_page_list.json"){
+                    $.each(listData, function(idx, item){
+                        if(comm.ctgCode !== "" && comm.ctgDepCode !== "" && listData != null){ // html && data 있을 때
+                            $(".cvLnb .navList").append(comm.ctgCode);
+                            $(".cvLnb .navList > li").eq(idx).find(".subList").empty();
+                            // console.log("UI Data", listData[idx].title, $(".cvLnb .navList > li").eq(idx), listData[idx].menu.length);
+                            
+                            // text 삽입
+                            $(".cvLnb .navList > li").eq(idx).find("button.tit").append(
+                                listData[idx].title
+                            );
+                            if( listData[idx].active != undefined && listData[idx].data_info != undefined ){
                                 // class 추가
-                                if( listData[idx].menu[i].active == true ){
-                                    $(".cvLnb .navList > li").find(".subList > li").removeClass("on");
-                                    $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li").eq(i).addClass("on");
+                                if( listData[idx].active == true ){
+                                    $(".cvLnb .navList > li").removeClass("on");
+                                    $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
                                 };
                                 // attr 추가
-                                $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").attr({
-                                    "data-info": listData[idx].menu[i].data_info,
-                                    "title": listData[idx].menu[i].so_menu+" 메뉴 보기"
-                                });                                    
-                                // text 삽입
-                                $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").append(
-                                    listData[idx].menu[i].so_menu
-                                );
+                                $(".cvLnb .navList > li").eq(idx).find("button.tit").attr({
+                                    "data-info": listData[idx].data_info,
+                                    "title": listData[idx].title+" 메뉴 보기"
+                                });
+                            };
+                            
+                            // 서브메뉴가 있을 때 실행
+                            if( listData[idx].menu != null && listData[idx].menu.length > 0 ){
+                                $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").addClass("btn_acco");
+                                $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").append('<span class="blind">펼치기</span>');
+                                for( var i=0; i<listData[idx].menu.length; i++ ){
+                                    $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
+                                    // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
+    
+                                    // class 추가
+                                    if( listData[idx].menu[i].active == true ){
+                                        $(".cvLnb .navList > li").find(".subList > li").removeClass("on");
+                                        $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li").eq(i).addClass("on");
+                                    };
+                                    // attr 추가
+                                    $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").attr({
+                                        "data-info": listData[idx].menu[i].data_info,
+                                        "title": listData[idx].menu[i].so_menu+" 메뉴 보기"
+                                    });                                    
+                                    // text 삽입
+                                    $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").append(
+                                        listData[idx].menu[i].so_menu
+                                    );
+                                };
+                            }else{
+                                $(".subList").remove();
                             };
                         }else{
-                            $(".subList").remove();
+                            console.log("Category Page List 외 호출");
                         };
-                    }else{
-                        console.log("Category Page List 외 호출");
-                    };
+                    });
+                };
 
-                });
                 // 메뉴 활성화 하지 않을 경우 디폴트 첫 번째 메뉴 활성화
                 if( $(".cvLnb .navList > li").find(".subList > li.on").length == 0 ){
                     $(".cvLnb .navList > li:eq(0)").find(".subList > li").eq(0).addClass("on");
                 };
 
-                // pagelist 탭 카테고리에서 각 메뉴 진척률 데이터 호출
+                // pagelist 탭 카테고리에서 각 메뉴 데이터 호출
                 if(ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length == 0){
                     comm.dataCall();
                 };
 				// pagelist 탭 카테고리에서 각 메뉴 진척률 가져오기
-                if( ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0 ){
+                if(ctgParam == "./guide/resource/menu/category/ctg_page_list.json" && $(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0){
+                    if(comm.ctgPageLtTag !== ""){
+                        $(".cvContainer .cvLnb .nav > ul").html(comm.ctgPageLtTag);
+                        return false;
+                    };
+                    
                     $.each(comm.dataArray, function(idx, item){
                         for( var i=0; i<item.length; i++ ){
                             $.ajax({
@@ -255,8 +263,9 @@ var comm = {
                                 }
                             });
                         };
-                    });  
-                };  
+                    });
+                    comm.ctgPageLtTag = $(".cvLnb .navList").html();
+                };
             },
             error: function(){
                 $(".cvContent .cont").empty();
@@ -602,7 +611,7 @@ var comm = {
                     }else{
                         alert("재로딩");
                     };
-                });          
+                });
                 comm.dataArray = [dataGroup0, dataGroup1]
             },
             error: function(){
@@ -610,49 +619,53 @@ var comm = {
                 $(".cvContent .cont").append(
                     '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
                 );
-            },
-            complete: function(){
-                let join0 = [];
-                let join1 = [];
-                if(comm.dataArray != null && comm.dataArray.length > 0 && comm.dataArrayFnsh.length == 0 && $(".dashboard_area").length > 0){ // data check
-                    $.each(comm.dataArray, function(idx, item){
-                        for( var i=0; i<item.length; i++ ){
-                            $.ajax({
-                                url: item[i]+"?"+Math.round(100000*Math.random()),
-                                type: "get",
-                                dataType : "json",
-                                async : false,
-                                cache : false,
-                                success: function(data){
-                                    let listData = data["root_comment"];
-                                    for( var j=0; j<listData.length; j++ ){
-                                        if( idx == 0 ){
-                                            join0.push(listData[j].finish);
-                                        }else if( idx == 1 ){
-                                            join1.push(listData[j].finish);
-                                        };
-                                    };
-                                    
-                                    comm.dataArrayFnsh = [join0, join1];
-                                },
-                                error: function(){
-                                    $(".cvContent .cont").empty();
-                                    $(".cvContent .cont").append(
-                                        '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
-                                    );
-                                }
-                            });
-                        };
-                    });                
-                };
             }
         });
     },
-    ratio : function(){
-        if(comm.dataArray != null && comm.dataArrayFnsh != null && comm.dataArrayFnsh.length == 0){
+    finishDataCall : function(){
+        if(comm.dataArray != null && comm.dataArray.length == 0){
             comm.dataCall();
         };
-        console.log( comm.dataArray );
+        
+        // dataArrayFnsh data 수집
+        if(comm.dataArray != null && comm.dataArray.length > 0 && comm.dataArrayFnsh != null && comm.dataArrayFnsh.length == 0){ // data check
+            let join0 = [];
+            let join1 = [];
+            $.each(comm.dataArray, function(idx, item){
+                for( var i=0; i<item.length; i++ ){
+                    $.ajax({
+                        url: item[i]+"?"+Math.round(100000*Math.random()),
+                        type: "get",
+                        dataType : "json",
+                        async : false,
+                        cache : false,
+                        success: function(data){
+                            let listData = data["root_comment"];
+                            for( var j=0; j<listData.length; j++ ){
+                                if( idx == 0 ){
+                                    join0.push(listData[j].finish);
+                                }else if( idx == 1 ){
+                                    join1.push(listData[j].finish);
+                                };
+                            };
+                            
+                            comm.dataArrayFnsh = [join0, join1];
+                        },
+                        error: function(){
+                            $(".cvContent .cont").empty();
+                            $(".cvContent .cont").append(
+                                '<p class="noData">데이터를 가져오지 못했습니다. <br> 네트워크 환경을 다시 확인하여 주십시오.</p>'
+                            );
+                        }
+                    });
+                };
+            });                
+        };
+    },
+    ratio : function(){
+        if((comm.dataArray != null && comm.dataArray.length == 0) || (comm.dataArrayFnsh != null && comm.dataArrayFnsh.length == 0)){
+            comm.finishDataCall();
+        };
         // 배열에서 "true" 개수 구하기
         for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
             comm.finishNum.push(comm.dataArrayFnsh[i].reduce((cnt, element) => cnt + (true === element), 0));
