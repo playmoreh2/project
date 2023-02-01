@@ -39,6 +39,7 @@
 .titH3.lg {margin:0 0 18px; font-size:20px;}
 .titH4 {margin:24px 0 8px; font-size:16px;}
 .titH5 {margin:16px 0 8px; font-size:14px; font-weight:400;}
+.titH6 {margin:16px 0 8px; font-size:14px; font-weight:400;}
 
 .titArea {display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; width:100%; margin:32px 0 13px;}
 .titArea > [class*=titH] {flex-grow:1; margin:0 !important; padding-right:10px;}
@@ -57,3 +58,7 @@
 .pageTit .desc em {font-weight:400;}
 .pageTit .desc.lg {font-size:1.6px;}
 .pageTit .links {margin-left:0;}
+
+/*================================================== Button ==================================================*/
+.btn_wrap {display: flex; justify-content: center; gap: 8px; margin-top: 40px;}
+.btn_wrap [class*=btn_] {min-width: 240px;}
