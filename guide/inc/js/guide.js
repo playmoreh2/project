@@ -751,7 +751,9 @@ var search = {
     dataArraySrchMenu : [],
     depCode : "",
     srchDataCall : function(){
-        comm.dataCall(); // 기본 데이터 정보 수집
+        if(comm.dataArray != null && comm.dataArray.length == 0 && search.dataArraySrch != null && search.dataArraySrch.length == 0){ // data check
+            comm.dataCall(); // 기본 데이터 정보 수집
+        };
 
         let join0 = [];
         let join1 = [];
