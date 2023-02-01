@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    switchMode(); // 배경
+    comm.switchMode(); // 배경
     
     // 검색
     if($("body.cvGuide.search").length > 0){
@@ -191,8 +191,6 @@ var comm = {
                             
                             // 서브메뉴가 있을 때 실행
                             if( listData[idx].menu != null && listData[idx].menu.length > 0 ){
-                                $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").addClass("btn_acco");
-                                $(".cvLnb .navList > li:eq("+idx+")").find("button.tit").append('<span class="blind">펼치기</span>');
                                 for( var i=0; i<listData[idx].menu.length; i++ ){
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
                                     // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
@@ -275,10 +273,8 @@ var comm = {
             },
             complete: function(){
                 // 카테고리 아코디언 click 이벤트
-                if( $(".cvLnb .nav .subList").length > 0 && $(".cvLnb .nav > ul > li > button.tit.btn_acco").length > 0 ){
-                    $(".cvLnb .navList button.tit").unbind("click").bind("click", function(e){
-                        acco.accoClick(this);
-                    });                    
+                if( $(".cvLnb .nav .subList").length > 0 ){
+                    acco.accoInit();
                 };
             }
         });
@@ -732,6 +728,17 @@ var comm = {
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
+    switchMode : function(){
+        $('.cvUtil .btn_switch input').bind('click', function(){
+            if ($('.btn_switch input').is(':checked')){
+                $('body.cvGuide').addClass('dark');
+                $('header .logo img').attr('src', './guide/inc/img/logo.png');
+            }else{
+                $('body.cvGuide').removeClass('dark');
+                $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
+            };
+        })
+    },
 };
 
 // 검색
@@ -914,17 +921,31 @@ var search = {
 
 // 아코디언
 var acco = {
+	accoInit : function(target){ // 초기화
+        $(".cvLnb .navList > li.part > .tit").addClass("btn_acco");
+        if($(".cvLnb .navList > li.part.on").length > 0){
+            $(".cvLnb .navList > li.part > .tit").append('<span class="blind">접기</span>');
+            $(".cvLnb .navList > li.part").find(".body").stop(true, true).slideDown(200);
+        }else{
+            $(".cvLnb .navList > li.part > .tit").append('<span class="blind">펼치기</span>');
+            $(".cvLnb .navList > li.part").find(".body").stop(true, true).slideUp(200);
+        };
+
+        $(".cvLnb .navList button.tit.btn_acco").unbind("click").bind("click", function(e){
+            acco.accoClick(this);
+        });
+	},
 	accoOverIn : function(target){ // over
 		$(target).addClass("on");
 		// $(target).find("> .blind").text("접기");
-		$(target).find(".body").stop().slideDown({
+		$(target).find(".body").stop(true, true).slideDown({
 			duration: 200
 		});
 	},
 	accoOverOut : function(target){
         $(target).closest(".acco").find("li").removeClass("on");
         // $(target).find("> .blind").text("펼치기");
-        $(target).closest(".acco").find("li .body").stop().slideUp(200);
+        $(target).closest(".acco").find("li .body").stop(true, true).slideUp(200);
 	},
 	accoClick : function(target, callback){ // click
 		if( $(target).closest(".part").find(".body").length > 0 ){ // 소카테고리 있을때만
@@ -932,14 +953,14 @@ var acco = {
 				if( $(target).closest(".part.on").length > 0 ){ // 펼침상태
 					$(target).closest(".part.on").removeClass("on");
 					$(target).find("> .blind").text("펼치기");
-					$(target).closest(".part").find(".body").stop().slideUp(200);
+					$(target).closest(".part").find(".body").stop(true, true).slideUp(200);
 				}else{
                     $(target).closest(".acco").find("> .part").removeClass("on");
                     $(target).closest(".part").addClass("on");
                     $(target).closest(".acco").find("> .part .tit .blind").text("펼치기");
                     $(target).find("> .blind").text("접기");
-                    $(target).closest(".acco").find("> .part .body").stop().slideUp(200);
-                    $(target).closest(".part").find(".body").stop().slideDown({
+                    $(target).closest(".acco").find("> .part .body").stop(true, true).slideUp(200);
+                    $(target).closest(".part").find(".body").stop(true, true).slideDown({
                         duration: 200
                     });
 				};
@@ -947,33 +968,20 @@ var acco = {
                 if( $(target).closest(".part.on").length > 0 ){
                     $(target).closest(".part").removeClass("on");
 					$(target).find("> .blind").text("펼치기");
-					$(target).closest(".part").find(".body").stop().slideUp(200);
+					$(target).closest(".part").find(".body").stop(true, true).slideUp(200);
 				}else{
                     $(target).closest(".part").addClass("on");
                     $(target).closest(".acco").find("> .part .tit .blind").text("펼치기");
 					$(target).find("> .blind").text("접기");
-					$(target).closest(".part").find(".body").stop().slideDown({
+					$(target).closest(".part").find(".body").stop(true, true).slideDown({
                         duration: 200
 					});
 				};
-                // callback 처리
-                if(callback != null){
-                    callback(target);
-                };
 			};
+            // callback 처리
+            if(callback != null){
+                callback(target);
+            };
 		};
 	}
-};
-
-// 배경
-function switchMode(){
-    $('.cvUtil .btn_switch input').bind('click', function(){
-        if ($('.btn_switch input').is(':checked')){
-            $('body.cvGuide').addClass('dark');
-            $('header .logo img').attr('src', './guide/inc/img/logo.png');
-        }else{
-            $('body.cvGuide').removeClass('dark');
-            $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
-        };
-    })
 };
