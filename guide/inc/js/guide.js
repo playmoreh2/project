@@ -190,7 +190,7 @@ var comm = {
                             
                             // 서브메뉴가 있을 때 실행
                             if( listData[idx].menu != null && listData[idx].menu.length > 0 ){
-                                console.log("aaaaa", listData[idx].active);
+                                // 중카 on class 추가
                                 if( listData[idx].active == true ){
                                     $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
                                 };
