@@ -132,7 +132,6 @@ $(document).ready(function(){
             };
         });
     };
-
 });
 
 // 공통 template/data 함수
@@ -191,6 +190,11 @@ var comm = {
                             
                             // 서브메뉴가 있을 때 실행
                             if( listData[idx].menu != null && listData[idx].menu.length > 0 ){
+                                console.log("aaaaa", listData[idx].active);
+                                if( listData[idx].active == true ){
+                                    $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
+                                };
+
                                 for( var i=0; i<listData[idx].menu.length; i++ ){
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
                                     // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
@@ -700,18 +704,18 @@ var comm = {
             comm.countState();
 
             // 전체 진척률 (추후 수정)
-            let totalVal = totalData0/totalData1*100;
+            let totalVal = ((totalData0/totalData1)*100).toFixed(1);
             var totalValChk = Math.ceil(totalVal);
             var totalNum = 0;
             var totalCntNum = setInterval(function(){
                 totalNum++;
-                $('.cvGuide .cvContent .total .total_count').find('> em').text(totalNum);
+                $(".cvGuide .cvContent .total .total_count").find("> em").text(totalNum);
                 if(totalNum == totalValChk){
-                    $('.cvGuide .cvContent .total .total_count').find('> em').text(totalVal); // 최종결과 값
+                    $(".cvGuide .cvContent .total .total_count").find("> em").text(totalVal); // 최종결과 값
                     clearInterval(totalCntNum);
                     if(totalNum == 100){
-                        $('.cvGuide .cvContent .total .total_count').find('> em').text(parseInt(val));
-                        $('.cvGuide .cvContent .total .total_count').find('> em').addClass("finish");
+                        $(".cvGuide .cvContent .total .total_count").find("> em").text(parseInt(totalVal));
+                        $(".cvGuide .cvContent .total .total_count").find("> em").addClass("finish");
                     };
                 };
             }, (100/totalVal)*10);
@@ -785,7 +789,9 @@ var search = {
         };
     },
     searchFn : function(srchVal){
-        search.srchDataCall(); // 검색 데이터 정보 수집
+        if(search.dataArraySrch != null && search.dataArraySrch.length == 0){
+            search.srchDataCall(); // 검색 데이터 정보 수집
+        };
         
         search.dataArraySrchMenu = [];
         if(search.dataArraySrch != null && search.dataArraySrch.length > 0 && search.dataArraySrchMenu.length == 0){ // data check
@@ -816,11 +822,12 @@ var search = {
                                 cache : false,
                                 success: function(data){
                                     if( data.search(srchVal) > -1 ){
+                                        console.log(data);
                                         search.dataArraySrchMenu.push(val);
                                     };
                                 },
                                 error: function(){
-                                    console.log("json data error : ", val);
+                                    console.log("json data error (경로가 잘못되었거나 html 파일이 없습니다.) : ", val);
                                 },
                             });
                             break;
@@ -921,14 +928,17 @@ var search = {
 
 // 아코디언
 var acco = {
-	accoInit : function(target){ // 초기화
+	accoInit : function(){ // 초기화
         $(".cvLnb .navList > li.part > .tit").addClass("btn_acco");
-        if($(".cvLnb .navList > li.part.on").length > 0){
-            $(".cvLnb .navList > li.part > .tit").append('<span class="blind">접기</span>');
-            $(".cvLnb .navList > li.part").find(".body").stop(true, true).slideDown(200);
-        }else{
-            $(".cvLnb .navList > li.part > .tit").append('<span class="blind">펼치기</span>');
-            $(".cvLnb .navList > li.part").find(".body").stop(true, true).slideUp(200);
+
+        for( var i=0; i<$(".cvLnb .navList > li.part").length; i++ ){
+            if($(".cvLnb .navList > li.part:eq("+i+")").hasClass("on") == true){
+                $(".cvLnb .navList > li.part:eq("+i+") > .tit").append('<span class="blind">접기</span>');
+                $(".cvLnb .navList > li.part:eq("+i+")").find(".body").stop(true, true).slideDown(200);
+            }else{
+                $(".cvLnb .navList > li.part:eq("+i+") > .tit").append('<span class="blind">펼치기</span>');
+                $(".cvLnb .navList > li.part:eq("+i+")").find(".body").stop(true, true).slideUp(200);
+            };
         };
 
         $(".cvLnb .navList button.tit.btn_acco").unbind("click").bind("click", function(e){

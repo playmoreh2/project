@@ -7,9 +7,9 @@
        "check": "u",
        "complete": "23.01.10",
        "modify": "23.01.10",
-       "pageId": "ABCD230110",
+       "pageId": "MCMAL30P051",
        "comment": "공통 가이드 필요",
-       "link": "./aaa/aaa.html",
+       "link": "./src/html/mo_prodDetail/MCMAL30P051.html",
        "finish": true
     },{
        "depth1": "공통",
@@ -19,9 +19,9 @@
        "check": "",
        "complete": "23.01.10",
        "modify": "23.01.10",
-       "pageId": "ABCD230110",
+       "pageId": "MCMAL30P052",
        "comment": "공통 가이드 필요",
-       "link": "./aaa/bbb.html",
+       "link": "./src/html/mo_prodDetail/MCMAL30P052.html",
        "finish": true
     },{
        "depth1": "공통",
@@ -31,9 +31,9 @@
        "check": "u",
        "complete": "",
        "modify": "",
-       "pageId": "ABCD15561",
+       "pageId": "MCMAL30P053",
        "comment": "",
-       "link": "./aaa/ccc.html",
+       "link": "./src/html/mo_prodDetail/MCMAL30P053.html",
        "finish": true
    }
 ]}

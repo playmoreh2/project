@@ -1,6 +1,7 @@
 {"root_comment":[
       {
             "title": "PC",
+            "active": true,
             "menu" : [
                 {
                     "so_menu": "공통",
@@ -34,6 +35,7 @@
             ]
       },{
             "title": "MO",
+            "active": true,
             "menu" : [
                 {
                     "so_menu": "공통",

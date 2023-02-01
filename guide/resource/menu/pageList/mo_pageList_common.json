@@ -1,15 +1,15 @@
 {"root_comment":[
      {
-        "depth1": "공통",
+        "depth1": "mo 공통",
         "depth2": "헤더",
         "depth3": "",
         "depth4": "",
         "check": "u",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD230110",
+        "pageId": "MCMAL30P011",
         "comment": "공통 가이드 필요",
-        "link": "./aaa/aaa.html",
+        "link": "./src/html/mo_common/MCMAL30P011.html",
         "finish": true
      },{
         "depth1": "공통",
@@ -19,9 +19,9 @@
         "check": "",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD230110",
+        "pageId": "MCMAL30P012",
         "comment": "공통 가이드 필요",
-        "link": "./aaa/bbb.html",
+        "link": "./src/html/mo_common/MCMAL30P012.html",
         "finish": true
      },{
         "depth1": "공통",
@@ -31,9 +31,9 @@
         "check": "u",
         "complete": "",
         "modify": "",
-        "pageId": "ABCD15561",
+        "pageId": "MCMAL30P013",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P013.html",
         "finish": true
     },{
         "depth1": "공통",
@@ -43,9 +43,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD230110",
+        "pageId": "MCMAL30P014",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P014.html",
         "finish": true
     },{
         "depth1": "메인",
@@ -55,9 +55,9 @@
         "check": "",
         "complete": "23.01.10",
         "modify": "",
-        "pageId": "ABCD132165",
+        "pageId": "MCMAL30P015",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P015.html",
         "finish": true
     },{
         "depth1": "상품",
@@ -67,9 +67,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD230110",
+        "pageId": "MCMAL30P016",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P016.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -79,9 +79,9 @@
         "check": "u",
         "complete": "",
         "modify": "",
-        "pageId": "ABCD13213",
+        "pageId": "MCMAL30P017",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P017.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -91,9 +91,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD230110",
+        "pageId": "MCMAL30P018",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P018.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -103,9 +103,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "",
-        "pageId": "ABCD21135",
+        "pageId": "MCMAL30P019",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P019.html",
         "finish": true
     },{
         "depth1": "회원",
@@ -115,9 +115,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD230110",
+        "pageId": "MCMAL30P0110",
         "comment": "",
-        "link": "./aaa/ccc.html",
+        "link": "./src/html/mo_common/MCMAL30P0110.html",
         "finish": true
     },{
         "depth1": "회원",
@@ -127,9 +127,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD13212",
+        "pageId": "MCMAL30P0111",
         "comment": "",
-        "link": "./aaa/aaa.html",
+        "link": "./src/html/mo_common/MCMAL30P0111.html",
         "finish": true
     },{
         "depth1": "마이페이지",
@@ -139,9 +139,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "23.01.10",
-        "pageId": "ABCD01321",
+        "pageId": "MCMAL30P0112",
         "comment": "",
-        "link": "./aaa/bbb.html",
+        "link": "./src/html/mo_common/MCMAL30P0112.html",
         "finish": true
     },{
         "depth1": "마이페이지",
@@ -151,9 +151,9 @@
         "check": "u",
         "complete": "23.01.10",
         "modify": "",
-        "pageId": "ABCD230110",
+        "pageId": "MCMAL30P0113",
         "comment": "",
-        "link": "./aaa/bbb.html",
+        "link": "./src/html/mo_common/MCMAL30P0113.html",
         "finish": true
     }
 ]}
