@@ -2,47 +2,47 @@
       {
             "title": "Text",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_text.html"
+            "data_info": "./guide/resource/template/guide/guide_text.html"
       },
       {
             "title": "Title",
             "active": true,
-            "data_info": "./guide/resource/template/guide/template_guide_title.html"
+            "data_info": "./guide/resource/template/guide/guide_title.html"
       },{
             "title": "Button",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_button.html"
+            "data_info": "./guide/resource/template/guide/guide_button.html"
       },{
             "title": "Form",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_form.html"
+            "data_info": "./guide/resource/template/guide/guide_form.html"
       },{
             "title": "Location",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_location.html"
+            "data_info": "./guide/resource/template/guide/guide_location.html"
       },{
             "title": "Table",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_table.html"
+            "data_info": "./guide/resource/template/guide/guide_table.html"
       },{
             "title": "BBS",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_bbs.html"
+            "data_info": "./guide/resource/template/guide/guide_bbs.html"
       },{
             "title": "Accordion",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_accordion.html"
+            "data_info": "./guide/resource/template/guide/guide_accordion.html"
       },{
             "title": "Popup",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_popup.html"
+            "data_info": "./guide/resource/template/guide/guide_popup.html"
       },{
             "title": "Swipe",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_swipe.html"
+            "data_info": "./guide/resource/template/guide/guide_swipe.html"
       },{
             "title": "Etc",
             "active": false,
-            "data_info": "./guide/resource/template/guide/template_guide_etc.html"
+            "data_info": "./guide/resource/template/guide/guide_etc.html"
       }
 ]}
