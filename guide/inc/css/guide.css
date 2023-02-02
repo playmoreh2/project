@@ -216,15 +216,15 @@ cvContainer {position:relative;}
 .dashboard_area .inner [class^='total'] .summary .num > em {font-weight:700;}
 
 /* guide */
-.cvContent .cvGuide_area:first-child {border-top:0;}
-.cvContent .cvGuide_area {padding:20px 0; border-top:1px solid var(--c-bg-mute);}
+.cvContent .cvGuide_area {padding:20px 0 20px;}
+.cvContent .cvGuide_area + .cvGuide_area {padding:40px 0 20px; border-top:1px solid var(--c-bg-mute);}
 .cvContent .cvGuide_area .tit {font-size:18px; vertical-align:middle;}
 .cvContent button[class^='btn_']:not(.btn_srch) {min-width:100px; padding:0 12px; line-height:32px; font-size:13px; font-weight:700; border:1px solid var(--c-divider); border-radius:50px; color:var(--c-text-1);}
 .btn_copy {margin-left:10px;}
 .btn_copy:before {content:""; display:inline-block; width:24px; height:24px; margin:-3px 4px 0 0; background:url('../img/ico_copy.png') no-repeat 0 0; background-size:24px auto; vertical-align:middle;}
 .cvContent .cvGuide_area .code_view .btn_area {text-align:right;}
 
-.cvContent .cvGuide_area .cvGuide_view {margin:10px 0; padding:10px; border-radius:7px; color: #666; font-size: 16px; font-family: 'OneShinhan', '원신한', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-weight: 300;}
+.cvContent .cvGuide_area .cvGuide_view {margin:10px -10px; padding:10px; border-radius:7px; color: #666; font-size: 16px; font-family: 'OneShinhan', '원신한', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-weight: 300;}
 .dark .cvContent .cvGuide_area .cvGuide_view {background-color:#fff;}
 .cvContent .cvGuide_area .code_view .code {display:none; color:#fff; background-color:#000;}
 .cvContent .cvGuide_area .code_view .code xmp {margin:0; padding:10px;}

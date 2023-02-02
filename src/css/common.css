@@ -61,3 +61,34 @@
 /*================================================== Button ==================================================*/
 .btn_wrap {display: flex; justify-content: center; gap: 8px; margin-top: 40px;}
 .btn_wrap [class*=btn_] {min-width: 240px;}
+
+
+/*================================================ Table ================================================*/
+/* 가로형 & 세로형 공통 */
+.tblArea {border-top:2px solid #21409A; margin:16px 0 0 0;}
+.tblArea .formArea .iptWrap,
+.tblArea .formArea .sltWrap {margin:0;}
+.tblArea table {width:100%; table-layout:fixed; border-collapse:collapse; border-spacing:0;}
+[class^=table_] {position:relative; background-color:#fff;} 
+[class^=table_] th,
+[class^=table_] td {font-size:16px; line-height:1.5; border-left:1px solid #E5E5E5; border-bottom:1px solid #E5E5E5;}
+[class^=table_] th {color:#111; font-weight:600; background-color:#F7F8FB;}
+[class^=table_] td {color:#555; font-weight:400;}
+[class^=table_] tfoot th,
+[class^=table_] tfoot td {color:#111; font-weight:600; background-color:#F8F5EE;}
+[class^=table_] th.tfot,
+[class^=table_] td.tfot {color:#111; font-weight:600; background-color:#F8F5EE;}
+.tblTxt {position:relative; font-size:14px; color:#707070; font-weight:400; text-align:right; padding-left:0;}
+.tblTxt:before {content:none;}
+.tblTxt.ico {text-align:left; padding-left:28px; margin-top:24px;}
+.tblTxt.ico:before {content:''; display:inline-block; position:absolute; top:0; left:0; width:20px; height:20px; background:url(../images/common/ico_tbl_txt.png) no-repeat;}
+.tblTxt.ico + .tblTxt.ico {margin-top:10px;}
+
+/* 가로형 */
+.table_col th,
+.table_col td {text-align:center; padding:18px 20px; word-break:break-word;}
+.table_col tbody td.th {text-align:left; padding-left:30px;}
+
+/* 세로형 */
+.table_row th,
+.table_row td {text-align:left; padding:20px 20px;}
