@@ -3,8 +3,11 @@
             "title": "Text",
             "active": false,
             "data_info": "./guide/resource/template/guide/guide_text.html"
-      },
-      {
+      },{
+            "title": "TextList",
+            "active": false,
+            "data_info": "./guide/resource/template/guide/guide_textlist.html"
+      },{
             "title": "Title",
             "active": true,
             "data_info": "./guide/resource/template/guide/guide_title.html"

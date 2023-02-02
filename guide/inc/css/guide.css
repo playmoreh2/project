@@ -224,7 +224,8 @@ cvContainer {position:relative;}
 .btn_copy:before {content:""; display:inline-block; width:24px; height:24px; margin:-3px 4px 0 0; background:url('../img/ico_copy.png') no-repeat 0 0; background-size:24px auto; vertical-align:middle;}
 .cvContent .cvGuide_area .code_view .btn_area {text-align:right;}
 
-.cvContent .cvGuide_area .cvGuide_view {margin:10px -10px; padding:10px; border-radius:7px; color: #666; font-size: 16px; font-family: 'OneShinhan', '원신한', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-weight: 300;}
+/* 가이드페이지 적용 */
+.cvContent .cvGuide_area .cvGuide_view {margin:10px -10px; padding:10px; border-radius:7px; color: #666; font-size: 16px; font-family:'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif;}
 .dark .cvContent .cvGuide_area .cvGuide_view {background-color:#fff;}
 .cvContent .cvGuide_area .code_view .code {display:none; color:#fff; background-color:#000;}
 .cvContent .cvGuide_area .code_view .code xmp {margin:0; padding:10px;}
