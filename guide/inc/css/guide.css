@@ -2,7 +2,7 @@
 @import url('fonts.css');
 
 /*================================================ Common ================================================*/
-:root .cvGuide{
+:root {
   --c-white: #ffffff;
   --c-white-soft: #f9f9f9;
   --c-white-mute: #e0e0e0;
@@ -67,7 +67,7 @@
   --box-shadow: 0 14px 44px rgba(0, 0, 0, .12), 0 3px 9px rgba(0, 0, 0, .12);
   --box-shadow-light: 0 14px 44px rgba(250, 250, 250, .12), 0 3px 9px rgba(250, 250, 250, .12);
 }
-:root .cvGuide{
+:root {
   --c-bg: var(--c-white);
   --c-bg-soft: var(--c-white-soft);
   --c-bg-mute: var(--c-white-mute);
@@ -87,7 +87,7 @@
   --c-link: var(--c-blue);
   --c-finish: var(--c-green);
 }
-.dark.cvGuide{
+.dark{
   --c-bg: var(--c-black);
   --c-bg-soft: var(--c-black-soft);
   --c-bg-mute: var(--c-black-mute);
