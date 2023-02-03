@@ -218,3 +218,155 @@
 .progress li.on {background-color:#1aa4a4; border-color:transparent; color:#fff;}
 .progress li.on span {position:absolute; left:0;}
 .progress li.on ~ li {background-color:transparent;}
+
+/*================================================== Paging ==================================================*/
+.paging {margin:24px -24px 40px; text-align:center;}
+.paging ul {display:inline-block; padding:0 28px; font-size:0; vertical-align:middle;}
+.paging li {display:inline-block; padding:0 3px;}
+.paging a,
+.paging em {display:inline-block; position:relative; width:32px; border-radius:2px; color:#777; font-size:16px; line-height:32px; text-align:center; overflow:hidden;}
+.paging a:after {content:''; position:absolute; bottom:5px; left:50%; right:50%; border-bottom:1px solid #009591; transition:all ease-in-out 0.125s;}
+.paging a:hover,
+.paging a:focus {color:#009591; font-weight:500;}
+.paging a:hover:after,
+.paging a:focus:after {left:7px; right:7px;}
+.paging .on em {color:#009591; font-weight:500;}
+.paging [class^=icoBtn_] {background-color:#fff; margin:0 2px; border-radius:50%; border:1px solid #ccc;}
+.paging [class^=icoBtn_]:not([disabled]):focus,
+.paging [class^=icoBtn_]:not([disabled]):hover {background-color:#eee;}
+.paging [class^=icoBtn_][disabled] {opacity:0.4;}
+
+/*================================================== Button ==================================================*/
+/* 텍스트 버튼 */
+[class^=btn_] {display:inline-block; max-width:100%; min-height:52px; margin:16px 0 4px; padding:5px 30px; border:1px solid transparent; font-size:1.8rem; font-weight:400; letter-spacing:-0.05rem; text-align:center; border-radius:6px;}
+[class^=btn_][disabled],
+[class^=btn_].disabled {border-color:#ccc !important; color:#ccc !important;}
+[class^=btn_]:focus,
+[class^=btn_]:active {transition:background-color ease-in 0.05s; transition-duration: 0.05s;}
+[class^=btn_]:not(button) {display:inline-flex !important; align-items:center; justify-content:center;}
+
+.btn_p {border-color:#1aa4a4; background-color:#1aa4a4; color:#fff;}
+.btn_p[disabled],
+.btn_p.disabled {border-color:#eee !important; background-color:#eee !important; color:#aaa !important;}
+.btn_p:focus,
+.btn_p:active {background-color:#00827e;}
+.btn_s {border-color:#009591; background-color:#fff; color:#009591;}
+.btn_s:focus,
+.btn_s:active {background-color:#e8fafa;}
+.btn_g {background-color:#909194; color:#fff;}
+.btn_g:focus,
+.btn_g:active {background-color:#6b737d;}
+.btn_g[disabled],
+.btn_g.disabled {background-color:#ccc !important; color:#fff !important;}
+.btn_w {border-color:#ccc; border-style:solid; color:#333;}
+.btn_w[type=button] {background-color: transparent;}
+.btn_t {background-color:#61707a; color:#fff;}
+
+[class^=btn_].m {min-height:40px; font-size:1.6rem;}
+[class^=btn_].s {min-height:32px; padding:4px 16px; font-size:1.3rem;}
+[class^=btn_].xs {min-height:28px; padding:2px 6px; font-size:1.3rem;}
+.dataTd [class^=btn_].m,
+[class^=btn_].m.more,
+[class^=btn_].full {display:block; width:100%;}
+
+/* CASE */
+[class^=btn_].m.srch {display:block; width:180px; margin:40px auto 0;}
+.msgArea [class^=btn_].m,
+.noData [class^=btn_].m {min-width:180px;}
+.accoBody .btn_s,
+[class*=Box] .btn_s {background-color: transparent;}
+
+/* 하단 버튼영역 */
+.btnArea {position:relative; display:flex; width:calc(100% + 20px); flex-direction:row; flex-wrap:nowrap; margin:40px -10px; background-color:transparent; align-items:center;}
+.btnArea [class^=btn_] {display:block; flex-grow:1; width:33.3333%; min-width:auto; margin:0 6px; padding:5px 5px;}
+.btnArea [class^=btn_]:last-child {width:66.6667%;}
+
+.btnArea.wrap {flex-wrap:wrap;}
+.btnArea.wrap .desc {width:100%; margin-bottom:10px; text-align:center; color:#999;}
+
+.btnArea.half [class^=btn_],
+.btnArea.half [class^=btn_]:last-child {width:50%;}
+
+.btnArea.half.wrap [class^=btn_] {width:calc(50% - 8px); flex-grow:0; margin:4px;}
+.btnArea.half.wrap [class^=btn_]:only-child,
+.btnArea.half.wrap [class^=btn_]:last-child:nth-child(odd) {width:100%;}
+
+.btnArea.full {flex-wrap:wrap; margin-left:0; margin-right:0;}
+.btnArea.full [class^=btn_] {width:100%; margin:4px 0;}
+
+.btnArea.reverse {flex-direction:row;}
+.btnArea.reverse [class^=btn_] {width:66.6667%;}
+.btnArea.reverse [class^=btn_]:last-child {flex-grow:1; width:33.3333%;}
+
+.btnArea.sticky {position:sticky; left:0; bottom:0; width:calc(100% + 48px); margin:8px -24px 0; padding:32px 10px 32px; background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #fff 30%); z-index:1501;}
+[class^=btn_].r,
+.btnArea.sticky [class^=btn_] {border-radius:26px;}
+
+/* btnArea Fixed */
+.btnArea.sticky.fixed,
+.short .btnArea.sticky {position:fixed; left:0; right:0; width:auto; margin-left:0; margin-right:0;} /* content 길이 짧을때 */
+body.hasStickyBtnArea #content {padding-bottom: 144px;}
+body.hasSticky .content:not(.short), .popup.hasSticky {padding-bottom:0;}
+
+/* single button */
+.ac > [class^=btn_].m {display:block; min-width:180px; margin:40px auto 0;}
+
+/* 기능버튼 영역 : 리스트 유형 내부 혹은 컨텐츠 중간에 쓰는 버튼 */
+.btnGroup {display:flex; justify-content: center;}
+.btnGroup [class^=btn_] {width:auto; margin-top:0;}
+
+/* 아이콘 버튼 */
+[class*=icoBtn_] {display:inline-block; position:relative; background-color:transparent; background-repeat:no-repeat; background-position:0 0; vertical-align:middle; overflow:hidden;}
+
+.icoBtn_close,
+.icoBtn_del {width:36px; height:36px;}
+.icoBtn_close:before,
+.icoBtn_close:after,
+.icoBtn_del:before,
+.icoBtn_del:after {content:''; position:absolute; left:50%; top:50%; width:1px; height:20px; background-color:#222; transform:translate(-50%, -50%) rotate(45deg);}
+.icoBtn_close:after,
+.icoBtn_del:after {transform:translate(-50%, -50%) rotate(135deg);}
+
+/* 이전,다음 */
+.icoBtn_prev,
+.icoBtn_next {width:32px; height:32px;}
+.icoBtn_prev:before,
+.icoBtn_next:before {content:''; position:absolute; left:13px; top:50%; width:8px; height:8px; border:1px solid #444; border-width:0 0 1px 1px; background-color:transparent; box-sizing:border-box; transform:translateY(-50%) rotate(45deg);}
+.icoBtn_next:before {left:auto; right:13px; transform:translateY(-50%) rotate(-135deg);}
+
+/* 약관상세 보기 */
+.icoBtn_arrow {width:55px; height:62px;}
+.icoBtn_arrow:after {content:''; position:absolute; left:50%; top:50%; width:11px; height:11px; margin-left:-3px; border:1px solid #222; border-width:0 2px 2px 0; transform:translate(-50%, -50%) rotate(-45deg); transition:transform 0.25s;}
+
+/* 상세내용 보기 */
+.icoBtn_open {width:24px; height:24px;}
+.icoBtn_open:after {content:''; position:absolute; left:50%; top:50%; width:9px; height:9px; margin-top:-1px; border:1px solid #222; border-width:0 0 2px 2px; vertical-align:-webkit-baseline-middle; transform:translate(-50%, -50%) rotate(-45deg); transition:transform 0.25s; box-sizing:border-box;}
+.on:not(.popBody):not(.tabPanel):not(.swiperWrap) .icoBtn_open:after {margin-top:2px; transform:translate(-50%, -50%) rotate(-225deg);}
+
+/* 아이콘(SVG) */
+.icoBtn_keypad {width:42px; height:48px; background:url(../images/mobile/common/ico_keypad.svg) no-repeat center center; background-size:24px auto;}
+.icoBtn_appSrch {width:32px; height:32px; background:url(../images/mobile/common/app_ico_search.svg) no-repeat center center;}
+.icoBtn_keep {width:32px; height:32px; background: url(../images/mobile/common/ico_keep.svg) no-repeat center center;}
+.icoBtn_keep.on {background: url(../images/mobile/common/ico_keep_on.svg) no-repeat center center;}
+
+/* 증가 감소 버튼 */
+.icoBtn_minus, .icoBtn_plus {width:24px; height:24px; border:1px solid #e5e5e5; border-radius: 50%;}
+.icoBtn_minus::before, .icoBtn_plus::before, .icoBtn_plus::after {content: ""; position: absolute; display:block; width:8px; background-color: #333;}
+.icoBtn_minus::before, .icoBtn_plus::before {top:50%; left: 50%; height:1px; transform: translateX(-50%);}
+.icoBtn_plus::after {top:50%; left: 50%; height:1px; transform: translateX(-50%) rotate(90deg);}
+
+/* 본인인증 */
+[class^=btnCert_] {position:relative; width:33.3333%; padding-top:44px !important; color:#333; font-size:1.3rem; background-repeat:no-repeat; background-position:center 0;}
+.btnCert_Mobile {background-image:url(../images/mobile/common/cert_ico_mobile.svg);}
+.btnCert_Card {background-image:url(../images/mobile/common/cert_ico_card.svg);}
+.btnCert_Other {background-image:url(../images/mobile/common/cert_ico_other.svg);}
+.btnCert_Bank {background-image:url(../images/mobile/common/cert_ico_bank.svg);}
+.btnCert_Sign {background-image:url(../images/mobile/common/cert_ico_sign.svg);}
+
+.btnGroup.certify {margin-top:44px; flex-wrap:wrap; overflow:hidden;}
+.btnGroup.certify [class^=btnCert_] {margin-top:16px; padding-left:5px; padding-right:5px; padding-bottom:16px; word-break:keep-all;}
+.btnGroup.certify [class^=btnCert_]:before {content:''; position:absolute; top:0; left:-1px; height:32px; border-left:1px solid #e5e5e5;}
+.btnGroup.certify [class^=btnCert_]:after {content:''; position:absolute; bottom:-1px; left:0; width:100%; border-top:1px solid #e5e5e5;}
+.btnGroup.certify:not(.div_2) [class^=btnCert_]:last-child:nth-child(odd):not(:nth-child(3)),
+.btnGroup.certify:not(.div_2) [class^=btnCert_]:nth-last-child(2):nth-child(even):not(:nth-child(2)),
+.btnGroup.certify.div_2 [class^=btnCert_] {width:50%;}
