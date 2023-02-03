@@ -1,0 +1,67 @@
+{"root_comment":[
+      {
+            "title": "PC채널",
+            "active": true,
+            "menu" : [
+                {
+                    "so_menu": "공통채널",
+                    "active": true,
+                    "data_info": "./guide/resource/menu/pageList2/pageList2_common.json"
+                },{
+                    "so_menu": "채널1",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/pageList2_menu1.json"
+                },{
+                    "so_menu": "채널2",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/pageList2_menu2.json"
+                },{
+                    "so_menu": "채널3",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/pageList2_menu3.json"
+                },{
+                    "so_menu": "채널4",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/pageList2_menu4.json"
+                },{
+                    "so_menu": "채널5",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/pageList2_menu5.json"
+                }
+            ]
+      },{
+            "title": "MO채널",
+            "active": true,
+            "menu" : [
+                {
+                    "so_menu": "공통채널",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/mo_pageList2_common.json"
+                },{
+                    "so_menu": "채널1",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/mo_pageList2_menu1.json"
+                },{
+                    "so_menu": "채널2",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/mo_pageList2_menu2.json"
+                },{
+                    "so_menu": "채널3",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/mo_pageList2_menu3.json"
+                },{
+                    "so_menu": "채널4",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/mo_pageList2_menu4.json"
+                },{
+                    "so_menu": "채널5",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/mo_pageList2_menu5.json"
+                },{
+                    "so_menu": "채널6",
+                    "active": false,
+                    "data_info": "./guide/resource/menu/pageList2/mo_pageList2_menu6.json"
+                }
+            ]
+      }
+]}
