@@ -125,17 +125,17 @@ strong {font-weight:normal;}
 .cvGuide a {color:var(--c-link);}
 
 .cvGuide header {position:fixed; left:240px; right:0; top:0; border-bottom:1px solid var(--c-divider-light); background-color: var(--c-bg); z-index:11;}
-.cvGuide header, .cvGuide header .logo {height:60px;}
+.cvGuide header, .cvGuide header .logo {height:80px;}
 .cvGuide header .logo {display:flex; justify-content:center; align-items:center; position:fixed; top:0; left:0; width:240px; border-bottom:1px solid var(--c-divider-light); background-color: var(--c-bg); box-sizing:border-box;}
 .cvGuide header .logo a {display:block; padding:0 20px;}
 .cvGuide header .logo a > img {max-width:100%;}
-.cvGuide header .cvUtil {position:absolute; top:0; right:30px; height:60px;}
+.cvGuide header .cvUtil {position:absolute; top:0; right:30px; height:80px;}
 
 /* gnb */
 .cvGnb {padding-left:30px; letter-spacing:-2em;}
-.cvGnb ul {display:flex; justify-content:flex-start; align-items:center; gap:15px; height:60px;}
+.cvGnb ul {display:flex; justify-content:flex-start; align-items:center; gap:15px; height:80px;}
 .cvGnb li {letter-spacing:0;}
-.cvGnb li button {position:relative; display: block; padding:0 15px; color:var(--c-text-1); font-size:16px; box-sizing:border-box; transition:all 0.15s ease-in-out; line-height:60px;}
+.cvGnb li button {position:relative; display: block; padding:0 15px; color:var(--c-text-1); font-size:16px; box-sizing:border-box; transition:all 0.15s ease-in-out; line-height:80px;}
 .cvGnb li button:after {content: ''; position: absolute; left: 0; bottom: 0; width: 100%; border-bottom: 1px solid var(--c-brand); transition: all 0.15s ease-out; transform: scale(0,1);}
 .cvGnb li.on button, .cvGnb li button:hover, .cvGnb li button:focus {color:var(--c-text-1);}
 .cvGnb li.on button:after, .cvGnb li button:hover:after, .cvGnb li button:focus:after {transform: scale(1,1)}
@@ -157,7 +157,7 @@ strong {font-weight:normal;}
 
 cvContainer {position:relative;}
 /* lnb */
-.cvContainer .cvLnb {position:fixed; top:60px; width:240px; height:calc(100% - 60px); border-right:1px solid var(--c-divider-light); z-index:10;}
+.cvContainer .cvLnb {position:fixed; top:80px; width:240px; height:calc(100% - 80px); border-right:1px solid var(--c-divider-light); z-index:10;}
 .cvContainer .cvLnb .nav {min-height:100%; padding:35px 30px; background-color:var(--c-bg);}
 .cvContainer .cvLnb h2 {display:block; font-size:16px; color:var(--c-text-1); line-height:1;}
 .cvContainer .cvLnb ul li a {display:block; position:relative;}
