@@ -208,7 +208,6 @@
 
 
 /*================================================== progress ==================================================*/
-.progress {margin:0 0 32px;}
 .progress span {font-size:1.6rem; color:#111; font-weight:500;}
 .progress span button {margin-left:4px;}
 .progress ol {position:relative; display:block; counter-reset:section; font-size:0; text-align:right;}
