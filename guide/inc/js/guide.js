@@ -52,10 +52,10 @@ $(document).ready(function(){
                 $(".cvGnb li button.menu_guide").closest("li").addClass("on");
 
                 comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
-                comm.gnbTemplt = "./guide/resource/template/guide/template_guide.html";
+                comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
                 comm.ctgTemplt(comm.ctgParam);
 
-                comm.dataParam = "./guide/resource/template/guide/template_guide_title.html";
+                comm.dataParam = "./guide/resource/template/guide/guide_title.html";
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 
                 comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
@@ -108,10 +108,10 @@ $(document).ready(function(){
                     case "menu_guide":
                         // 2번째 guide
                         comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
-                        comm.gnbTemplt = "./guide/resource/template/guide/template_guide.html";
+                        comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
                         comm.ctgTemplt(comm.ctgParam);
                         
-                        comm.dataParam = "./guide/resource/template/guide/template_guide_title.html";
+                        comm.dataParam = "./guide/resource/template/guide/guide_title.html";
                         comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                         
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
@@ -502,7 +502,7 @@ var comm = {
             if( $(".cvGnb li.on").find(".menu_summary").length > 0 ){
                 comm.template= "./guide/resource/template/summary/template_summary.html";
             }else if( $(".cvGnb li.on").find(".menu_guide").length > 0 ){
-                comm.template= "./guide/resource/template/guide/template_guide.html";
+                comm.template= "./guide/resource/template/guide/guide_template.html";
             };
             
             comm.param = $(e.target).data("info");
