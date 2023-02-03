@@ -5,7 +5,7 @@
             "menu" : [
                 {
                     "so_menu": "공통",
-                    "active": false,
+                    "active": true,
                     "data_info": "./guide/resource/menu/pageList/pageList_common.json"
                 },{
                     "so_menu": "마이페이지",
@@ -17,7 +17,7 @@
                     "data_info": "./guide/resource/menu/pageList/pageList_menu2.json"
                 },{
                     "so_menu": "회원",
-                    "active": true,
+                    "active": false,
                     "data_info": "./guide/resource/menu/pageList/pageList_menu3.json"
                 },{
                     "so_menu": "상품상세",
