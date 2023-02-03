@@ -219,7 +219,7 @@ cvContainer {position:relative;}
 .cvContent .cvGuide_area {padding:20px 0 20px;}
 .cvContent .cvGuide_area + .cvGuide_area {padding:40px 0 20px; border-top:1px solid var(--c-bg-mute);}
 .cvContent .cvGuide_area .tit {font-size:18px; vertical-align:middle;}
-.cvContent button[class^='btn_']:not(.cvBtn_srch) {min-width:100px; padding:0 12px; line-height:32px; font-size:13px; font-weight:700; border:1px solid var(--c-divider); border-radius:50px; color:var(--c-text-1);}
+.cvContent button[class^='cvBtn_']:not(.cvBtn_srch) {min-width:100px; padding:0 12px; line-height:32px; font-size:13px; font-weight:700; border:1px solid var(--c-divider); border-radius:50px; color:var(--c-text-1);}
 .cvBtn_copy {margin-left:10px;}
 .cvBtn_copy:before {content:""; display:inline-block; width:24px; height:24px; margin:-3px 4px 0 0; background:url('../img/ico_copy.png') no-repeat 0 0; background-size:24px auto; vertical-align:middle;}
 .cvContent .cvGuide_area .code_view .cvBtn_area {text-align:right;}
