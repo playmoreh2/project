@@ -1,16 +1,16 @@
 (function(t){
 	var ui = {
 		init : function(){
-			ui.tabInit();//
-			ui.iptInit();//
-			ui.accoInit();//
-			ui.tblInit();//
-			ui.swiperInit();//
-			tip.init();//
+			// ui.tabInit();//
+			// ui.iptInit();//
+			// ui.accoInit();//
+			// ui.tblInit();//
+			// ui.swiperInit();//
+			// tip.init();//
 			ui.progressInit();
 		},
 		progressInit : function(){
-			console.log("progressInit");
+			console.log($('.progress').length);
 			for(var  i = 0 ; i < $('.progress').length ; ++i ){
 				if( $('.progress').eq(i).hasClass('uiAct') == false ){
 					$('.progress').eq(i).addClass('uiAct');
@@ -27,7 +27,8 @@
 			}
 		}
 	}
-})()
+	t.ui = ui;
+})(this)
 
 $(document).ready(function(){
 	ui.init();

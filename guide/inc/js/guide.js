@@ -7,7 +7,7 @@ $(document).ready(function(){
         search.depCode = $(".cvContent .cont .page_list tbody").html();
         $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
-        $(".srch_wrap .btn_srch").unbind("click").bind("click", function(e){
+        $(".srch_wrap .cvBtn_srch").unbind("click").bind("click", function(e){
             $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
             let srchVal = $(".srch_wrap .ipt_wrap input.ipt").val();
@@ -15,7 +15,7 @@ $(document).ready(function(){
                 if( srchVal.length < 2 ){
                     alert("두 글자 이상 입력해 주세요.");
                 }else{
-                    $(".srch_wrap button.btn_srch").attr("disabled", true);
+                    $(".srch_wrap button.cvBtn_srch").attr("disabled", true);
                     search.searchFn(srchVal);
                 };
             }else{
@@ -416,8 +416,10 @@ var comm = {
                         );
                     },
                     complete: function(){
+                        // front ui 호출
+                        ui.init();
                         // guide 소스보기 아코디언 click 이벤트
-                        $(".cvGuide_area .code_view .btn_acco").unbind("click").bind("click", function(e){
+                        $(".cvGuide_area .code_view .cvBtn_acco").unbind("click").bind("click", function(e){
                             acco.accoClick(this, function(e){
                                 if( $(".page_guide .cvGuide_area").length > 0 ){
                                     if( $(e).text() == "코드 보기" ){
@@ -428,6 +430,7 @@ var comm = {
                                 };
                             });
                         });
+                        
                     }
                 });
             }else{
@@ -495,7 +498,7 @@ var comm = {
 	},
     pageLtUpdate : function(){
         // summary, guide 이벤트
-        $(".cvLnb .nav > ul > li > button.tit:not(.btn_acco)").unbind("click").bind("click", function(e){
+        $(".cvLnb .nav > ul > li > button.tit:not(.cvBtn_acco)").unbind("click").bind("click", function(e){
             if( $(".cvGnb li.on").find(".menu_summary").length > 0 ){
                 comm.template= "./guide/resource/template/summary/template_summary.html";
             }else if( $(".cvGnb li.on").find(".menu_guide").length > 0 ){
@@ -588,7 +591,7 @@ var comm = {
             };
         };
         
-        $(".cvGuide_area:not(.not) .btn_copy").unbind("click").bind("click", function(e){
+        $(".cvGuide_area:not(.not) .cvBtn_copy").unbind("click").bind("click", function(e){
             var val = $(e.target).closest(".cvGuide_area").find(".cvGuide_view .code").html();
             var dataTag = document.createElement("textarea");
             dataTag.className = "copyVal";
@@ -941,7 +944,7 @@ var search = {
 
             setTimeout(comm.countState, 100);
             
-            $(".srch_wrap button.btn_srch").attr("disabled", false);
+            $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
         };
     },
 };
@@ -949,7 +952,7 @@ var search = {
 // 아코디언
 var acco = {
 	accoInit : function(){ // 초기화
-        $(".cvLnb .navList > li.part > .tit").addClass("btn_acco");
+        $(".cvLnb .navList > li.part > .tit").addClass("cvBtn_acco");
 
         for( var i=0; i<$(".cvLnb .navList > li.part").length; i++ ){
             if($(".cvLnb .navList > li.part:eq("+i+")").hasClass("on") == true){
@@ -961,7 +964,7 @@ var acco = {
             };
         };
 
-        $(".cvLnb .navList button.tit.btn_acco").unbind("click").bind("click", function(e){
+        $(".cvLnb .navList button.tit.cvBtn_acco").unbind("click").bind("click", function(e){
             acco.accoClick(this);
         });
 	},
