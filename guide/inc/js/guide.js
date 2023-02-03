@@ -131,11 +131,6 @@ $(document).ready(function(){
                             };
                         }else{ // page list 1개
                             comm.ctgParam = "./guide/resource/menu/category/ctg_page_list.json";
-                            comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
-                            comm.ctgTemplt(comm.ctgParam);
-
-                            comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                            comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                         };
                         
                         comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
