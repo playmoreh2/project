@@ -206,3 +206,16 @@
 .table_row th,
 .table_row td {text-align:left; padding:20px 20px;}
 
+
+/*================================================== progress ==================================================*/
+.progress {margin:0 0 32px;}
+.progress span {font-size:1.6rem; color:#111; font-weight:500;}
+.progress span button {margin-left:4px;}
+.progress ol {position:relative; display:block; counter-reset:section; font-size:0; text-align:right;}
+.progress li {display:inline-block; width:24px; height:24px; margin-left:5px; border-radius:20px; background-color:#dee1e4; border:1px solid #dee1e4; color:#777; font-size:1.2rem; line-height:20px; text-align:center; vertical-align:middle; z-index:1;}
+.progress li:before {content:counter(section); counter-increment:section; width:auto; height:auto; font-weight:500;}
+.progress li.on:after,
+.progress li.on ~ li:after {display:none;}
+.progress li.on {background-color:#1aa4a4; border-color:transparent; color:#fff;}
+.progress li.on span {position:absolute; left:0;}
+.progress li.on ~ li {background-color:transparent;}
