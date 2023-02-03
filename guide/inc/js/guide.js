@@ -64,7 +64,7 @@ $(document).ready(function(){
             case "pageList":
                 // 3번째 page list
                 $(".cvGnb > ul > li").removeClass("on");
-                $(".cvGnb li button.menu_list").closest("li").addClass("on");
+                $(".cvGnb li button.menu_list").closest("li").eq(0).addClass("on");
                 
                 comm.ctgParam = "./guide/resource/menu/category/ctg_page_list.json";
                 comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
