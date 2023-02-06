@@ -94,7 +94,7 @@
        "pageId": "CMAL30P018",
        "comment": "",
        "link": "./src/html/common/CMAL30P018.html",
-       "finish": false
+       "finish": true
    },{
        "depth1": "전시",
        "depth2": "상품상세3",
@@ -154,6 +154,6 @@
        "pageId": "CMAL30P0113",
        "comment": "",
        "link": "./src/html/common/CMAL30P0113.html",
-       "finish": false
+       "finish": true
    }
 ]}
