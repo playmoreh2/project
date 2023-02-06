@@ -186,9 +186,9 @@ cvContainer {position:relative;}
 .cvContainer .cvLnb .nav > ul > li > .subList > li.on > button {color:var(--c-text-1); font-weight:700;}
 .cvContainer .cvLnb .nav > ul > li > .subList > li .progressInfo {display:inline-block; flex:0 0 auto; margin-left:auto;}
 
-.cvContent {position:relative; float: right; width: calc(100% - 240px); padding:100px 30px 50px 30px; box-sizing:border-box;}
-.cvContent > .top {display:block; margin-bottom:20px;}
-.cvContent > .top > h3 {display:inline-block; margin-right:5px; font-size:18px; color:var(--c-text-1); line-height:1.3;}
+.cvContent {position:relative; float: right; width: calc(100% - 240px); padding:120px 30px 50px 30px; box-sizing:border-box;}
+.cvContent > .top {display:block; margin-bottom:16px;}
+.cvContent > .top > h3 {display:inline-block; margin-right:5px; font-size:24px; color:var(--c-text-1); line-height:1.3;}
 .cvContent > .top > span {font-size:15px;}
 
 .cvContent .cont {color:var(--c-text-1);}
@@ -201,7 +201,7 @@ cvContainer {position:relative;}
 .dashboard_area .section {margin-top:30px;}
 .dashboard_area .tit {display:block; font-size:14px; font-weight:500;}
 .dashboard_area .tit + .inner {margin-top:16px;}
-.dashboard_area .inner {display:flex; justify-content: flex-start; flex:1 0 auto; gap:80px; width:100%; height:100%;}
+.dashboard_area .inner {display:flex; justify-content: flex-start; gap:80px; width:100%; height:100%;}
 .dashboard_area .inner > [class^='total'] {display:flex; flex-direction: column; justify-content:center; gap:10px; width:320px; height:300px; padding:20px 40px; border-radius:8px;  background: var(--c-bg-soft); box-shadow: var(--box-shadow);}
 .dashboard_area .inner [class^='total'] .graph_area {display:flex; justify-content: center; width:100%;}
 .dashboard_area .inner [class^='total'] .graph {display:flex; justify-content: center; align-items: flex-end; width:10px; height:200px; background-color: var(--c-bg-mute);}
@@ -216,7 +216,7 @@ cvContainer {position:relative;}
 .dashboard_area .inner [class^='total'] .summary .num > em {font-weight:700;}
 
 /* guide */
-.cvContent .cvGuide_area {padding:20px 0 20px;}
+.cvContent .cvGuide_area {padding:10px 0 20px;}
 .cvContent .cvGuide_area + .cvGuide_area {padding:40px 0 20px; border-top:1px solid var(--c-bg-mute);}
 .cvContent .cvGuide_area .tit {font-size:18px; vertical-align:middle;}
 .cvContent button[class^='cvBtn_']:not(.cvBtn_srch) {min-width:100px; padding:0 12px; line-height:32px; font-size:13px; font-weight:700; border:1px solid var(--c-divider); border-radius:50px; color:var(--c-text-1);}
