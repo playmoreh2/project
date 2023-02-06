@@ -199,7 +199,7 @@ cvContainer {position:relative;}
 /* dashboard */
 .dashboard_area {width:100%;}
 .dashboard_area .section {margin-top:30px;}
-.dashboard_area .tit {display:block; font-size:14px; font-weight:500;}
+.dashboard_area .tit {display:block; font-size:18px; font-weight:500;}
 .dashboard_area .tit + .inner {margin-top:16px;}
 .dashboard_area .inner {display:flex; justify-content: flex-start; gap:80px; width:100%; height:100%;}
 .dashboard_area .inner > [class^='total'] {display:flex; flex-direction: column; justify-content:center; gap:10px; width:320px; height:300px; padding:20px 40px; border-radius:8px;  background: var(--c-bg-soft); box-shadow: var(--box-shadow);}
