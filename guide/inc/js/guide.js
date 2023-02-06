@@ -235,6 +235,18 @@ var comm = {
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").append(
                                         listData[idx].menu[i].so_menu
                                     );
+
+                                    // guide 작업진행 사항 (추후 코드 수정예정)
+                                    if($(".cvGnb li.on .menu_guide").length > 0){
+                                        $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+") .progressInfo").text(
+                                            "작업중"
+                                        );
+                                        if( listData[idx].menu[i].working == true ){
+                                            $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+") .progressInfo").text(
+                                                ""
+                                            );
+                                        };
+                                    };
                                 };
                             }else{
                                 $(".subList").remove();
@@ -255,7 +267,7 @@ var comm = {
                     comm.dataCall();
                 };
 				// pagelist 탭 카테고리에서 각 메뉴 진척률 가져오기
-                if($(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0){                    
+                if($(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0){                  
                     if(comm.ctgPageLtTag[comm.ctgIdx] != null && comm.ctgPageLtTag[comm.ctgIdx].length > 0){
                         $(".cvContainer .cvLnb .nav > ul").html(comm.ctgPageLtTag[comm.ctgIdx]);
                         return false;

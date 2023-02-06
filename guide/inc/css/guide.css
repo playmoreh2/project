@@ -231,6 +231,8 @@ cvContainer {position:relative;}
 .cvContent .cvGuide_area .code_view .code xmp {margin:0; padding:10px;}
 .cvContent .cvGuide_area .code_view .cvBtn_area {margin-top:10px;}
 
+.cvContainer .cvLnb .nav > ul > li > .subList > li .progressInfo {color:var(--c-red-light);}
+
 .cvContent .pop_alert {display:flex; align-items:center; justify-content:center; position:fixed; top:50%; left:50%; width:180px; height:80px; margin-top:-40px; padding:0 12px; background-color:var(--c-bg); border:1px solid #000; border-radius:6px; text-align:center; z-index:99;}
 .cvContent .pop_alert > p {color:#000; font-size:18px; font-weight:500;}
 
