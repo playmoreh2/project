@@ -749,8 +749,8 @@ var comm = {
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
     switchMode : function(){
-        $('.cvUtil .btn_switch input').bind('click', function(){
-            if ($('.btn_switch input').is(':checked')){
+        $('.cvUtil .cvBtn_switch input').bind('click', function(){
+            if ($('.cvBtn_switch input').is(':checked')){
                 $('body.cvGuide').addClass('dark');
                 $('header .logo img').attr('src', './guide/inc/img/logo.png');
             }else{
