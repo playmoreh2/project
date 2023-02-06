@@ -9,7 +9,7 @@
        "modify": "",
        "pageId": "MCMAL30P021",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P021.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P021.html",
        "finish": true
    },{
        "depth1": "상품",
@@ -21,7 +21,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P022",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P022.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P022.html",
        "finish": true
    },{
        "depth1": "채널 mo 전시",
@@ -33,7 +33,7 @@
        "modify": "",
        "pageId": "MCMAL30P023",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P023.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P023.html",
        "finish": true
    },{
        "depth1": "채널 전시",
@@ -45,7 +45,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P024",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P024.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P024.html",
        "finish": true
    },{
        "depth1": "전시",
@@ -57,7 +57,7 @@
        "modify": "",
        "pageId": "MCMAL30P025",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P025.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P025.html",
        "finish": true
    },{
        "depth1": "회원",
@@ -69,7 +69,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P026",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P026.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P026.html",
        "finish": true
    },{
        "depth1": "회원",
@@ -81,7 +81,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P027",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P027.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P027.html",
        "finish": false
    },{
        "depth1": "마이페이지",
@@ -93,7 +93,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P028",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P028.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P028.html",
        "finish": true
    },{
        "depth1": "마이페이지",
@@ -105,7 +105,7 @@
        "modify": "",
        "pageId": "MCMAL30P029",
        "comment": "",
-       "link": "./src/html/mo_mypage/MCMAL30P029.html",
+       "link": "./src/html_ch/mo/ch_1/MCMAL30P029.html",
        "finish": true
    },{
         "depth1": "상품",
@@ -117,7 +117,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0210",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0210.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0210.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -129,7 +129,7 @@
         "modify": "",
         "pageId": "MCMAL30P0211",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0211.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0211.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -141,7 +141,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0212",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0212.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0212.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -153,7 +153,7 @@
         "modify": "",
         "pageId": "MCMAL30P0213",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0213.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0213.html",
         "finish": true
     },{
         "depth1": "회원",
@@ -165,7 +165,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0214",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0214.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0214.html",
         "finish": true
     },{
         "depth1": "회원",
@@ -177,7 +177,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0215",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0215.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0215.html",
         "finish": false
     },{
         "depth1": "마이페이지",
@@ -189,7 +189,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0216",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0216.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0216.html",
         "finish": true
     },{
         "depth1": "마이페이지",
@@ -201,7 +201,7 @@
         "modify": "",
         "pageId": "MCMAL30P0217",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0217.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0217.html",
         "finish": true
     },{
         "depth1": "상품",
@@ -213,7 +213,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0218",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0218.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0218.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -225,7 +225,7 @@
         "modify": "",
         "pageId": "MCMAL30P0219",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0219.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0219.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -237,7 +237,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0220",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0220.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0220.html",
         "finish": true
     },{
         "depth1": "전시",
@@ -249,7 +249,7 @@
         "modify": "",
         "pageId": "MCMAL30P0221",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0221.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0221.html",
         "finish": true
     },{
         "depth1": "회원",
@@ -261,7 +261,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0222",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0222.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0222.html",
         "finish": true
     },{
         "depth1": "회원",
@@ -273,7 +273,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0223",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0223.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0223.html",
         "finish": false
     },{
         "depth1": "마이페이지",
@@ -285,7 +285,7 @@
         "modify": "23.01.10",
         "pageId": "MCMAL30P0224",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0224.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0224.html",
         "finish": true
     },{
         "depth1": "마이페이지",
@@ -297,7 +297,7 @@
         "modify": "",
         "pageId": "MCMAL30P0225",
         "comment": "",
-        "link": "./src/html/mo_mypage/MCMAL30P0225.html",
+        "link": "./src/html_ch/mo/ch_1/MCMAL30P0225.html",
         "finish": true
     }
 ]}

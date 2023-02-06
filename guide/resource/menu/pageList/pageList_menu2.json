@@ -9,7 +9,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P031",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/order/CMAL30P031.html",
+       "link": "./src/html/pc/order/CMAL30P031.html",
        "finish": true
     },{
        "depth1": "공통",
@@ -21,7 +21,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P032",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/order/CMAL30P032.html",
+       "link": "./src/html/pc/order/CMAL30P032.html",
        "finish": true
     },{
        "depth1": "공통",
@@ -33,7 +33,7 @@
        "modify": "",
        "pageId": "CMAL30P033",
        "comment": "",
-       "link": "./src/html/order/CMAL30P033.html",
+       "link": "./src/html/pc/order/CMAL30P033.html",
        "finish": true
    },{
        "depth1": "공통",
@@ -45,7 +45,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P034",
        "comment": "",
-       "link": "./src/html/order/CMAL30P034.html",
+       "link": "./src/html/pc/order/CMAL30P034.html",
        "finish": true
    },{
        "depth1": "메인",
@@ -57,7 +57,7 @@
        "modify": "",
        "pageId": "CMAL30P035",
        "comment": "",
-       "link": "./src/html/order/CMAL30P035.html",
+       "link": "./src/html/pc/order/CMAL30P035.html",
        "finish": true
    },{
        "depth1": "상품",
@@ -69,7 +69,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P036",
        "comment": "",
-       "link": "./src/html/order/CMAL30P036.html",
+       "link": "./src/html/pc/order/CMAL30P036.html",
        "finish": true
    }
 ]}

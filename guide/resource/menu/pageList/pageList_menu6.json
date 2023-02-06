@@ -9,7 +9,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P071",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/pcPage/CMAL30P071.html",
+       "link": "./src/html/pc/pcPage/CMAL30P071.html",
        "finish": false
     },{
        "depth1": "공통",
@@ -21,7 +21,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P072",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/pcPage/CMAL30P072.html",
+       "link": "./src/html/pc/pcPage/CMAL30P072.html",
        "finish": false
     },{
       "depth1": "공통",
@@ -33,7 +33,7 @@
       "modify": "23.01.10",
       "pageId": "CMAL30P073",
       "comment": "공통 가이드 필요",
-      "link": "./src/html/pcPage/CMAL30P073.html",
+      "link": "./src/html/pc/pcPage/CMAL30P073.html",
       "finish": false
    },{
       "depth1": "공통",
@@ -45,7 +45,7 @@
       "modify": "23.01.10",
       "pageId": "CMAL30P074",
       "comment": "공통 가이드 필요",
-      "link": "./src/html/pcPage/CMAL30P074.html",
+      "link": "./src/html/pc/pcPage/CMAL30P074.html",
       "finish": false
    },{
        "depth1": "end 공통",
@@ -57,7 +57,7 @@
        "modify": "",
        "pageId": "CMAL30P075",
        "comment": "",
-       "link": "./src/html/pcPage/CMAL30P075.html",
+       "link": "./src/html/pc/pcPage/CMAL30P075.html",
        "finish": true
    }
 ]}

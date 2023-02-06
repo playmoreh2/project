@@ -9,7 +9,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P051",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/prodDetail/CMAL30P051.html",
+       "link": "./src/html/pc/prodDetail/CMAL30P051.html",
        "finish": false
     },{
        "depth1": "공통",
@@ -21,7 +21,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P052",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/prodDetail/CMAL30P052.html",
+       "link": "./src/html/pc/prodDetail/CMAL30P052.html",
        "finish": true
     }
 ]}

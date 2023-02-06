@@ -9,7 +9,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P011",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/common/CMAL30P011.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P011.html",
        "finish": true
     },{
        "depth1": "공통2222222",
@@ -21,7 +21,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P012",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/common/CMAL30P012.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P012.html",
        "finish": true
     },{
        "depth1": "공통3333333333",
@@ -33,7 +33,7 @@
        "modify": "",
        "pageId": "CMAL30P013",
        "comment": "",
-       "link": "./src/html/common/CMAL30P013.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P013.html",
        "finish": true
    },{
        "depth1": "공통444444444444",
@@ -45,7 +45,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P014",
        "comment": "",
-       "link": "./src/html/common/CMAL30P014.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P014.html",
        "finish": true
    },{
        "depth1": "메인5555555555555",
@@ -57,7 +57,7 @@
        "modify": "",
        "pageId": "CMAL30P015",
        "comment": "",
-       "link": "./src/html/common/CMAL30P015.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P015.html",
        "finish": true
    },{
        "depth1": "상품6666666666",
@@ -69,7 +69,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P016",
        "comment": "",
-       "link": "./src/html/common/CMAL30P016.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P016.html",
        "finish": true
    },{
        "depth1": "전시777777777777",
@@ -81,7 +81,7 @@
        "modify": "",
        "pageId": "CMAL30P017",
        "comment": "",
-       "link": "./src/html/common/CMAL30P017.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P017.html",
        "finish": true
    },{
        "depth1": "전시",
@@ -93,7 +93,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P018",
        "comment": "",
-       "link": "./src/html/common/CMAL30P018.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P018.html",
        "finish": false
    },{
        "depth1": "전시",
@@ -105,7 +105,7 @@
        "modify": "",
        "pageId": "CMAL30P019",
        "comment": "",
-       "link": "./src/html/common/CMAL30P019.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P019.html",
        "finish": true
    },{
        "depth1": "회원",
@@ -117,7 +117,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P0110",
        "comment": "",
-       "link": "./src/html/common/CMAL30P0110.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P0110.html",
        "finish": true
    },{
        "depth1": "회원",
@@ -129,7 +129,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P0111",
        "comment": "",
-       "link": "./src/html/common/CMAL30P0111.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P0111.html",
        "finish": true
    },{
        "depth1": "마이페이지",
@@ -141,7 +141,7 @@
        "modify": "23.01.10",
        "pageId": "CMAL30P0112",
        "comment": "",
-       "link": "./src/html/common/CMAL30P0112.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P0112.html",
        "finish": true
    },{
        "depth1": "마이페이지",
@@ -153,7 +153,7 @@
        "modify": "",
        "pageId": "CMAL30P0113",
        "comment": "",
-       "link": "./src/html/common/CMAL30P0113.html",
+       "link": "./src/html_ch/pc/ch_4/CMAL30P0113.html",
        "finish": false
    }
 ]}

@@ -9,7 +9,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P071",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/mo_webPage/MCMAL30P071.html",
+       "link": "./src/html/mo/webPage/MCMAL30P071.html",
        "finish": false
     },{
        "depth1": "공통",
@@ -21,7 +21,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P072",
        "comment": "공통 가이드 필요",
-       "link": "./src/html/mo_webPage/MCMAL30P072.html",
+       "link": "./src/html/mo/webPage/MCMAL30P072.html",
        "finish": true
     },{
        "depth1": "공통",
@@ -33,7 +33,7 @@
        "modify": "",
        "pageId": "MCMAL30P073",
        "comment": "",
-       "link": "./src/html/mo_webPage/MCMAL30P073.html",
+       "link": "./src/html/mo/webPage/MCMAL30P073.html",
        "finish": true
    },{
        "depth1": "공통",
@@ -45,7 +45,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P074",
        "comment": "",
-       "link": "./src/html/mo_webPage/MCMAL30P074.html",
+       "link": "./src/html/mo/webPage/MCMAL30P074.html",
        "finish": true
    },{
        "depth1": "메인",
@@ -57,7 +57,7 @@
        "modify": "",
        "pageId": "MCMAL30P075",
        "comment": "",
-       "link": "./src/html/mo_webPage/MCMAL30P075.html",
+       "link": "./src/html/mo/webPage/MCMAL30P075.html",
        "finish": true
    },{
        "depth1": "mo상품",
@@ -69,7 +69,7 @@
        "modify": "23.01.10",
        "pageId": "MCMAL30P076",
        "comment": "",
-       "link": "./src/html/mo_webPage/MCMAL30P076.html",
+       "link": "./src/html/mo/webPage/MCMAL30P076.html",
        "finish": true
    }
 ]}

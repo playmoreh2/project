@@ -1,47 +1,103 @@
 {"root_comment":[
       {
-            "title": "Text",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_text.html"
-      },{
-            "title": "TextList",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_textlist.html"
-      },{
-            "title": "Title",
+            "title": "PC Guide",
             "active": true,
-            "data_info": "./guide/resource/template/guide/guide_title.html"
+            "menu" : [
+                  {
+                        "so_menu": "Text",
+                        "active": true,
+                        "data_info": "./guide/resource/template/guide/guide_text.html"
+                  },{
+                        "so_menu": "TextList",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_textlist.html"
+                  },{
+                        "so_menu": "Title",
+                        "active": true,
+                        "data_info": "./guide/resource/template/guide/guide_title.html"
+                  },{
+                        "so_menu": "Button",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_button.html"
+                  },{
+                        "so_menu": "Form",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_form.html"
+                  },{
+                        "so_menu": "Location",
+                        "active": true,
+                        "data_info": "./guide/resource/template/guide/guide_location.html"
+                  },{
+                        "so_menu": "Table",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_table.html"
+                  },{
+                        "so_menu": "Accordion",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_accordion.html"
+                  },{
+                        "so_menu": "Popup",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_popup.html"
+                  },{
+                        "so_menu": "Swipe",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_swipe.html"
+                  },{
+                        "so_menu": "Etc",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_etc.html"
+                  }
+            ]
       },{
-            "title": "Button",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_button.html"
-      },{
-            "title": "Form",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_form.html"
-      },{
-            "title": "Location",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_location.html"
-      },{
-            "title": "Table",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_table.html"
-      },{
-            "title": "Accordion",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_accordion.html"
-      },{
-            "title": "Popup",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_popup.html"
-      },{
-            "title": "Swipe",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_swipe.html"
-      },{
-            "title": "Etc",
-            "active": false,
-            "data_info": "./guide/resource/template/guide/guide_etc.html"
+            "title": "MO Guide",
+            "active": true,
+            "menu" : [
+                  {
+                        "so_menu": "Text",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_text.html"
+                  },{
+                        "so_menu": "TextList",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_textlist.html"
+                  },{
+                        "so_menu": "Title",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_title.html"
+                  },{
+                        "so_menu": "Button",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_button.html"
+                  },{
+                        "so_menu": "Form",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_form.html"
+                  },{
+                        "so_menu": "Location",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_location.html"
+                  },{
+                        "so_menu": "Table",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_table.html"
+                  },{
+                        "so_menu": "Accordion",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_accordion.html"
+                  },{
+                        "so_menu": "Popup",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_popup.html"
+                  },{
+                        "so_menu": "Swipe",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_swipe.html"
+                  },{
+                        "so_menu": "Etc",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_etc.html"
+                  }
+            ]
       }
 ]}
