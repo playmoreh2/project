@@ -236,16 +236,15 @@ var comm = {
                                         listData[idx].menu[i].so_menu
                                     );
 
-                                    // guide 작업진행 사항 (추후 코드 수정예정)
+                                    // guide 작업 진행 사항
                                     if($(".cvGnb li.on .menu_guide").length > 0){
-                                        $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+") .progressInfo").text(
-                                            "작업중"
-                                        );
-                                        if( listData[idx].menu[i].working == true ){
-                                            $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+") .progressInfo").text(
-                                                ""
-                                            );
-                                        };
+                                        $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+") .progressInfo").text(function(idx, current){
+                                            if(listData[idx].menu[i].working == "N"){
+                                                return "작업중"
+                                            }else{
+                                                return null;
+                                            };
+                                        });
                                     };
                                 };
                             }else{
@@ -874,7 +873,8 @@ var search = {
                             // 메뉴명 검색
                             // if( val.depth1 == srchVal || val.depth2 == srchVal || val.depth3 == srchVal || val.depth4 == srchVal ){ // 정확한 글자수 체크
                             // console.log(`find val.depth1 : "${srchVal}" find index : "${srchVal}" result number : ${val.depth1.indexOf(srchVal)}`);
-                            if( val.depth1.match(srchVal) == srchVal || val.depth2.match(srchVal) == srchVal || val.depth3.match(srchVal) == srchVal || val.depth4.match(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
+                            // if( val.depth1.match(srchVal) == srchVal || val.depth2.match(srchVal) == srchVal || val.depth3.match(srchVal) == srchVal || val.depth4.match(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
+                            if( val.depth1.includes(srchVal) == srchVal || val.depth2.includes(srchVal) == srchVal || val.depth3.includes(srchVal) == srchVal || val.depth4.includes(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
                                 return search.dataArraySrchMenu.push( val );
                             };
                             break;
