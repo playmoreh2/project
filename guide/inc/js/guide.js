@@ -320,9 +320,9 @@ var comm = {
         });
     },
     dataTemplt : function(gnbTemplt, dataParam){ // template
-        if( $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("pc") > -1 ){  // pc type
+        if( $(".cvGnb li.on .menu_guide").length > 0 && $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("pc guide") > -1 ){  // pc type
             gnbTemplt = gnbTemplt + " .page_guide.pcType";
-        }else if( $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("mo") > -1 ){  // mo type
+        }else if( $(".cvGnb li.on .menu_guide").length > 0 && $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("mo guide") > -1 ){  // mo type
             gnbTemplt = gnbTemplt + " .page_guide.moType";
         };
 
