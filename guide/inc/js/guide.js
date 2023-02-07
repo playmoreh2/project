@@ -320,10 +320,8 @@ var comm = {
         });
     },
     dataTemplt : function(gnbTemplt, dataParam){ // template
-        if( $(".cvGnb li.on .menu_guide").length > 0 && $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("pc guide") > -1 ){  // pc type
-            gnbTemplt = gnbTemplt + " .page_guide.pcType";
-        }else if( $(".cvGnb li.on .menu_guide").length > 0 && $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("mo guide") > -1 ){  // mo type
-            gnbTemplt = gnbTemplt + " .page_guide.moType";
+        if( $(".cvGnb li.on .menu_guide").length > 0 && $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("mo guide") > -1 ){  // mo type
+            gnbTemplt = "./guide/resource/template/guide/guide_template_mo.html";
         };
 
         $(".cvContent .cont").load(gnbTemplt, function(e){
