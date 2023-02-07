@@ -320,6 +320,12 @@ var comm = {
         });
     },
     dataTemplt : function(gnbTemplt, dataParam){ // template
+        if( $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("pc") > -1 ){  // pc type
+            gnbTemplt = gnbTemplt + " .page_guide.pcType";
+        }else if( $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("mo") > -1 ){  // mo type
+            gnbTemplt = gnbTemplt + " .page_guide.moType";
+        };
+
         $(".cvContent .cont").load(gnbTemplt, function(e){
             const code = e;
             const extenType = dataParam.split('.').pop().toLowerCase() == "json" ? "json" : "html"; //확장자 분리, 체크
@@ -430,10 +436,10 @@ var comm = {
                                         };
                                     };
                                 }else if( $(".cvContent .cont .page_guide").length > 0 ){ // guide type
-                                    $(".cvContent .cont .page_guide").empty(); // 마크업 삭제
+                                    $(".cvContent .cont .page_guide .guide_wrap").empty(); // 마크업 삭제
                                     
                                     if(code != null && data != null && data != ""){ // html && data 있을 때
-                                        $(".cvContent .cont .page_guide").html($(data).children());
+                                        $(".cvContent .cont .page_guide .guide_wrap").html($(data).children());
                                         comm.copyTo(); // 추후 가이드 완료 후 위치 수정예정
                                     };
                                 };
@@ -447,7 +453,7 @@ var comm = {
                     },
                     complete: function(){
                         // front ui 호출
-                        ui.init();
+                        // ui.init();
                         // guide 소스보기 아코디언 click 이벤트
                         $(".cvGuide_area .code_view .cvBtn_acco").unbind("click").bind("click", function(e){
                             acco.accoClick(this, function(e){
