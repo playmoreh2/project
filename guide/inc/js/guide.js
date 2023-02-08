@@ -606,13 +606,14 @@ var comm = {
             let valChk = Math.ceil(val);
 			let num = 0;
 			let time = (100/val); // 동일한 카운팅 시간 설정
-            
 			var cntNum = setInterval(function(){
-                num++;
-                $(item).find("> em").text(num);
-                $(item).closest(".progress").find(".graph").css({
-                    "width": num+"%"
-                });
+                if(1/time != 0){
+                    num++;
+                    $(item).find("> em").text(num);
+                    $(item).closest(".progress").find(".graph").css({
+                        "width": num+"%"
+                    });
+                }
 
                 if(num == valChk){
                     $(item).find("> em").text(val); // 최종결과 값
