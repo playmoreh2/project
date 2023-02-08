@@ -13,7 +13,7 @@
                     "data_info": "./guide/resource/menu/pageList/pageList_menu1.json"
                 },{
                     "so_menu": "주문",
-                    "active": true,
+                    "active": false,
                     "data_info": "./guide/resource/menu/pageList/pageList_menu2.json"
                 },{
                     "so_menu": "회원",

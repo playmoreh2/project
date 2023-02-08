@@ -239,8 +239,8 @@ cvContainer {position:relative;}
 .cvContent .page_list th:first-child {border-left:0 none;}
 .cvContent .page_list td {padding:10px; border-top:1px solid var(--c-divider-dark-1); border-left:1px solid var(--c-divider-dark-1);}
 .cvContent .page_list td:first-child {border-left:0 none;}
-.cvContent .page_list tbody > tr > td.pageID {color:inherit; font-weight:500;}
-.cvContent .page_list tbody > tr.finish > td.pageID {color:var(--c-finish);}
+.cvContent .page_list tbody > tr > td.pageID {color:var(--c-finish); font-weight:500;}
+.cvContent .page_list tbody > tr.finish > td.pageID {color:inherit;}
 
 .cvContent .page_list .progress {width:100%; height:6px; background-color:var(--c-bg-mute);}
 .cvContent .page_list .progress .graph {display:block; position:relative; width:0%; height:6px; background-color:var(--c-text-code);}
