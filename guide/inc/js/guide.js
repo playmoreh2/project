@@ -600,11 +600,11 @@ var comm = {
             
             if(1/time != 0){
                 var cntNum = setInterval(function(){
-                        num++;
-                        $(item).find("> em").text(num);
-                        $(item).closest(".progress").find(".graph").css({
-                            "width": num+"%"
-                        });
+                    num++;
+                    $(item).find("> em").text(num);
+                    $(item).closest(".progress").find(".graph").css({
+                        "width": num+"%"
+                    });
                     
 
                     if(num == valChk){
@@ -1012,12 +1012,16 @@ var search = {
         };
     },
     slide : function(){
-        $(".cvLnb .nav .navList.rdo .part > span .ipt[type=radio]").bind("change", function(e){
-            $(e.target).closest(".navList.rdo").find("> .part .subList").stop(true, true).slideUp(200);
-            $(e.target).closest(".part").find("> .subList").stop(true, true).slideDown({
-                duration: 200
+        if( $(".cvLnb .nav .navList.rdo .part").length > 1 ){
+            $(".cvLnb .nav .navList.rdo .part > span .ipt[type=radio]").bind("change", function(e){
+                $(e.target).closest(".navList.rdo").find("> .part .subList").stop(true, true).slideUp(200);
+                $(e.target).closest(".part").find("> .subList").stop(true, true).slideDown({
+                    duration: 200
+                });
             });
-        });
+        }else{
+            $(".cvLnb .nav .navList.rdo .part .subList").stop(true, true).slideDown(200);
+        };
     },
     srchPath : function(){
         var count = "";
