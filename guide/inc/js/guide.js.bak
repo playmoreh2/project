@@ -1038,31 +1038,12 @@ var search = {
         $(".cvGnb li .menu_search").attr("href", "./search.html?"+count);
     },
     srchCtgSet : function(){
+        var srchCtgData = [];
         var srchCtgCode = $(".cvLnb .navList.rdo").html();
-        $(".cvLnb .navList.rdo").empty();
-        for(let i=0; i<comm.getParameterName("age"); i++){            
-            $(".cvLnb .navList.rdo").append(srchCtgCode);
-            $(".cvLnb .navList.rdo .part:eq("+i+") label.tit").text(comm.getParameterName("menu"+(i+1)));
-            
-            $(".cvLnb .navList.rdo .part:eq("+i+") > span .ipt[type=radio]").attr({
-                "id":"rdo_"+i
-            });
-            $(".cvLnb .navList.rdo .part:eq("+i+") label.tit").attr({
-                "for":"rdo_"+i
-            });
-
-            $(".cvLnb .navList.rdo .part:eq("+i+") .subList > li .ipt[type=radio]").attr({
-                "name":"rdo_"+i
-            });
-            for(let j=0; j<$(".cvLnb .navList.rdo .part .subList > li").length; j++){
-                $(".cvLnb .navList.rdo .part:eq("+i+") .subList > li:eq("+j+") .ipt[type=radio]").attr({
-                    "id":"rdo_"+i+"_"+j
-                });
-                $(".cvLnb .navList.rdo .part:eq("+i+") .subList > li:eq("+j+") .ipt[type=radio]+label").attr({
-                    "for":"rdo_"+i+"_"+j
-                });
-            };
+        for(let i=0; i<comm.getParameterName("age"); i++){
+            srchCtgData.push(comm.getParameterName("menu"+(i+1)));
         };
+        console.log(srchCtgCode);
         
 
         search.slide();
