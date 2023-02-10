@@ -3,7 +3,6 @@ $(document).ready(function(){
     
     // 검색
     if($("body.cvGuide.search").length > 0){
-        comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
         search.depCode = $(".cvContent .cont .page_list tbody").html();
         $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
@@ -22,12 +21,9 @@ $(document).ready(function(){
                 alert("검색어를 입력해주세요.");
             };
         });
-
-        // $(".navList.rdo input:radio[name=rdo]").bind("change", function(e){
-        //     comm.pageLtTxtUpdate($(e.target));
-        // });
-
         search.srchCtgSet();
+        comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
+        comm.pageLtUpdate();
     };
     
     // summary, guide, pagelist
@@ -312,7 +308,7 @@ var comm = {
         if( $(".cvGnb li.on .menu_guide").length > 0 && $(".cvLnb .nav .subList > li.on > button").closest(".part").find("> .tit").text().toLowerCase().indexOf("mo guide") > -1 ){  // mo type
             gnbTemplt = "./guide/resource/template/guide/guide_template_mo.html";
         };
-
+        
         $(".cvContent .cont").load(gnbTemplt, function(e){
             const code = e;
             const extenType = dataParam.split('.').pop().toLowerCase() == "json" ? "json" : "html"; //확장자 분리, 체크
@@ -550,20 +546,30 @@ var comm = {
                 comm.dataTemplt(comm.template, comm.param);
             };
         });
+
+        // search
+        $(".navList.rdo input:radio[name=rdo], .navList.rdo .subList > li input:radio").bind("change", function(e){
+            comm.pageLtTxtUpdate($(e.target));
+        });
     },
     pageLtTxtUpdate : function(e){
         // 추후 수정예정
         var crumbTxt1 = "";
         var crumbTxt2 = "";
         
+        // crumbTxt1
         if( $(".cvGuide.search .navList.rdo").length > 0 ){ // 검색
-            crumbTxt1 = $(e).closest("li").find("> label.tit").text();
+            crumbTxt1 = $(e).closest(".part").find("label.tit").text();
         }else if( $(e).length > 0 ){
             crumbTxt1 = $(e).closest(".part").find("> button.tit").html().split('<')[0];
         };
-        
-        if( $(e).closest(".subList").length > 0 ) crumbTxt2 = " > " + $(e).closest(".subList").find("> li.on > button").text();
-        
+
+        // crumbTxt2
+        if($(".cvGuide.search .navList.rdo").length > 0 &&  $(e).closest(".part").find(".subList").length > 0){
+            crumbTxt2 = " > " + $(e).closest(".part").find(".subList > li > input:radio:checked+label").text();
+        }else if($(e).closest(".subList").length > 0){
+            crumbTxt2 = " > " + $(e).closest(".subList").find("> li.on > button").text();
+        };
         $(".cvContent > .top > h3").html(
             $(".cvLnb .nav h2").text()
             + " > "
@@ -1026,6 +1032,10 @@ var search = {
             $(".cvLnb .navList.rdo").append(srchCtgCode);
             $(".cvLnb .navList.rdo .part:eq("+i+") label.tit").text(comm.getParameterName("menu"+(i+1)));
             
+            $(".cvLnb .navList.rdo .part:eq("+0+") > span .ipt[type=radio]").attr({
+                "checked":true
+            });
+            
             $(".cvLnb .navList.rdo .part:eq("+i+") > span .ipt[type=radio]").attr({
                 "id":"rdo_"+i
             });
@@ -1044,8 +1054,7 @@ var search = {
                     "for":"rdo_"+i+"_"+j
                 });
             };
-        };
-        
+        };        
 
         search.slide();
     },
