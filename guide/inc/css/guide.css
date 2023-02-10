@@ -271,3 +271,7 @@ cvContainer {position:relative;}
 .srch_wrap .cvBtn_srch:after {content:""; position:absolute; right:0; width:2px; height:7px; background-color:#000;}
 .srch_wrap .cvBtn_srch:before {top:8px; width:12px; height:12px; border:2px solid #000; border-radius:50%; background-color:transparent;}
 .srch_wrap .cvBtn_srch:after {top:20px; width:2px; height:7px; background-color:#000; transform:rotate(-45deg);}
+
+.cvContainer .cvLnb .nav .navList.rdo {}
+.cvContainer .cvLnb .nav .navList.rdo .part {}
+.cvContainer .cvLnb .nav .navList.rdo .part .subList {padding-left:10px;}
