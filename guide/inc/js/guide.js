@@ -1012,6 +1012,7 @@ var search = {
         };
     },
     slide : function(){
+        $(".cvLnb .nav .navList.rdo .part:eq(0) .subList").stop(true, true).slideDown(200);
         if( $(".cvLnb .nav .navList.rdo .part").length > 1 ){
             $(".cvLnb .nav .navList.rdo .part > span .ipt[type=radio]").bind("change", function(e){
                 $(e.target).closest(".navList.rdo").find("> .part .subList").stop(true, true).slideUp(200);
@@ -1019,8 +1020,6 @@ var search = {
                     duration: 200
                 });
             });
-        }else{
-            $(".cvLnb .nav .navList.rdo .part .subList").stop(true, true).slideDown(200);
         };
     },
     srchPath : function(){
