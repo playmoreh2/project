@@ -15,7 +15,7 @@
                         "working": "N"
                   },{
                         "so_menu": "Title",
-                        "active": true,
+                        "active": false,
                         "data_info": "./guide/resource/template/guide/guide_title.html",
                         "working": "Y"
                   },{
@@ -30,7 +30,7 @@
                         "working": "N"
                   },{
                         "so_menu": "Location",
-                        "active": true,
+                        "active": false,
                         "data_info": "./guide/resource/template/guide/guide_location.html",
                         "working": "Y"
                   },{

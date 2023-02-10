@@ -86,6 +86,7 @@ $(document).ready(function(){
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                window.location.search = "";
         };
         
         // click 이벤트 gnb ajax 호출
@@ -99,28 +100,10 @@ $(document).ready(function(){
                 switch (param){
                     case "menu_summary":
                         // 1번째 summary
-                        comm.ctgParam = "./guide/resource/menu/category/ctg_summary.json";
-                        comm.gnbTemplt = "./guide/resource/template/summary/template_summary.html";
-                        comm.ctgTemplt(comm.ctgParam);
-
-                        comm.dataParam = "./guide/resource/template/summary/template_dashboard.html";
-                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-                        
-                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // page update 호출
                         window.location.search = "?client=summary";
                         break;
                     case "menu_guide":
                         // 2번째 guide
-                        comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
-                        comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
-                        comm.ctgTemplt(comm.ctgParam);
-                        
-                        comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-
-                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // page update 호출
                         window.location.search = "?client=guide";
                         break;
                     case "menu_list":
@@ -147,7 +130,6 @@ $(document).ready(function(){
 
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
-                        window.location.search = "?client=pageList";
                 };
             };
         });
