@@ -275,3 +275,11 @@ cvContainer {position:relative;}
 .cvContainer .cvLnb .nav .navList.rdo {}
 .cvContainer .cvLnb .nav .navList.rdo .part {}
 .cvContainer .cvLnb .nav .navList.rdo .part .subList {padding-left:10px;}
+
+/* 로딩 */
+.loading_wrap {position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.6); z-index:1001;}
+.loading_wrap .loading {display:block; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); overflow:hidden;}
+.loading_wrap .icon {display:block; width:68px; height:24px; margin:0 auto; background:url('../img/logo_red.png') no-repeat 50% 0; background-size:68px auto;}
+.loading_wrap .txt {margin-top:15px; color:#fff; text-align:center;}
+
+.dataTag {width:1px; height:1px;}

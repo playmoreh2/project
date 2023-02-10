@@ -6,6 +6,10 @@ $(document).ready(function(){
         search.depCode = $(".cvContent .cont .page_list tbody").html();
         $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
+        search.srchCtgSet();
+        comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
+        comm.pageLtUpdate();
+
         $(".srch_wrap .cvBtn_srch").unbind("click").bind("click", function(e){
             $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
@@ -21,14 +25,11 @@ $(document).ready(function(){
                 alert("검색어를 입력해주세요.");
             };
         });
-        search.srchCtgSet();
-        comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
-        comm.pageLtUpdate();
     };
     
     // summary, guide, pagelist
     if($("body.cvGuide.search").length == 0){
-        if(window.location.search === "") window.location.search = "?client=summary";
+        // if(window.location.search === "") window.location.search = "?client=summary";
 		search.srchPath();
         // 메뉴 데이터 호출
         comm.ctgCode = $(".cvLnb .navList").html();
@@ -82,7 +83,7 @@ $(document).ready(function(){
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
-                window.location.search = "";
+                // window.location.search = "";
         };
         
         // click 이벤트 gnb ajax 호출
@@ -818,6 +819,16 @@ var comm = {
                 $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
             };
         })
+    },    
+    loadInit : function(){
+        if($(".loading_wrap").length == 0){
+            $("body").append('<div class="loading_wrap"><div class="loading"><div class="icon"></div><p class="txt">데이터 로딩중</p></div></div>');
+        };
+    },
+    loadRemove : function(){
+        if($(".loading_wrap").length > 0){
+            $('.loading_wrap').remove();
+        };
     },
 };
 
@@ -872,6 +883,7 @@ var search = {
     },
     searchFn : function(srchVal){
         if(search.dataArraySrch != null && search.dataArraySrch.length == 0){
+            comm.loadInit();
             search.srchDataCall(); // 검색 데이터 정보 수집
         };
         
@@ -1008,7 +1020,10 @@ var search = {
             
             setTimeout(comm.countState, 100);
             
-            $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
+            if( $(".cvContent .page_list > table tbody > tr").length > 0 ){
+                comm.loadRemove();
+                $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
+            };
         };
     },
     slide : function(){
