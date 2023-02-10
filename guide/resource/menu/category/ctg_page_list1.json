@@ -1,71 +1,71 @@
 {"root_comment":[
-      {
-            "title": "PC",
-            "active": true,
-            "menu" : [
-                {
-                    "so_menu": "공통",
-                    "active": true,
-                    "data_info": "./guide/resource/menu/pageList/pageList_common.json"
-                },{
-                    "so_menu": "마이페이지",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/pageList_menu1.json"
-                },{
-                    "so_menu": "주문",
-                    "active": true,
-                    "data_info": "./guide/resource/menu/pageList/pageList_menu2.json"
-                },{
-                    "so_menu": "회원",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/pageList_menu3.json"
-                },{
-                    "so_menu": "상품상세",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/pageList_menu4.json"
-                },{
-                    "so_menu": "팝업",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/pageList_menu5.json"
-                },{
-                    "so_menu": "pc페이지",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/pageList_menu6.json"
-                }
-            ]
-      },{
-            "title": "MO",
-            "active": true,
-            "menu" : [
-                {
-                    "so_menu": "공통",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/mo_pageList_common.json"
-                },{
-                    "so_menu": "마이페이지",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/mo_pageList_menu1.json"
-                },{
-                    "so_menu": "주문",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/mo_pageList_menu2.json"
-                },{
-                    "so_menu": "회원",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/mo_pageList_menu3.json"
-                },{
-                    "so_menu": "상품상세",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/mo_pageList_menu4.json"
-                },{
-                    "so_menu": "팝업",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/mo_pageList_menu5.json"
-                },{
-                    "so_menu": "웹화면",
-                    "active": false,
-                    "data_info": "./guide/resource/menu/pageList/mo_pageList_menu6.json"
-                }
-            ]
-      }
+    {
+        "title": "PC",
+        "active": true,
+        "menu" : [
+            {
+                "so_menu": "공통",
+                "active": true,
+                "data_info": "./guide/resource/menu/pageList/pageList_common.json"
+            },{
+                "so_menu": "마이페이지",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/pageList_menu1.json"
+            },{
+                "so_menu": "주문",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/pageList_menu2.json"
+            },{
+                "so_menu": "회원",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/pageList_menu3.json"
+            },{
+                "so_menu": "상품상세",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/pageList_menu4.json"
+            },{
+                "so_menu": "팝업",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/pageList_menu5.json"
+            },{
+                "so_menu": "pc페이지",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/pageList_menu6.json"
+            }
+        ]
+    },{
+        "title": "MO",
+        "active": true,
+        "menu" : [
+            {
+                "so_menu": "공통",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/mo_pageList_common.json"
+            },{
+                "so_menu": "마이페이지",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/mo_pageList_menu1.json"
+            },{
+                "so_menu": "주문",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/mo_pageList_menu2.json"
+            },{
+                "so_menu": "회원",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/mo_pageList_menu3.json"
+            },{
+                "so_menu": "상품상세",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/mo_pageList_menu4.json"
+            },{
+                "so_menu": "팝업",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/mo_pageList_menu5.json"
+            },{
+                "so_menu": "웹화면",
+                "active": false,
+                "data_info": "./guide/resource/menu/pageList/mo_pageList_menu6.json"
+            }
+        ]
+    }
 ]}

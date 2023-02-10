@@ -32,8 +32,7 @@ $(document).ready(function(){
     
     // summary, guide, pagelist
     if($("body.cvGuide.search").length == 0){
-        search.srchSet();
-        
+        if(window.location.search === "") window.location.search = "?client=summary";
         // 메뉴 데이터 호출
         comm.ctgCode = $(".cvLnb .navList").html();
         comm.ctgDepCode = $(".cvLnb .navList .subList").html();
@@ -108,6 +107,7 @@ $(document).ready(function(){
                         
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
+                        window.location.search = "?client=summary";
                         break;
                     case "menu_guide":
                         // 2번째 guide
@@ -120,6 +120,7 @@ $(document).ready(function(){
 
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
+                        window.location.search = "?client=guide";
                         break;
                     case "menu_list":
                     case "menu_list list2": // 2번째 page list
@@ -145,6 +146,7 @@ $(document).ready(function(){
 
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                         comm.pageLtUpdate(); // page update 호출
+                        window.location.search = "?client=pageList";
                 };
             };
         });
@@ -606,13 +608,14 @@ var comm = {
             let valChk = Math.ceil(val);
 			let num = 0;
 			let time = (100/val); // 동일한 카운팅 시간 설정
-            
 			var cntNum = setInterval(function(){
-                num++;
-                $(item).find("> em").text(num);
-                $(item).closest(".progress").find(".graph").css({
-                    "width": num+"%"
-                });
+                if(1/time != 0){
+                    num++;
+                    $(item).find("> em").text(num);
+                    $(item).closest(".progress").find(".graph").css({
+                        "width": num+"%"
+                    });
+                }
 
                 if(num == valChk){
                     $(item).find("> em").text(val); // 최종결과 값

@@ -10,7 +10,7 @@
        "pageId": "CMAL30P021",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P021.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "공통",
        "depth2": "검색",
@@ -22,7 +22,7 @@
        "pageId": "CMAL30P022",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P022.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "메인",
        "depth2": "",
@@ -34,7 +34,7 @@
        "pageId": "CMAL30P023",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P023.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "상품",
        "depth2": "",
@@ -46,7 +46,7 @@
        "pageId": "CMAL30P024",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P024.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "pc 전시",
        "depth2": "상품상세1",
@@ -58,7 +58,7 @@
        "pageId": "CMAL30P025",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P025.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "전시",
        "depth2": "상품상세2",
@@ -70,7 +70,7 @@
        "pageId": "CMAL30P026",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P026.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "전시",
        "depth2": "상품상세3",
@@ -82,7 +82,7 @@
        "pageId": "CMAL30P027",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P027.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "회원",
        "depth2": "로그인",
@@ -94,7 +94,7 @@
        "pageId": "CMAL30P028",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P028.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "회원",
        "depth2": "회원가입",
@@ -106,7 +106,7 @@
        "pageId": "CMAL30P029",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P029.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "마이페이지",
        "depth2": "주문내역",
@@ -118,7 +118,7 @@
        "pageId": "CMAL30P0210",
        "comment": "",
        "link": "./src/html/pc/mypage/CMAL30P0210.html",
-       "finish": true
+       "finish": false
    },{
        "depth1": "마이페이지",
        "depth2": "주문내역",
