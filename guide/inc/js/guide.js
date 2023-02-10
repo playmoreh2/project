@@ -554,8 +554,8 @@ var comm = {
     },
     pageLtTxtUpdate : function(e){
         // 추후 수정예정
-        var crumbTxt1 = "";
-        var crumbTxt2 = "";
+        let crumbTxt1 = "";
+        let crumbTxt2 = "";
         
         // crumbTxt1
         if( $(".cvGuide.search .navList.rdo").length > 0 ){ // 검색
@@ -597,24 +597,26 @@ var comm = {
             let valChk = Math.ceil(val);
 			let num = 0;
 			let time = (100/val); // 동일한 카운팅 시간 설정
-			var cntNum = setInterval(function(){
-                if(1/time != 0){
-                    num++;
-                    $(item).find("> em").text(num);
-                    $(item).closest(".progress").find(".graph").css({
-                        "width": num+"%"
-                    });
-                }
+            
+            if(1/time != 0){
+                var cntNum = setInterval(function(){
+                        num++;
+                        $(item).find("> em").text(num);
+                        $(item).closest(".progress").find(".graph").css({
+                            "width": num+"%"
+                        });
+                    
 
-                if(num == valChk){
-                    $(item).find("> em").text(val); // 최종결과 값
-                    clearInterval(cntNum);
-                    if(num == 100){
-                        $(item).find("> em").text(parseInt(val));
-                        $(item).find("> em").addClass("finish");
+                    if(num == valChk){
+                        $(item).find("> em").text(val); // 최종결과 값
+                        clearInterval(cntNum);
+                        if(num == 100){
+                            $(item).find("> em").text(parseInt(val));
+                            $(item).find("> em").addClass("finish");
+                        };
                     };
-                };
-            }, time*10);
+                }, time*10);
+            };
 		});
     },
     copyTo : function(){
