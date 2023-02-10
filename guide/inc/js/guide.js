@@ -23,13 +23,17 @@ $(document).ready(function(){
             };
         });
 
-        $(".navList.rdo input:radio[name=rdo]").bind("change", function(e){
-            comm.pageLtTxtUpdate($(e.target));
-        });
+        // $(".navList.rdo input:radio[name=rdo]").bind("change", function(e){
+        //     comm.pageLtTxtUpdate($(e.target));
+        // });
+
+        search.srchCtgSet();
     };
     
     // summary, guide, pagelist
     if($("body.cvGuide.search").length == 0){
+        search.srchSet();
+        
         // 메뉴 데이터 호출
         comm.ctgCode = $(".cvLnb .navList").html();
         comm.ctgDepCode = $(".cvLnb .navList .subList").html();
@@ -645,7 +649,12 @@ var comm = {
         });  
     },
     dataCall : function(){
-        comm.dataArray = Array.from({ length: $(".cvGnb li [class^='menu_list']").length }, () => []);
+        if($("body.cvGuide.search").length > 0){ // 검색
+            comm.dataArray = Array.from({ length: comm.getParameterName("menuNum") }, () => []);
+        }else{
+            comm.dataArray = Array.from({ length: $(".cvGnb li [class^='menu_list']").length }, () => []);
+        };
+        console.log("search", comm.dataArray);
         for( var i=0; i<$(".cvGnb li [class^='menu_list']").length; i++ ){
             $.ajax({
                 url: "./guide/resource/menu/category/ctg_page_list"+(i+1)+".json"+"?"+Math.round(100000*Math.random()),
@@ -796,6 +805,7 @@ var comm = {
     getParamSrch : function(param){ // get 방식
         // window.location.href="index.html?client="+param;
         window.open("./index.html?client="+param);
+
     },
     getParameterName : function(path){ // parameter value 가져오기
         path = path.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -825,7 +835,6 @@ var search = {
         if(comm.dataArray != null && comm.dataArray.length == 0 && search.dataArraySrch != null && search.dataArraySrch.length == 0){ // data check
             comm.dataCall(); // 기본 데이터 정보 수집
         };
-
         let join0 = [];
         let join1 = [];
         if(comm.dataArray != null && comm.dataArray.length > 0 && search.dataArraySrch.length == 0){ // data check
@@ -1001,6 +1010,33 @@ var search = {
             
             $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
         };
+    },
+    slide : function(){
+        $(".cvLnb .nav .navList.rdo .part > span .ipt[type=radio]").bind("change", function(e){
+            $(e.target).closest(".navList.rdo").find("> .part .subList").stop(true, true).slideUp(200);
+            $(e.target).closest(".part").find("> .subList").stop(true, true).slideDown({
+                duration: 200
+            });
+        });
+    },
+    srchSet : function(){
+        var count = "";
+        for(let i=0; i<$(".cvGnb li .menu_list").length; i++){
+            if(i==0){ count += "age="+$(".cvGnb li .menu_list").length };
+            count += "&menu"+(i+1)+"="+$("#list_"+(i+1)).text();
+        };
+        $(".cvGnb li .menu_search").attr("href", "./search.html?"+count);
+    },
+    srchCtgSet : function(){
+        var srchCtgData = [];
+        var srchCtgCode = $(".cvLnb .navList.rdo").html();
+        for(let i=0; i<comm.getParameterName("age"); i++){
+            srchCtgData.push(comm.getParameterName("menu"+(i+1)));
+        };
+        console.log(srchCtgCode);
+        
+
+        search.slide();
     },
 };
 
