@@ -890,144 +890,146 @@ var search = {
         search.dataArraySrchMenu = [];
         if(search.dataArraySrch != null && search.dataArraySrch.length > 0 && search.dataArraySrchMenu.length == 0){ // data check
             let idxFind = $(".navList.rdo .part > span input:radio[name=rdo]:checked").closest("li.part").index();
-            for( let i=0; i<search.dataArraySrch[idxFind].length; i++ ){
-                console.log( $(".navList.rdo .part:eq("+idxFind+") .subList > li input:radio:checked").val() );
-                search.dataArraySrch[idxFind][i].reduce(function (total, val, idx, array){
-                    switch ( $(".navList.rdo .part:eq("+idxFind+") .subList > li input:radio:checked").val() ){
-                        case "menu":
-                            // 메뉴명 검색
-                            // if( val.depth1 == srchVal || val.depth2 == srchVal || val.depth3 == srchVal || val.depth4 == srchVal ){ // 정확한 글자수 체크
-                            // console.log(`find val.depth1 : "${srchVal}" find index : "${srchVal}" result number : ${val.depth1.indexOf(srchVal)}`);
-                            // if( val.depth1.includes(srchVal) == srchVal || val.depth2.includes(srchVal) == srchVal || val.depth3.includes(srchVal) == srchVal || val.depth4.includes(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
-                            if( val.depth1.match(srchVal) == srchVal || val.depth2.match(srchVal) == srchVal || val.depth3.match(srchVal) == srchVal || val.depth4.match(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
-                                return search.dataArraySrchMenu.push( val );
-                            };
-                            break;
-                        case "id":
-                            // 화면id 검색
-                            if( val.pageId == srchVal ){
-                                return search.dataArraySrchMenu.push( val );
-                            };
-                            break;
-                        case "text":
-                            // 텍스트 검색
-                            $.ajax({
-                                url: val.link,
-                                type: "get",
-                                dataType : "html",
-                                async : false,
-                                cache : false,
-                                success: function(data){
-                                    if( data.search(srchVal) > -1 ){
-                                        console.log(data);
-                                        search.dataArraySrchMenu.push(val);
-                                    };
-                                },
-                                error: function(){
-                                    console.log("json data error (경로가 잘못되었거나 html 파일이 없습니다.) : ", val);
-                                },
-                            });
-                            break;
-                        case "class":
-                            // class 검색
-                            $.ajax({
-                                url: val.link,
-                                type: "get",
-                                dataType : "html",
-                                async : false,
-                                cache : false,
-                                success: function(data){       
-                                    if( $(".dataTag").length == 0 ){
-                                        var dataTag = document.createElement("div");
-                                        dataTag.className = "dataTag";
-                                        document.body.append(dataTag);
-                                    };
-                                    
-                                    $(".dataTag").html( $(data).children() );
-                                },
-                                error: function(){
-                                    console.log("json data error : ", val);
-                                },
-                                complete: function(){
-                                    if( $(".dataTag " + srchVal).length > 0 ){
-                                        search.dataArraySrchMenu.push(val);
-                                    };
-                                    $(".dataTag").html("");
-                                },
-                            });
-                    };
-                }, 0);
-            };
-            
-            if( search.dataArraySrchMenu.length == 0 ){
-                $(".cvContent .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
-            }else{
-                // page list 삽입
-                if( $(".cvGuide.search .cont .page_list").length > 0 ){
-                    // $.each(search.dataArraySrchMenu, function(idx, item){
-                    search.dataArraySrchMenu.forEach(function(item, idx){
-                        if(search.depCode != null && search.dataArraySrchMenu != null){ // html && data 있을 때
-                            $(".cvContent .cont .page_list tbody").append(search.depCode);
-                            console.log(item.depth1);
-                            // 링크
-                            $(".page_list tbody tr").eq(idx).find("td.link > a").attr({
-                                'href':item.link
-                            });
-                            
-                            // text 삽입
-                            $(".page_list tbody tr").eq(idx).find("td.no").append(
-                                idx+1
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_1").append(
-                                item.depth1
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_2").append(
-                                item.depth2
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_3").append(
-                                item.depth3
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.depth_4").append(
-                                item.depth4
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.chk").append(
-                                item.check.toUpperCase()
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.complete").append(
-                                item.complete
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.modify").append(
-                                item.modify
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.pageID").append(
-                                item.pageId
-                            );
-                            $(".page_list tbody tr").eq(idx).find("td.comment").append(
-                                item.comment
-                            );
-                            
-                            // // 완료 페이지 여부
-                            if( item.finish == true ){
-                                $(".page_list tbody tr").eq(idx).addClass("finish");
-                            }else{
-                                $(".page_list tbody tr").eq(idx).addClass("ing");
-                            };
+            setTimeout(function(){
+                for( let i=0; i<search.dataArraySrch[idxFind].length; i++ ){
+                    console.log( $(".navList.rdo .part:eq("+idxFind+") .subList > li input:radio:checked").val() );
+                    search.dataArraySrch[idxFind][i].reduce(function (total, val, idx, array){
+                        switch ( $(".navList.rdo .part:eq("+idxFind+") .subList > li input:radio:checked").val() ){
+                            case "menu":
+                                // 메뉴명 검색
+                                // if( val.depth1 == srchVal || val.depth2 == srchVal || val.depth3 == srchVal || val.depth4 == srchVal ){ // 정확한 글자수 체크
+                                // console.log(`find val.depth1 : "${srchVal}" find index : "${srchVal}" result number : ${val.depth1.indexOf(srchVal)}`);
+                                // if( val.depth1.includes(srchVal) == srchVal || val.depth2.includes(srchVal) == srchVal || val.depth3.includes(srchVal) == srchVal || val.depth4.includes(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
+                                if( val.depth1.match(srchVal) == srchVal || val.depth2.match(srchVal) == srchVal || val.depth3.match(srchVal) == srchVal || val.depth4.match(srchVal) == srchVal ){ // 두 글자 이상 텍스트 체크
+                                    return search.dataArraySrchMenu.push( val );
+                                };
+                                break;
+                            case "id":
+                                // 화면id 검색
+                                if( val.pageId == srchVal ){
+                                    return search.dataArraySrchMenu.push( val );
+                                };
+                                break;
+                            case "text":
+                                // 텍스트 검색
+                                $.ajax({
+                                    url: val.link,
+                                    type: "get",
+                                    dataType : "html",
+                                    async : false,
+                                    cache : false,
+                                    success: function(data){
+                                        if( data.search(srchVal) > -1 ){
+                                            console.log(data);
+                                            search.dataArraySrchMenu.push(val);
+                                        };
+                                    },
+                                    error: function(){
+                                        console.log("json data error (경로가 잘못되었거나 html 파일이 없습니다.) : ", val);
+                                    },
+                                });
+                                break;
+                            case "class":
+                                // class 검색
+                                $.ajax({
+                                    url: val.link,
+                                    type: "get",
+                                    dataType : "html",
+                                    async : false,
+                                    cache : false,
+                                    success: function(data){       
+                                        if( $(".dataTag").length == 0 ){
+                                            var dataTag = document.createElement("div");
+                                            dataTag.className = "dataTag";
+                                            document.body.append(dataTag);
+                                        };
+                                        
+                                        $(".dataTag").html( $(data).children() );
+                                    },
+                                    error: function(){
+                                        console.log("json data error : ", val);
+                                    },
+                                    complete: function(){
+                                        if( $(".dataTag " + srchVal).length > 0 ){
+                                            search.dataArraySrchMenu.push(val);
+                                        };
+                                        $(".dataTag").html("");
+                                    },
+                                });
                         };
-                    });
-                    // });
+                    }, 0);
                 };
-            };
-            
-            setTimeout(comm.countState, 100);
-            
-            if( $(".cvContent .page_list > table tbody > tr").length > 0 ){
-                comm.loadRemove();
-                $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
-            };
+                
+                if( search.dataArraySrchMenu.length == 0 ){
+                    $(".cvContent .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
+                }else{
+                    // page list 삽입
+                    if( $(".cvGuide.search .cont .page_list").length > 0 ){
+                        // $.each(search.dataArraySrchMenu, function(idx, item){
+                        search.dataArraySrchMenu.forEach(function(item, idx){
+                            if(search.depCode != null && search.dataArraySrchMenu != null){ // html && data 있을 때
+                                $(".cvContent .cont .page_list tbody").append(search.depCode);
+                                console.log(item.depth1);
+                                // 링크
+                                $(".page_list tbody tr").eq(idx).find("td.link > a").attr({
+                                    'href':item.link
+                                });
+                                
+                                // text 삽입
+                                $(".page_list tbody tr").eq(idx).find("td.no").append(
+                                    idx+1
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.depth_1").append(
+                                    item.depth1
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.depth_2").append(
+                                    item.depth2
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.depth_3").append(
+                                    item.depth3
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.depth_4").append(
+                                    item.depth4
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.chk").append(
+                                    item.check.toUpperCase()
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.complete").append(
+                                    item.complete
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.modify").append(
+                                    item.modify
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.pageID").append(
+                                    item.pageId
+                                );
+                                $(".page_list tbody tr").eq(idx).find("td.comment").append(
+                                    item.comment
+                                );
+                                
+                                // // 완료 페이지 여부
+                                if( item.finish == true ){
+                                    $(".page_list tbody tr").eq(idx).addClass("finish");
+                                }else{
+                                    $(".page_list tbody tr").eq(idx).addClass("ing");
+                                };
+                            };
+                        });
+                        // });
+                    };
+                };
+                
+                setTimeout(comm.countState, 100);
+                
+                if( $(".cvContent .page_list > table tbody > tr").length > 0 ){
+                    comm.loadRemove();
+                    $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
+                };
+            }, 600);
         };
     },
     slide : function(){
-        $(".cvLnb .nav .navList.rdo .part:eq(0) .subList").stop(true, true).slideDown(200);
+        $(".cvLnb .nav .navList.rdo .part:eq(0) .subList").stop(true, true).slideDown(200); 
         if( $(".cvLnb .nav .navList.rdo .part").length > 1 ){
             $(".cvLnb .nav .navList.rdo .part > span .ipt[type=radio]").bind("change", function(e){
                 $(e.target).closest(".navList.rdo").find("> .part .subList").stop(true, true).slideUp(200);
