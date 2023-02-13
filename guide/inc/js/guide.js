@@ -157,8 +157,8 @@ var comm = {
             async : false,
             cache : false,
             success: function(data){
-                const listData = data["root_comment"];
-                // console.log('통신 성공', listData);
+                const infoData = data["root_comment"];
+                // console.log('통신 성공', infoData);
                 
                 $(".cvLnb .nav > h2").text($(".cvGnb li.on").text());
 
@@ -174,58 +174,59 @@ var comm = {
                 };
                 
                 if(comm.ctgPageLtTag[comm.ctgIdx].length == 0 || ctgParam.indexOf("/category/ctg_page_list") == -1){ // page list 접속이 처음 또는 page list 외 접속할 때
-                    $.each(listData, function(idx, item){
-                        if(comm.ctgCode !== "" && comm.ctgDepCode !== "" && listData != null){ // html && data 있을 때
+                    // $.each(infoData, function(idx, item){
+                    infoData.forEach(function(item, idx){
+                        if(comm.ctgCode !== "" && comm.ctgDepCode !== "" && infoData != null){ // html && data 있을 때
                             $(".cvLnb .navList").append(comm.ctgCode);
                             $(".cvLnb .navList > li").eq(idx).find(".subList").empty();
                             
                             // text 삽입
                             $(".cvLnb .navList > li").eq(idx).find("button.tit").append(
-                                listData[idx].title
+                                infoData[idx].title
                             );
-                            if( listData[idx].active != undefined && listData[idx].data_info != undefined ){
+                            if( infoData[idx].active != undefined && infoData[idx].data_info != undefined ){
                                 // class 추가
-                                if( listData[idx].active == true ){
+                                if( infoData[idx].active == true ){
                                     $(".cvLnb .navList > li").removeClass("on");
                                     $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
                                 };
                                 // attr 추가
                                 $(".cvLnb .navList > li").eq(idx).find("button.tit").attr({
-                                    "data-info": listData[idx].data_info,
-                                    "title": listData[idx].title+" 메뉴 보기"
+                                    "data-info": infoData[idx].data_info,
+                                    "title": infoData[idx].title+" 메뉴 보기"
                                 });
                             };
                             
                             // 서브메뉴가 있을 때 실행
-                            if( listData[idx].menu != null && listData[idx].menu.length > 0 ){
+                            if( infoData[idx].menu != null && infoData[idx].menu.length > 0 ){
                                 // 중카 on class 추가
-                                if( listData[idx].active == true ){
+                                if( infoData[idx].active == true ){
                                     $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
                                 };
                                 
-                                for(let i=0; i<listData[idx].menu.length; i++){
+                                for(let i=0; i<infoData[idx].menu.length; i++){
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
                                     // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
     
                                     // class 추가
-                                    if( listData[idx].menu[i].active == true ){
+                                    if( infoData[idx].menu[i].active == true ){
                                         $(".cvLnb .navList > li").find(".subList > li").removeClass("on");
                                         $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li").eq(i).addClass("on");
                                     };
                                     // attr 추가
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").attr({
-                                        "data-info": listData[idx].menu[i].data_info,
-                                        "title": listData[idx].menu[i].so_menu+" 메뉴 보기"
+                                        "data-info": infoData[idx].menu[i].data_info,
+                                        "title": infoData[idx].menu[i].so_menu+" 메뉴 보기"
                                     });                                    
                                     // text 삽입
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").append(
-                                        listData[idx].menu[i].so_menu
+                                        infoData[idx].menu[i].so_menu
                                     );
 
                                     // guide 작업 진행 사항
                                     if($(".cvGnb li.on .menu_guide").length > 0){
                                         $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+") .progressInfo").text(function(idx, current){
-                                            if(listData[idx].menu[i].working == "N"){
+                                            if(infoData[idx].menu[i].working == "N"){
                                                 return "작업중"
                                             }else{
                                                 return null;
@@ -240,6 +241,7 @@ var comm = {
                             console.log("Category Page List 외 호출");
                         };
                     });
+                    // });
                 };
 
                 // 메뉴 활성화 하지 않을 경우 디폴트 첫 번째 메뉴 활성화
@@ -268,7 +270,7 @@ var comm = {
                                 async : false,
                                 cache : false,
                                 success: function(data){
-                                    let infoData = data["root_comment"];
+                                    const infoData = data["root_comment"];
                                     let cnt = 0;
                                     for(let j=0; j<infoData.length; j++){
                                         cnt += infoData[j].finish;
@@ -325,23 +327,24 @@ var comm = {
                         switch (extenType){
                             case "json":
                                 // json type
-                                const listData = data["root_comment"];
+                                const infoData = data["root_comment"];
                                 
                                 // page list type
                                 if( $(".cvContent .cont .page_list tbody").length > 0 ){
                                     var depCode = $(".cvContent .cont .page_list tbody").html();
-                                    // console.log('통신 성공', listData, code, depCode);
+                                    // console.log('통신 성공', infoData, code, depCode);
                                     $(".cvContent .cont .page_list tbody").empty(); // 마크업 삭제
                                     
-                                    $.each(listData, function(idx, item){
+                                    // $.each(infoData, function(idx, item){
+                                    infoData.forEach(function(item, idx){
                                         // console.log('통신 성공', item, idx);
-                                        if(code != null && depCode != null && listData != null){ // html && data 있을 때
+                                        if(code != null && depCode != null && infoData != null){ // html && data 있을 때
                                             $(".cvContent .cont .page_list tbody").append(depCode);
-                                            // console.log("UI Data", listData[idx].link, $(".page_list tbody tr").eq(idx));
+                                            // console.log("UI Data", infoData[idx].link, $(".page_list tbody tr").eq(idx));
                                             
                                             // 링크
                                             $(".page_list tbody tr").eq(idx).find("td.link > a").attr({
-                                                'href':listData[idx].link
+                                                'href':infoData[idx].link
                                             });
                                             
                                             // text 삽입
@@ -349,41 +352,42 @@ var comm = {
                                                 idx+1
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.depth_1").append(
-                                                listData[idx].depth1
+                                                infoData[idx].depth1
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.depth_2").append(
-                                                listData[idx].depth2
+                                                infoData[idx].depth2
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.depth_3").append(
-                                                listData[idx].depth3
+                                                infoData[idx].depth3
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.depth_4").append(
-                                                listData[idx].depth4
+                                                infoData[idx].depth4
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.chk").append(
-                                                listData[idx].check.toUpperCase()
+                                                infoData[idx].check.toUpperCase()
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.complete").append(
-                                                listData[idx].complete
+                                                infoData[idx].complete
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.modify").append(
-                                                listData[idx].modify
+                                                infoData[idx].modify
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.pageID").append(
-                                                listData[idx].pageId
+                                                infoData[idx].pageId
                                             );
                                             $(".page_list tbody tr").eq(idx).find("td.comment").append(
-                                                listData[idx].comment
+                                                infoData[idx].comment
                                             );
                                             
                                             // 완료 페이지 여부
-                                            if( listData[idx].finish == true ){
+                                            if( infoData[idx].finish == true ){
                                                 $(".page_list tbody tr").eq(idx).addClass("finish");
                                             }else{
                                                 $(".page_list tbody tr").eq(idx).addClass("ing");
                                             };
                                         };
                                     });
+                                    // });
                                     
                                     comm.pageLtMerge();
 
@@ -659,23 +663,25 @@ var comm = {
                 async : false,
                 cache : false,
                 success: function(data){
-                    const listData = data["root_comment"];
-                    // console.log('통신 성공',  listData);
+                    const infoData = data["root_comment"];
+                    // console.log('통신 성공',  infoData);
                     let dataGroup0 = [];
                     let dataGroup1 = [];
-                    $.each(listData, function(idx, item){
-                        if(listData != null){ // data 있을 때
-                            for(let j=0; j<listData[idx].menu.length; j++){
+                    // $.each(infoData, function(idx, item){
+                    infoData.forEach(function(item, idx){
+                        if(infoData != null){ // data 있을 때
+                            for(let j=0; j<infoData[idx].menu.length; j++){
                                 if(idx == 0){
-                                    dataGroup0.push( listData[idx].menu[j].data_info );
+                                    dataGroup0.push( infoData[idx].menu[j].data_info );
                                 }else if(idx == 1){
-                                    dataGroup1.push( listData[idx].menu[j].data_info );
+                                    dataGroup1.push( infoData[idx].menu[j].data_info );
                                 };
                             };                
                         }else{
                             alert("재로딩");
                         };
                     });
+                    // });
                     comm.dataArray[i] = [dataGroup0, dataGroup1];
                 },
                 error: function(){
@@ -710,12 +716,12 @@ var comm = {
                             async : false,
                             cache : false,
                             success: function(data){
-                                let listData = data["root_comment"];
-                                for(let h=0; h<listData.length; h++){
+                                const infoData = data["root_comment"];
+                                for(let h=0; h<infoData.length; h++){
                                     if(i == 0){
-                                        join0.push(listData[h].finish);
+                                        join0.push(infoData[h].finish);
                                     }else if(i == 1){
-                                        join1.push(listData[h].finish);
+                                        join1.push(infoData[h].finish);
                                     };
                                 };
                                 
@@ -856,12 +862,12 @@ var search = {
                             async : false,
                             cache : false,
                             success: function(data){
-                                let listData = data["root_comment"];
-                                for(let h=0; h<listData.length; h++){
+                                const infoData = data["root_comment"];
+                                for(let h=0; h<infoData.length; h++){
                                     if(i == 0){
-                                        join0.push(listData[h]);
+                                        join0.push(infoData[h]);
                                     }else if(i == 1){
-                                        join1.push(listData[h]);
+                                        join1.push(infoData[h]);
                                     };
                                 };
                                 
