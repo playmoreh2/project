@@ -7,7 +7,7 @@
                         "so_menu": "Text",
                         "active": true,
                         "data_info": "./guide/resource/template/guide/guide_text.html", 
-                        "working": "Y"
+                        "working": "N"
                   },{
                         "so_menu": "TextList",
                         "active": false,
@@ -17,7 +17,7 @@
                         "so_menu": "Title",
                         "active": false,
                         "data_info": "./guide/resource/template/guide/guide_title.html",
-                        "working": "Y"
+                        "working": "N"
                   },{
                         "so_menu": "Button",
                         "active": false,
@@ -32,7 +32,7 @@
                         "so_menu": "Location",
                         "active": false,
                         "data_info": "./guide/resource/template/guide/guide_location.html",
-                        "working": "Y"
+                        "working": "N"
                   },{
                         "so_menu": "Table",
                         "active": false,
