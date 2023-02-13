@@ -1,5 +1,7 @@
 $(document).ready(function(){
     comm.switchMode(); // 배경
+
+    comm.iptTexDel(); // 배경
     
     // 검색
     if($("body.cvGuide.search").length > 0){
@@ -837,6 +839,38 @@ var comm = {
             $('.loading_wrap').remove();
         };
     },
+    iptTexDel : function(){
+        // 공통 텍스트필드 삭제 스크립트
+        if( $(".ipt_wrap .ipt.del").length > 0 ){
+            $(".ipt_wrap .ipt.del").each(function(idx, item){                
+                $(item).after('<button type="button" class="btn_del" tabindex=-1><span class="blind">해당 필드 입력값 삭제</span></button>');
+
+                $(item).closest(".ipt_wrap").find(".btn_del").bind("mousedown", function(e){
+                    e.preventDefault();
+                    $(this).closest(".ipt_wrap").find(".ipt").val("").focus();
+                    $(this).closest(".ipt_wrap").removeClass("on");
+                });
+                
+                $(item).bind({
+                    "change paste keydown keyup" : function(){
+                        if($(this).val() != ""){
+                            $(this).closest(".ipt_wrap").addClass("on");
+                        }else {
+                            $(this).parent(".ipt_wrap").removeClass("on");
+                        }
+                    },
+                    "focusin" : function(){
+                        if($(this).val() != ""){
+                            $(this).closest(".ipt_wrap").addClass("on");
+                        }
+                    },
+                    "focusout" : function(){
+                        $(this).closest(".ipt_wrap").removeClass("on");
+                    }
+                });
+            });
+        };
+    }
 };
 
 // 검색
@@ -965,6 +999,12 @@ var search = {
                                         $(".dataTag").html("");
                                     },
                                 });
+                                break;
+                            case "comment":
+                                // 비고란 검색
+                                if( val.comment.match(srchVal) == srchVal ){
+                                    return search.dataArraySrchMenu.push( val );
+                                };
                         };
                     }, 0);
                 };
