@@ -464,7 +464,7 @@ var comm = {
             };
         });
     },
-    pageLtMerge : function() {
+    pageLtMerge : function(){
 		// variable 정의
 		var first = true;
 		var prevRowspan1 = 1;
@@ -476,20 +476,16 @@ var comm = {
 		var rows = $(".page_list tbody").children();
         // console.log(rows.length);
 
-		for (var i = 0; i < rows.length; i++ ) {
+		for(let i=0; i<rows.length; i++){
 			// first row
-			if (first) {
+			if(first == true){
 				prevRow = rows[i];
 				prevCell1 = $(prevRow).find("td").eq(1); // td depth_1
 				prevCell2 = $(prevRow).find("td").eq(2); // td depth_2
 
-				// console.log(rows);
-				// console.log(prevCell1);
-				// console.log(prevCell2);
-
 				first = false;
 				continue;
-			}
+			};
 			var row = rows[i]; // row
 			var tdList = $(row).find("td"); // row > td 리스트
 
@@ -500,26 +496,25 @@ var comm = {
 			var secondCellText = $(secondCell).text();
 
 			// 두 번째 row 부터 텍스트 비교
-			if (prevCell1.text() == firstCellText) {
-				if (prevCell2.text() == secondCellText) { // 값 비교
+			if(prevCell1.text() == firstCellText){ // 1번째 값 비교
+				if(prevCell2.text() == secondCellText){ // 2번째 값 비교
 					prevRowspan2++; // 중복되는 값이 있으므로 rowspan +1
 					$(prevCell2).attr("rowspan", prevRowspan2); // 첫 번째 row의 두 번째 cell에 rowspan 추가
 					$(secondCell).remove(); // 중복 cell element 삭제
-				} else {
+				}else{
 					prevRowspan2 = 1;
 					prevCell2 = secondCell;
-				}
+				};
 				prevRowspan1++;
 				$(prevCell1).attr("rowspan", prevRowspan1);
 				$(firstCell).remove();
-			}
-			else {
+			}else{
 				prevRowspan1 = 1;
 				prevRowspan2 = 1;
 				prevCell1 = firstCell;
 				prevCell2 = secondCell;
-			}
-		}
+			};
+		};
 	},
     pageLtUpdate : function(){
         // summary 이벤트
