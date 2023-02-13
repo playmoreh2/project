@@ -29,8 +29,9 @@ $(document).ready(function(){
     
     // summary, guide, pagelist
     if($("body.cvGuide.search").length == 0){
-        // if(window.location.search === "") window.location.search = "?client=summary";
+        // 검색 url 이동
 		search.srchPath();
+        
         // 메뉴 데이터 호출
         comm.ctgCode = $(".cvLnb .navList").html();
         comm.ctgDepCode = $(".cvLnb .navList .subList").html();
@@ -843,6 +844,7 @@ var search = {
     dataArraySrch : [],
     dataArraySrchMenu : [],
     depCode : "",
+    time : 600,
     srchDataCall : function(){
         if(comm.dataArray != null && comm.dataArray.length == 0 && search.dataArraySrch != null && search.dataArraySrch.length == 0){ // data check
             comm.dataCall(); // 기본 데이터 정보 수집
@@ -889,8 +891,9 @@ var search = {
     },
     searchFn : function(srchVal){
         if(search.dataArraySrch != null && search.dataArraySrch.length == 0){
-            comm.loadInit();
             search.srchDataCall(); // 검색 데이터 정보 수집
+            comm.loadInit();
+            search.time = 10;
         };
         
         search.dataArraySrchMenu = [];
@@ -1034,7 +1037,7 @@ var search = {
                     comm.loadRemove();
                     $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
                 };
-            }, 600);
+            }, search.time);
         };
     },
     slide : function(){
