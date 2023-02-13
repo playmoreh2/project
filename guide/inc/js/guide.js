@@ -959,6 +959,10 @@ var search = {
                         };
                     }, 0);
                 };
+
+                if($(".dataTag").length > 0){
+                    $(".dataTag").remove();
+                };
                 
                 if( search.dataArraySrchMenu.length == 0 ){
                     $(".cvContent .page_list > table tbody").html('<tr><td colspan="11"><p class="noData">검색한 데이터를 찾지 못하였습니다.</p></td></tr>');
@@ -1019,9 +1023,8 @@ var search = {
                     };
                 };
                 
-                setTimeout(comm.countState, 100);
-                
                 if( $(".cvContent .page_list > table tbody > tr").length > 0 ){
+                    setTimeout(comm.countState, 100);
                     comm.loadRemove();
                     $(".srch_wrap button.cvBtn_srch").attr("disabled", false);
                 };
