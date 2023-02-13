@@ -165,7 +165,7 @@ var comm = {
                 $(".cvLnb .navList").empty(); // 마크업 삭제
                 
                 if( comm.ctgPageLtTag.length == 0 ){
-                    for( var i=0; i<$(".cvGnb li .menu_list").length; i++ ){
+                    for(let i=0; i<$(".cvGnb li .menu_list").length; i++){
                         comm.ctgPageLtTag.splice(0, 0, "");
                     };
                 };
@@ -203,7 +203,7 @@ var comm = {
                                     $(".cvLnb .navList > li:eq("+idx+")").addClass("on");
                                 };
                                 
-                                for( var i=0; i<listData[idx].menu.length; i++ ){
+                                for(let i=0; i<listData[idx].menu.length; i++){
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
                                     // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
     
@@ -260,7 +260,7 @@ var comm = {
                     
                     // $.each(comm.dataArray[comm.ctgIdx], function(idx, item){
                     comm.dataArray[comm.ctgIdx].forEach(function(item, idx){
-                        for( var i=0; i<item.length; i++ ){
+                        for(let i=0; i<item.length; i++){
                             $.ajax({
                                 url: item[i]+"?"+Math.round(100000*Math.random()),
                                 type: "get",
@@ -270,7 +270,7 @@ var comm = {
                                 success: function(data){
                                     let infoData = data["root_comment"];
                                     let cnt = 0;
-                                    for( var j=0; j<infoData.length; j++ ){
+                                    for(let j=0; j<infoData.length; j++){
                                         cnt += infoData[j].finish;
                                         // console.log(infoData, "메뉴별 완료 개수");
                                     };
@@ -404,7 +404,7 @@ var comm = {
                                         if( $(".cvGnb li .menu_list").length > 1 ){ // 채널 2개 이상부터 for문 실행
                                             const dashTag = $(".dashboard_area").html();
                                             $(".dashboard_area .section").remove(); 
-                                            for( var i=0; i<$(".cvGnb li .menu_list").length; i++ ){
+                                            for(let i=0; i<$(".cvGnb li .menu_list").length; i++){
                                                 $(".dashboard_area").append(dashTag);
                                                 $(".dashboard_area .section:eq("+i+") .tit").text( $(".cvGnb li .menu_list#list_"+(i+1)).text()+" 퍼블리싱 진척률" );
                                             };
@@ -622,7 +622,7 @@ var comm = {
     },
     copyTo : function(){
         if( $(".page_guide .code_view .code xmp").length > 0 ){
-            for( var i=0; i<$(".cvGuide_area").length; i++ ){
+            for(let i=0; i<$(".cvGuide_area").length; i++){
                 $(".cvGuide_area:eq("+i+") .code_view .code xmp").html($(".cvGuide_area:eq("+i+") .cvGuide_view .code").html());
             };
         };
@@ -650,8 +650,8 @@ var comm = {
             comm.dataArray = Array.from({ length: $(".cvGnb li [class^='menu_list']").length }, () => []);
         };
         console.log("search", comm.dataArray);
-        // for( var i=0; i<$(".cvGnb li [class^='menu_list']").length; i++ ){
-		for( let i=0; i<comm.dataArray.length; i++ ){
+        // for( let i=0; i<$(".cvGnb li [class^='menu_list']").length; i++ ){
+		for(let i=0; i<comm.dataArray.length; i++){
             $.ajax({
                 url: "./guide/resource/menu/category/ctg_page_list"+(i+1)+".json"+"?"+Math.round(100000*Math.random()),
                 type: "get",
@@ -665,10 +665,10 @@ var comm = {
                     let dataGroup1 = [];
                     $.each(listData, function(idx, item){
                         if(listData != null){ // data 있을 때
-                            for( let j=0; j<listData[idx].menu.length; j++ ){
-                                if( idx == 0 ){
+                            for(let j=0; j<listData[idx].menu.length; j++){
+                                if(idx == 0){
                                     dataGroup0.push( listData[idx].menu[j].data_info );
-                                }else if( idx == 1 ){
+                                }else if(idx == 1){
                                     dataGroup1.push( listData[idx].menu[j].data_info );
                                 };
                             };                
@@ -700,8 +700,8 @@ var comm = {
             comm.dataArray.forEach(function(item, idx){
                 let join0 = [];
                 let join1 = [];
-                for( var i=0; i<item.length; i++ ){
-                    for( var j=0; j<item[i].length; j++ ){
+                for(let i=0; i<item.length; i++){
+                    for(let j=0; j<item[i].length; j++){
                         // console.log( item[i][j] );
                         $.ajax({
                             url: item[i][j]+"?"+Math.round(100000*Math.random()),
@@ -711,10 +711,10 @@ var comm = {
                             cache : false,
                             success: function(data){
                                 let listData = data["root_comment"];
-                                for( var h=0; h<listData.length; h++ ){
-                                    if( i == 0 ){
+                                for(let h=0; h<listData.length; h++){
+                                    if(i == 0){
                                         join0.push(listData[h].finish);
-                                    }else if( i == 1 ){
+                                    }else if(i == 1){
                                         join1.push(listData[h].finish);
                                     };
                                 };
@@ -741,8 +741,8 @@ var comm = {
         // 배열에서 "true" 개수 구하기
         comm.finishNum = Array.from({ length: comm.dataArrayFnsh.length }, () => []);
         comm.totalNum = Array.from({ length: comm.dataArrayFnsh.length }, () => []);
-        for( var i=0; i<comm.dataArrayFnsh.length; i++ ){
-            for( var j=0; j<comm.dataArrayFnsh[i].length; j++ ){
+        for(let i=0; i<comm.dataArrayFnsh.length; i++){
+            for(let j=0; j<comm.dataArrayFnsh[i].length; j++){
                 comm.finishNum[i].push(comm.dataArrayFnsh[i][j].reduce((cnt, element) => cnt + (true === element), 0));
                 comm.totalNum[i].push(comm.dataArrayFnsh[i][j].length);
                 
@@ -760,7 +760,7 @@ var comm = {
             $(".cvGuide .total .total_count").each(function(idx, item){
                 let totalData0 = 0; // 전체 완료 개수
                 let totalData1 = 0; // 전체 개수
-                for( var i=0; i<comm.dataArrayFnsh[idx].length; i++ ){
+                for(let i=0; i<comm.dataArrayFnsh[idx].length; i++){
                     $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
                         height: ((comm.finishNum[idx][i]/comm.totalNum[idx][i])*100).toFixed(1)+"%",
                         opacity: 1
@@ -847,8 +847,8 @@ var search = {
             comm.dataArray.forEach(function(item, idx){
                 let join0 = [];
                 let join1 = [];
-                for( var i=0; i<item.length; i++ ){
-                    for( var j=0; j<item[i].length; j++ ){
+                for(let i=0; i<item.length; i++){
+                    for(let j=0; j<item[i].length; j++){
                         $.ajax({
                             url: item[i][j]+"?"+Math.round(100000*Math.random()),
                             type: "get",
@@ -857,10 +857,10 @@ var search = {
                             cache : false,
                             success: function(data){
                                 let listData = data["root_comment"];
-                                for( var h=0; h<listData.length; h++ ){
-                                    if( i == 0 ){
+                                for(let h=0; h<listData.length; h++){
+                                    if(i == 0){
                                         join0.push(listData[h]);
-                                    }else if( i == 1 ){
+                                    }else if(i == 1){
                                         join1.push(listData[h]);
                                     };
                                 };
@@ -891,7 +891,7 @@ var search = {
         if(search.dataArraySrch != null && search.dataArraySrch.length > 0 && search.dataArraySrchMenu.length == 0){ // data check
             let idxFind = $(".navList.rdo .part > span input:radio[name=rdo]:checked").closest("li.part").index();
             setTimeout(function(){
-                for( let i=0; i<search.dataArraySrch[idxFind].length; i++ ){
+                for(let i=0; i<search.dataArraySrch[idxFind].length; i++){
                     console.log( $(".navList.rdo .part:eq("+idxFind+") .subList > li input:radio:checked").val() );
                     search.dataArraySrch[idxFind][i].reduce(function (total, val, idx, array){
                         switch ( $(".navList.rdo .part:eq("+idxFind+") .subList > li input:radio:checked").val() ){
@@ -1090,7 +1090,7 @@ var acco = {
 	accoInit : function(){ // 초기화
         $(".cvLnb .navList > li.part > .tit").addClass("cvBtn_acco");
 
-        for( var i=0; i<$(".cvLnb .navList > li.part").length; i++ ){
+        for(let i=0; i<$(".cvLnb .navList > li.part").length; i++){
             if($(".cvLnb .navList > li.part:eq("+i+")").hasClass("on") == true){
                 $(".cvLnb .navList > li.part:eq("+i+") > .tit").append('<span class="blind">접기</span>');
                 $(".cvLnb .navList > li.part:eq("+i+")").find(".body").stop(true, true).slideDown(200);
