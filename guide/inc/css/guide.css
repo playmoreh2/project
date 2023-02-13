@@ -170,8 +170,8 @@ cvContainer {position:relative;}
 .cvContainer .cvLnb .nav > ul > li > button:hover, 
 .cvContainer .cvLnb .nav > ul > li > button:focus {color:var(--c-text-1);}
 
-.cvContainer .cvLnb .nav > ul > li > button.cvBtn_acco:after {content:''; position:absolute; top:10px; width:10px; height:10px; margin-top:-4px; border:1px solid var(--c-divider); border-width:0 2px 2px 0; transition:all 0.25s; right:18px; transform:translateY(-50%) rotate(45deg);}
-.cvContainer .cvLnb .nav > ul > li.on > button.cvBtn_acco:after {transform:translateY(-50%) rotate(-135deg);}
+.cvContainer .cvLnb .nav > ul > li > button.cvBtn_acco:after {content:''; position:absolute; top:50%; width:10px; height:10px; margin-top:-4px; border:1px solid var(--c-divider); border-width:0 2px 2px 0; transition:all 0.25s; right:2px; transform:translateY(-50%) rotate(45deg);}
+.cvContainer .cvLnb .nav > ul > li.on > button.cvBtn_acco:after {margin-top:0; transform:translateY(-50%) rotate(-135deg);}
 
 /* for 2depth */
 .cvContainer .cvLnb .nav > ul > li > .subList {display:none; margin:12px 0;}
