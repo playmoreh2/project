@@ -426,7 +426,7 @@ var comm = {
                                             $(".dashboard_area .section").remove(); 
                                             for(let i=0; i<$(".cvGnb li .menu_list").length; i++){
                                                 $(".dashboard_area").append(dashTag);
-                                                $(".dashboard_area .section:eq("+i+") .tit").text( $(".cvGnb li .menu_list#list_"+(i+1)).text()+" 퍼블리싱 진척률" );
+                                                $(".dashboard_area .section:eq("+i+") .tit").text( $(".cvGnb li .menu_list#list_"+(i+1)).text()+" 진척률" );
                                             };
                                         };
 
