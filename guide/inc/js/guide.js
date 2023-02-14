@@ -80,6 +80,34 @@ $(document).ready(function(){
                 comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
                 break;
+            case "pageList2":
+                $(".cvGnb > ul > li").removeClass("on");
+                $(".cvGnb li button.menu_list").closest("li").eq(1).addClass("on");
+                
+                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list2.json";
+                comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
+                comm.ctgTemplt(comm.ctgParam);
+                
+                comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                
+                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                break;
+            case "pageList2":
+                $(".cvGnb > ul > li").removeClass("on");
+                $(".cvGnb li button.menu_list").closest("li").eq(2).addClass("on");
+                
+                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list3.json";
+                comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
+                comm.ctgTemplt(comm.ctgParam);
+                
+                comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                
+                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                break;
             default :
                 // 기본
                 comm.ctgTemplt(comm.ctgParam);
@@ -107,29 +135,14 @@ $(document).ready(function(){
                         window.location.search = "?client=guide";
                         break;
                     case "menu_list":
+                        window.location.search = "?client=pageList";
+                        break;
                     case "menu_list list2": // 2번째 page list
+                        window.location.search = "?client=pageList2";
+                        break;
                     case "menu_list list3": // 3번째 page list
-                        // 3번째 page list
-                        if( $(".cvGnb li [id^='list_']").length > 1 ){ // page list가 2개 이상 부터
-                            if( $(e.target).attr("id").split('_').pop() == 1 ){ // page list 1개
-                                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
-                            }else if( $(e.target).attr("id").split('_').pop() == 2 ){ // page list 2개
-                                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list2.json";
-                            }else if( $(e.target).attr("id").split('_').pop() == 3 ){ // page list 3개
-                                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list3.json";
-                            };
-                        }else{ // page list 1개
-                            comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
-                        };
-                        
-                        comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
-                        comm.ctgTemplt(comm.ctgParam);
-
-                        comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-
-                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // page update 호출
+                        window.location.search = "?client=pageList3";
+                        break;
                 };
             };
         });
@@ -1097,7 +1110,7 @@ var search = {
     srchCtgSet : function(){
         var srchCtgCode = $(".cvLnb .navList.rdo").html();
         $(".cvLnb .navList.rdo").empty();
-        for(let i=0; i<comm.getParameterName("age"); i++){            
+        for(let i=0; i<comm.getParameterName("age"); i++){
             $(".cvLnb .navList.rdo").append(srchCtgCode);
             $(".cvLnb .navList.rdo .part:eq("+i+") label.tit").text(comm.getParameterName("menu"+(i+1)));
             
