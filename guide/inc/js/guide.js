@@ -110,7 +110,8 @@ $(document).ready(function(){
                 switch(param){
                     case "menu_summary":
                         // 1번째 summary
-                        if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=summary";
+                        // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=summary";
+                        if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=summary");
 
                         comm.ctgParam = "./guide/resource/menu/category/ctg_summary.json";
                         comm.gnbTemplt = "./guide/resource/template/summary/template_summary.html";
@@ -124,7 +125,8 @@ $(document).ready(function(){
                         break;
                     case "menu_guide":
                         // 2번째 guide
-                        if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=guide";
+                        // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=guide";
+                        if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=guide");
 
                         comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
                         comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
@@ -142,17 +144,21 @@ $(document).ready(function(){
                         // 3번째 page list
                         if( $(".cvGnb li [id^='list_']").length > 1 ){ // page list가 2개 이상 부터
                             if( $(e.target).attr("id").split('_').pop() == 1 ){ // page list 1개
-                                if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList";
+                                // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList";
+                                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList");
                                 comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
                             }else if( $(e.target).attr("id").split('_').pop() == 2 ){ // page list 2개
-                                if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList2";
+                                // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList2";
+                                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList2");
                                 comm.ctgParam = "./guide/resource/menu/category/ctg_page_list2.json";
                             }else if( $(e.target).attr("id").split('_').pop() == 3 ){ // page list 3개
-                                if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList3";
+                                // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList3";
+                                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList3");
                                 comm.ctgParam = "./guide/resource/menu/category/ctg_page_list3.json";
                             };
                         }else{ // page list 1개
-                            if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList";
+                            // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList";
+                            if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList");
                             comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
                         };
                           
