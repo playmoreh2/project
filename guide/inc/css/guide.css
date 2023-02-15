@@ -250,6 +250,7 @@ cvContainer {position:relative;}
 .cvContent .page_list .progress .count_wrap .count > em {font-size:15px; font-weight:700;}
 .cvContent .page_list .progress .count_wrap .count > em.finish {color:var(--c-brand);}
 .cvContent .page_list .txt_ing {color:var(--c-ing);}
+.cvContent .page_list tbody tr td.hover {background-color:var(--c-bg-mute);}
 
 /* 공통 input placeholder */
 input::placeholder {font-size:16px; color:#999;}

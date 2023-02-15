@@ -100,11 +100,28 @@ $(document).ready(function(){
                 switch (param){
                     case "menu_summary":
                         // 1번째 summary
-                        window.location.search = "?client=summary";
+                        $(".cvGnb > ul > li").removeClass("on");
+                        $(".cvGnb li button.menu_summary").closest("li").addClass("on");
+
+                        comm.ctgTemplt(comm.ctgParam);
+                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                        comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
                         break;
                     case "menu_guide":
                         // 2번째 guide
-                        window.location.search = "?client=guide";
+                        $(".cvGnb > ul > li").removeClass("on");
+                        $(".cvGnb li button.menu_guide").closest("li").addClass("on");
+
+                        comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
+                        comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
+                        comm.ctgTemplt(comm.ctgParam);
+
+                        comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                        
+                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                        comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
                         break;
                     case "menu_list":
                     case "menu_list list2": // 2번째 page list
@@ -465,7 +482,6 @@ var comm = {
         });
     },
     pageLtMerge : function(){
-		// variable 정의
 		var first = true;
 		var prevRowspan1 = 1;
 		var prevCell1 = null;
@@ -501,6 +517,7 @@ var comm = {
 					prevRowspan2++; // 중복되는 값이 있으므로 rowspan +1
 					$(prevCell2).attr("rowspan", prevRowspan2); // 첫 번째 row의 두 번째 cell에 rowspan 추가
 					$(secondCell).remove(); // 중복 cell element 삭제
+                    $(prevCell2).addClass("dep2");
 				}else{
 					prevRowspan2 = 1;
 					prevCell2 = secondCell;
@@ -508,6 +525,8 @@ var comm = {
 				prevRowspan1++;
 				$(prevCell1).attr("rowspan", prevRowspan1);
 				$(firstCell).remove();
+                $(prevCell1).addClass("dep1");
+                $(prevCell1).closest("tr").addClass("merge");
 			}else{
 				prevRowspan1 = 1;
 				prevRowspan2 = 1;
@@ -515,6 +534,22 @@ var comm = {
 				prevCell2 = secondCell;
 			};
 		};
+
+        $(".page_list td").bind({
+            "mouseenter" : function(e){
+                // console.log( ($(e.target).parents("tr").index()+1), ($(e.target).parents("tr").prevAll(".merge").eq(0).index()), $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep1").attr("rowspan") );
+                if( $(e.target).parents("tr.merge").length === 0 && ($(e.target).parents("tr").index()+1) - ($(e.target).parents("tr").prevAll(".merge").eq(0).index()) <= $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep1").attr("rowspan") ){
+                    $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep1").addClass("hover");
+                    if( $(e.target).parents("tr.merge").length === 0 && ($(e.target).parents("tr").index()+1) - ($(e.target).parents("tr").prevAll(".merge").eq(0).index()) <= $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep2").attr("rowspan") ){
+                        $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep2").addClass("hover");
+                    };
+                };
+                $(e.target).closest("tr").find("td").addClass("hover");
+            },
+            "mouseleave" : function(e){
+                $(".page_list tr > td").removeClass("hover");
+            }
+        });
 	},
     pageLtUpdate : function(){
         // summary 이벤트
