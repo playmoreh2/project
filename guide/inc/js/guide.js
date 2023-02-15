@@ -39,7 +39,7 @@ $(document).ready(function(){
         comm.ctgDepCode = $(".cvLnb .navList .subList").html();
         
         // 로드시 ajax 호출
-        switch (comm.getParameterName("client")){
+        switch(comm.getParameterName("client")){
             case "summary":
                 // 1번째 summary
                 $(".cvGnb > ul > li").removeClass("on");
@@ -58,7 +58,7 @@ $(document).ready(function(){
                 comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
                 comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
                 comm.ctgTemplt(comm.ctgParam);
-
+                
                 comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 
@@ -66,39 +66,22 @@ $(document).ready(function(){
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
                 break;
             case "pageList":
+            case "pageList2": // 2번째 page list
+            case "pageList3": // 3번째 page list
                 // 3번째 page list
                 $(".cvGnb > ul > li").removeClass("on");
-                $(".cvGnb li button.menu_list").closest("li").eq(0).addClass("on");
-                
-                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
-                comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
-                comm.ctgTemplt(comm.ctgParam);
-                
-                comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-                
-                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
-                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
-                break;
-            case "pageList2":
-                $(".cvGnb > ul > li").removeClass("on");
-                $(".cvGnb li button.menu_list").closest("li").eq(1).addClass("on");
-                
-                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list2.json";
-                comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
-                comm.ctgTemplt(comm.ctgParam);
-                
-                comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-                
-                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
-                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
-                break;
-            case "pageList2":
-                $(".cvGnb > ul > li").removeClass("on");
-                $(".cvGnb li button.menu_list").closest("li").eq(2).addClass("on");
-                
-                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list3.json";
+
+                if( comm.getParameterName("client") == "pageList" ){
+                    $(".cvGnb li button.menu_list").closest("li").eq(0).addClass("on");
+                    comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
+                }else if( comm.getParameterName("client") == "pageList2" ){
+                    $(".cvGnb li button.menu_list").closest("li").eq(1).addClass("on");
+                    comm.ctgParam = "./guide/resource/menu/category/ctg_page_list2.json";
+                }else if( comm.getParameterName("client") == "pageList3" ){
+                    $(".cvGnb li button.menu_list").closest("li").eq(2).addClass("on");
+                    comm.ctgParam = "./guide/resource/menu/category/ctg_page_list3.json";
+                };
+
                 comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
                 comm.ctgTemplt(comm.ctgParam);
                 
@@ -114,9 +97,8 @@ $(document).ready(function(){
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
-                // window.location.search = "";
         };
-        
+
         // click 이벤트 gnb ajax 호출
         $(".cvGnb li > button[class^=menu_]").unbind("click").bind("click", function(e){
             // console.log($(e.target).attr("class") !== $(".cvGnb li.on > button[class^=menu_]").attr("class"));
@@ -125,41 +107,63 @@ $(document).ready(function(){
                 
                 $(".cvGnb > ul > li").removeClass("on");
                 $(e.target).closest("li").addClass("on");
-                switch (param){
+                switch(param){
                     case "menu_summary":
                         // 1번째 summary
-                        $(".cvGnb > ul > li").removeClass("on");
-                        $(".cvGnb li button.menu_summary").closest("li").addClass("on");
+                        window.location.search = "?client=summary";
 
+                        comm.ctgParam = "./guide/resource/menu/category/ctg_summary.json";
+                        comm.gnbTemplt = "./guide/resource/template/summary/template_summary.html";
                         comm.ctgTemplt(comm.ctgParam);
+
+                        comm.dataParam = "./guide/resource/template/summary/template_dashboard.html";
                         comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+                        
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                        comm.pageLtUpdate(); // page update 호출
                         break;
                     case "menu_guide":
                         // 2번째 guide
-                        $(".cvGnb > ul > li").removeClass("on");
-                        $(".cvGnb li button.menu_guide").closest("li").addClass("on");
+                        window.location.search = "?client=guide";
 
                         comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
                         comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
                         comm.ctgTemplt(comm.ctgParam);
+                        
+                        comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                        comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
+
+                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                        comm.pageLtUpdate(); // page update 호출
+                        break;
+                    case "menu_list":
+                    case "menu_list list2": // 2번째 page list
+                    case "menu_list list3": // 3번째 page list
+                        // 3번째 page list
+                        if( $(".cvGnb li [id^='list_']").length > 1 ){ // page list가 2개 이상 부터
+                            if( $(e.target).attr("id").split('_').pop() == 1 ){ // page list 1개
+                                window.location.search = "?client=pageList";
+                                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
+                            }else if( $(e.target).attr("id").split('_').pop() == 2 ){ // page list 2개
+                                window.location.search = "?client=pageList2";
+                                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list2.json";
+                            }else if( $(e.target).attr("id").split('_').pop() == 3 ){ // page list 3개
+                                window.location.search = "?client=pageList3";
+                                comm.ctgParam = "./guide/resource/menu/category/ctg_page_list3.json";
+                            };
+                        }else{ // page list 1개
+                            window.location.search = "?client=pageList";
+                            comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
+                        };
+                          
+                        comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
+                        comm.ctgTemplt(comm.ctgParam);
 
                         comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
                         comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-                        
+
                         comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
-                        break;
-                    case "menu_list":
-                        window.location.search = "?client=pageList";
-                        break;
-                    case "menu_list list2": // 2번째 page list
-                        window.location.search = "?client=pageList2";
-                        break;
-                    case "menu_list list3": // 3번째 page list
-                        window.location.search = "?client=pageList3";
-                        break;
+                        comm.pageLtUpdate(); // page update 호출
                 };
             };
         });
@@ -205,7 +209,7 @@ var comm = {
                 if( $(".cvGnb li.on .menu_list").length > 0 ){
                     comm.ctgIdx = ($(".cvGnb li.on .menu_list").attr('id').split('_').pop())-1;
                 };
-                
+                console.log("sdfsdf", comm.ctgPageLtTag);
                 if(comm.ctgPageLtTag[comm.ctgIdx].length == 0 || ctgParam.indexOf("/category/ctg_page_list") == -1){ // page list 접속이 처음 또는 page list 외 접속할 때
                     // $.each(infoData, function(idx, item){
                     infoData.forEach(function(item, idx){
