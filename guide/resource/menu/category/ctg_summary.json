@@ -8,7 +8,7 @@
             "active": false,
             "data_info": "./guide/resource/template/summary/template_description.html"
       },{
-            "title": "PC Guide",
+            "title": "추가메뉴",
             "active": false,
             "menu" : [
                   {
