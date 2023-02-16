@@ -91,10 +91,16 @@ $(document).ready(function(){
                 comm.gnbTemplt = "./guide/resource/template/pageList/template_page_list.html";
                 comm.ctgTemplt(comm.ctgParam);
                 
-                comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                if(comm.getParameterName("index") !== ""){
+                    comm.dataParam = $(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button").data("info");
+                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button"); // 화면 처음 들어올때
+                }else{
+                    comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                };
+                
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 
-                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
                 break;
             default :
@@ -117,7 +123,7 @@ $(document).ready(function(){
                     case "menu_summary":
                         // 1번째 summary
                         // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=summary";
-                        if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=summary");
+                        history.pushState(null, "", "?client=summary");
 
                         comm.ctgParam = "./guide/resource/menu/category/ctg_summary.json";
                         comm.gnbTemplt = "./guide/resource/template/summary/template_summary.html";
@@ -132,7 +138,7 @@ $(document).ready(function(){
                     case "menu_guide":
                         // 2번째 guide
                         // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=guide";
-                        if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=guide");
+                        history.pushState(null, "", "?client=guide");
 
                         comm.ctgParam = "./guide/resource/menu/category/ctg_guide.json";
                         comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
@@ -151,20 +157,20 @@ $(document).ready(function(){
                         if( $(".cvGnb li [id^='list_']").length > 1 ){ // page list가 2개 이상 부터
                             if( $(e.target).attr("id").split('_').pop() == 1 ){ // page list 1개
                                 // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList";
-                                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList");
+                                history.pushState(null, "", "?client=pageList");
                                 comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
                             }else if( $(e.target).attr("id").split('_').pop() == 2 ){ // page list 2개
                                 // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList2";
-                                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList2");
+                                history.pushState(null, "", "?client=pageList2");
                                 comm.ctgParam = "./guide/resource/menu/category/ctg_page_list2.json";
                             }else if( $(e.target).attr("id").split('_').pop() == 3 ){ // page list 3개
                                 // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList3";
-                                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList3");
+                                history.pushState(null, "", "?client=pageList3");
                                 comm.ctgParam = "./guide/resource/menu/category/ctg_page_list3.json";
                             };
                         }else{ // page list 1개
                             // if( comm.getParameterName("client") !== "single" ) window.location.search = "?client=pageList";
-                            if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=pageList");
+                            history.pushState(null, "", "?client=pageList");
                             comm.ctgParam = "./guide/resource/menu/category/ctg_page_list1.json";
                         };
                           
@@ -613,9 +619,10 @@ var comm = {
 
             if( $(".cvGnb li.on").find(".menu_guide").length > 0 ){ // guide type
                 comm.template = "./guide/resource/template/guide/guide_template.html";
-                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=guide"+"&index="+$(e.target).closest(".part").index()+"_"+$(e.target).closest(".subList").find("> li.on").index());
+                history.pushState(null, "", "?client=guide"+"&index="+$(e.target).closest(".part").index()+"_"+$(e.target).closest(".subList").find("> li.on").index());
             }else if( $(".cvGnb li.on").find(".menu_list").length > 0 ){ // page list type
                 comm.template = "./guide/resource/template/pageList/template_page_list.html";
+                history.pushState(null, "", "?client=pageList"+comm.getParameterName("client").replace(/[^0-9]/g, "")+"&index="+$(e.target).closest(".part").index()+"_"+$(e.target).closest(".subList").find("> li.on").index());
             };
             
             comm.param = $(e.target).data("info");
