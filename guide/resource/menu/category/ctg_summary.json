@@ -7,5 +7,36 @@
             "title": "Description",
             "active": false,
             "data_info": "./guide/resource/template/summary/template_description.html"
+      },{
+            "title": "PC Guide",
+            "active": false,
+            "menu" : [
+                  {
+                        "so_menu": "Text",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_text.html", 
+                        "working": "N"
+                  },{
+                        "so_menu": "TextList",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_textlist.html",
+                        "working": "N"
+                  },{
+                        "so_menu": "Title",
+                        "active": true,
+                        "data_info": "./guide/resource/template/guide/guide_title.html",
+                        "working": "N"
+                  },{
+                        "so_menu": "Button",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_button.html",
+                        "working": "N"
+                  },{
+                        "so_menu": "Form",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_form.html",
+                        "working": "N"
+                  }
+            ]
       }
 ]}

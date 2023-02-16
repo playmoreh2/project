@@ -159,13 +159,13 @@ cvContainer {position:relative;}
 /* lnb */
 .cvContainer .cvLnb {position:fixed; top:80px; width:240px; height:calc(100% - 80px); border-right:1px solid var(--c-divider-light); z-index:10;}
 .cvContainer .cvLnb .nav {min-height:100%; padding:35px 30px; background-color:var(--c-bg);}
-.cvContainer .cvLnb h2 {display:block; font-size:16px; color:var(--c-text-1); line-height:1;}
+.cvContainer .cvLnb h2 {display:block; font-size:20px; color:var(--c-text-1); line-height:1;}
 .cvContainer .cvLnb ul li a {display:block; position:relative;}
 .cvContainer .cvLnb ul li > a ~ ul {display:none;}
 /* for 1depth */
-.cvContainer .cvLnb .nav > ul {margin:12px 0 0;}
-.cvContainer .cvLnb .nav > ul > li {padding:6px 0;}
-.cvContainer .cvLnb .nav > ul > li > button {position:relative; width:100%; font-size:14px; color: var(--c-text-2); border-radius:50px 0 0 50px; transition:all 0.15s ease-out; text-align:left;}
+.cvContainer .cvLnb .nav > ul {margin:14px 0 0;}
+.cvContainer .cvLnb .nav > ul > li {padding:8px 0;}
+.cvContainer .cvLnb .nav > ul > li > button {position:relative; width:100%; font-size:16px; color: var(--c-text-2); border-radius:50px 0 0 50px; transition:all 0.15s ease-out; text-align:left;}
 .cvContainer .cvLnb .nav > ul > li.on > button, 
 .cvContainer .cvLnb .nav > ul > li > button:hover, 
 .cvContainer .cvLnb .nav > ul > li > button:focus {color:var(--c-text-1);}
