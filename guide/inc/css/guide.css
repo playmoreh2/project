@@ -195,13 +195,14 @@ cvContainer {position:relative;}
 /* dashboard */
 .page_summary {position: relative;}
 .page_summary .cvBtn_switch {top:0; transform:translateY(0);}
+
 .dashboard_area {width:100%;}
 .dashboard_area .section {margin-top:30px;}
 .dashboard_area .tit {display:block; font-size:18px; font-weight:500;}
 .dashboard_area .tit + .inner {margin-top:16px;}
 .dashboard_area .inner {display:flex; justify-content: flex-start; gap:80px; width:100%; height:100%;}
 .dashboard_area .inner > [class^='total'] {display:flex; flex-direction: column; justify-content:center; gap:10px; width:320px; height:300px; padding:20px 40px; border-radius:8px;  background: var(--c-bg-soft); box-shadow: var(--box-shadow);}
-.dashboard_area .inner [class^='total'] .graph_area {display:flex; justify-content: center; width:100%;}
+.dashboard_area .inner [class^='total'] .graph_area {display:flex; justify-content: center;}
 .dashboard_area .inner [class^='total'] .graph {display:flex; justify-content: center; align-items: flex-end; width:10px; height:200px; background-color: var(--c-bg-mute);}
 .dashboard_area .inner [class^='total'] .graph .state {width:10px; height:2px; background-color:var(--c-brand); border-radius:8px 8px 0 0; opacity:0;}
 .dashboard_area .inner .total_pc .graph .state {background-color:var(--c-blue);}
@@ -212,6 +213,15 @@ cvContainer {position:relative;}
 .dashboard_area .inner [class^='total'] .summary .count > em {font-weight:700;}
 .dashboard_area .inner [class^='total'] .summary .num {font-size:16px;font-weight:700;}
 .dashboard_area .inner [class^='total'] .summary .num > em {font-weight:700;}
+
+/* dashboard - type */
+.dashboard_area.type .inner {flex-direction: column; gap:10px; width:100%; height:100%;}
+.dashboard_area.type .inner > [class^='total'] {flex-direction: row; justify-content:center; align-items: center; gap:10px; width:100%; height:80px; padding:0; border-radius:8px;  background:none; box-shadow: none;}
+.dashboard_area.type .inner [class^='total'] .graph_area {justify-content: flex-start; width:100%; height:10px;}
+.dashboard_area.type .inner [class^='total'] .graph {justify-content:flex-start; align-items: center; width: 100%; height: 10px;}
+.dashboard_area.type .inner [class^='total'] .graph .state {width:2px; height:10px; background-color:var(--c-brand); border-radius:0 8px 8px 0; opacity:0;}
+.dashboard_area.type .inner .total_pc .graph .state {background-color:var(--c-blue);}
+.dashboard_area.type .inner .total_mo .graph .state {background-color:var(--c-green);}
 
 /* guide */
 .cvContent .cvGuide_area {padding:10px 0 20px;}
