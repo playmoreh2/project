@@ -9,8 +9,8 @@ $(document).ready(function(){
         $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
 
         search.srchCtgSet();
-        comm.pageLtTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
-        comm.pageLtUpdate();
+        comm.ctgTxtUpdate($(".navList.rdo input:radio[name=rdo]:checked"));
+        comm.ctgEvnUpdate();
 
         $(".srch_wrap .cvBtn_srch").unbind("click").bind("click", function(e){
             $(".cvGuide.search .cont .page_list tbody").empty(); // 마크업 삭제
@@ -47,8 +47,8 @@ $(document).ready(function(){
 
                 comm.ctgTemplt(comm.ctgParam);
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
-                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                comm.ctgTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                comm.ctgEvnUpdate(); // 로드시 컨텐츠 update 호출
                 break;
             case "guide":
                 // 2번째 guide
@@ -61,15 +61,15 @@ $(document).ready(function(){
                 
                 if(comm.getParameterName("index") !== ""){
                     comm.dataParam = $(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button").data("info");
-                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button"); // 화면 처음 들어올때
+                    comm.ctgTxtUpdate(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button"); // 화면 처음 들어올때
                 }else{
                     comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                    comm.ctgTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                 };
 
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 
-                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                comm.ctgEvnUpdate(); // 로드시 컨텐츠 update 호출
                 break;
             case "pageList":
             case "pageList2": // 2번째 page list
@@ -93,22 +93,22 @@ $(document).ready(function(){
                 
                 if(comm.getParameterName("index") !== ""){
                     comm.dataParam = $(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button").data("info");
-                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button"); // 화면 처음 들어올때
+                    comm.ctgTxtUpdate(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button"); // 화면 처음 들어올때
                 }else{
                     comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
-                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                    comm.ctgTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                 };
                 
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 
-                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                comm.ctgEvnUpdate(); // 로드시 컨텐츠 update 호출
                 break;
             default :
                 // 기본
                 comm.ctgTemplt(comm.ctgParam);
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
-                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
-                comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
+                comm.ctgTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                comm.ctgEvnUpdate(); // 로드시 컨텐츠 update 호출
         };
 
         // click 이벤트 gnb ajax 호출
@@ -132,8 +132,8 @@ $(document).ready(function(){
                         comm.dataParam = "./guide/resource/template/summary/template_dashboard.html";
                         comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                         
-                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // page update 호출
+                        comm.ctgTxtUpdate(".cvLnb .nav > ul > li.on > button"); // 화면 처음 들어올때
+                        comm.ctgEvnUpdate(); // page update 호출
                         break;
                     case "menu_guide":
                         // 2번째 guide
@@ -147,8 +147,8 @@ $(document).ready(function(){
                         comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
                         comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
 
-                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // page update 호출
+                        comm.ctgTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                        comm.ctgEvnUpdate(); // page update 호출
                         break;
                     case "menu_list":
                     case "menu_list list2": // 2번째 page list
@@ -180,8 +180,8 @@ $(document).ready(function(){
                         comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
                         comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
 
-                        comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
-                        comm.pageLtUpdate(); // page update 호출
+                        comm.ctgTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                        comm.ctgEvnUpdate(); // page update 호출
                 };
             };
         });
@@ -202,8 +202,7 @@ var comm = {
 	time : null, // setTimeout
     totalNum : [], // 전체 페이지 개수
     finishNum : [], // 완료 페이지 개수
-    ctgPageLtTag : [], // 카테고리 tag 저장
-    ctgIdx : 0,
+    ctgDataTag : [], // 카테고리 tag 저장
     ctgTemplt : function(ctgParam){ // category
         $.ajax({
             url: ctgParam+"?"+Math.round(100000*Math.random()),
@@ -213,22 +212,23 @@ var comm = {
             cache : false,
             success: function(data){
                 const infoData = data["root_comment"];
+                let ctgIdx = 0;
                 // console.log('통신 성공', infoData);
                 
                 $(".cvLnb .nav > h2").text($(".cvGnb li.on").text());
 
                 $(".cvLnb .navList").empty(); // 마크업 삭제
                 
-                if( comm.ctgPageLtTag.length == 0 ){
+                if( comm.ctgDataTag.length == 0 ){
                     for(let i=0; i<$(".cvGnb li .menu_list").length; i++){
-                        comm.ctgPageLtTag.splice(0, 0, "");
+                        comm.ctgDataTag.splice(0, 0, "");
                     };
                 };
                 if( $(".cvGnb li.on .menu_list").length > 0 ){
-                    comm.ctgIdx = ($(".cvGnb li.on .menu_list").attr('id').split('_').pop())-1;
+                    ctgIdx = ($(".cvGnb li.on .menu_list").attr('id').split('_').pop())-1;
                 };
 
-                if(comm.ctgPageLtTag[comm.ctgIdx].length == 0 || ctgParam.indexOf("/category/ctg_page_list") == -1){ // page list 접속이 처음 또는 page list 외 접속할 때
+                if(comm.ctgDataTag[ctgIdx].length == 0 || ctgParam.indexOf("/category/ctg_page_list") == -1){ // page list 접속이 처음 또는 page list 외 접속할 때
                     // $.each(infoData, function(idx, item){
                     infoData.forEach(function(item, idx){
                         if(comm.ctgCode !== "" && comm.ctgDepCode !== "" && infoData != null){ // html && data 있을 때
@@ -316,13 +316,13 @@ var comm = {
                 };
 				// pagelist 탭 카테고리에서 각 메뉴 진척률 가져오기
                 if($(".cvGnb li.on .menu_list").length > 0 && comm.dataArray != null && comm.dataArray.length > 0){                  
-                    if(comm.ctgPageLtTag[comm.ctgIdx] != null && comm.ctgPageLtTag[comm.ctgIdx].length > 0){
-                        $(".cvContainer .cvLnb .nav > ul").html(comm.ctgPageLtTag[comm.ctgIdx]);
+                    if(comm.ctgDataTag[ctgIdx] != null && comm.ctgDataTag[ctgIdx].length > 0){
+                        $(".cvContainer .cvLnb .nav > ul").html(comm.ctgDataTag[ctgIdx]);
                         return false;
                     };
                     
-                    // $.each(comm.dataArray[comm.ctgIdx], function(idx, item){
-                    comm.dataArray[comm.ctgIdx].forEach(function(item, idx){
+                    // $.each(comm.dataArray[ctgIdx], function(idx, item){
+                    comm.dataArray[ctgIdx].forEach(function(item, idx){
                         for(let i=0; i<item.length; i++){
                             $.ajax({
                                 url: item[i]+"?"+Math.round(100000*Math.random()),
@@ -351,7 +351,7 @@ var comm = {
                         };
                     });
                     // });
-                    comm.ctgPageLtTag[comm.ctgIdx] = $(".cvLnb .navList").html();
+                    comm.ctgDataTag[ctgIdx] = $(".cvLnb .navList").html();
                 };
             },
             error: function(){
@@ -595,7 +595,7 @@ var comm = {
             }
         });
 	},
-    pageLtUpdate : function(){
+    ctgEvnUpdate : function(){
         // summary 이벤트
         $(".cvLnb .nav > ul > li > button.tit:not(.cvBtn_acco)").unbind("click").bind("click", function(e){
             if( $(".cvGnb li.on").find(".menu_summary").length > 0 ){ // summary type
@@ -607,7 +607,7 @@ var comm = {
             if( $(e.target).closest("li").hasClass("on") == false && comm.template != undefined && comm.param != undefined ){
                 $(e.target).closest(".navList").find("> li").removeClass("on");
                 $(e.target).closest("li").addClass("on");
-                comm.pageLtTxtUpdate(e.target);
+                comm.ctgTxtUpdate(e.target);
                 comm.dataTemplt(comm.template, comm.param);
             };
         });
@@ -631,17 +631,17 @@ var comm = {
             
             if( comm.param != undefined ){
                 // comm.dataTemplt("./guide/resource/template/pageList/template_page_list.html", comm.param);
-                comm.pageLtTxtUpdate(e.target);
+                comm.ctgTxtUpdate(e.target);
                 comm.dataTemplt(comm.template, comm.param);
             };
         });
 
-        // search
+        // search 이벤트
         $(".navList.rdo input:radio[name=rdo], .navList.rdo .subList > li input:radio").bind("change", function(e){
-            comm.pageLtTxtUpdate($(e.target));
+            comm.ctgTxtUpdate($(e.target));
         });
     },
-    pageLtTxtUpdate : function(e){
+    ctgTxtUpdate : function(e){
         // 추후 수정예정
         let crumbTxt1 = "";
         let crumbTxt2 = "";
