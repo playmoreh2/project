@@ -5,7 +5,7 @@
             "menu" : [
                   {
                         "so_menu": "Text",
-                        "active": true,
+                        "active": false,
                         "data_info": "./guide/resource/template/guide/guide_text.html", 
                         "working": "N"
                   },{
@@ -15,7 +15,7 @@
                         "working": "N"
                   },{
                         "so_menu": "Title",
-                        "active": false,
+                        "active": true,
                         "data_info": "./guide/resource/template/guide/guide_title.html",
                         "working": "N"
                   },{

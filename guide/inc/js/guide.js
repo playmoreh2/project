@@ -59,10 +59,16 @@ $(document).ready(function(){
                 comm.gnbTemplt = "./guide/resource/template/guide/guide_template.html";
                 comm.ctgTemplt(comm.ctgParam);
                 
-                comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                if(comm.getParameterName("index") !== ""){
+                    comm.dataParam = $(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button").data("info");
+                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq("+comm.getParameterName("index").split('_')[0]+") .subList > li:eq("+comm.getParameterName("index").split('_')[1]+") > button"); // 화면 처음 들어올때
+                }else{
+                    comm.dataParam = $(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button").data("info");
+                    comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
+                };
+
                 comm.dataTemplt(comm.gnbTemplt, comm.dataParam);
                 
-                comm.pageLtTxtUpdate(".cvLnb .nav > ul > li:eq(0) .subList > li.on > button"); // 화면 처음 들어올때
                 comm.pageLtUpdate(); // 로드시 컨텐츠 update 호출
                 break;
             case "pageList":
@@ -215,7 +221,7 @@ var comm = {
                 if( $(".cvGnb li.on .menu_list").length > 0 ){
                     comm.ctgIdx = ($(".cvGnb li.on .menu_list").attr('id').split('_').pop())-1;
                 };
-                console.log("sdfsdf", comm.ctgPageLtTag);
+
                 if(comm.ctgPageLtTag[comm.ctgIdx].length == 0 || ctgParam.indexOf("/category/ctg_page_list") == -1){ // page list 접속이 처음 또는 page list 외 접속할 때
                     // $.each(infoData, function(idx, item){
                     infoData.forEach(function(item, idx){
@@ -251,11 +257,12 @@ var comm = {
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList").append(comm.ctgDepCode);
                                     // console.log("UI Data", $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")"));
     
-                                    // class 추가
-                                    if( infoData[idx].menu[i].active == true ){
+                                    // class 추가                                    
+                                    if( infoData[idx].menu[i].active == true && comm.getParameterName("index") === "" ){
                                         $(".cvLnb .navList > li").find(".subList > li").removeClass("on");
                                         $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li").eq(i).addClass("on");
                                     };
+
                                     // attr 추가
                                     $(".cvLnb .navList > li:eq("+idx+")").find(".subList > li:eq("+i+")").find("> button").attr({
                                         "data-info": infoData[idx].menu[i].data_info,
@@ -284,6 +291,11 @@ var comm = {
                             console.log("Category Page List 외 호출");
                         };
                     });
+                    // class 추가
+                    if( comm.getParameterName("index") !== "" ){
+                        $(".cvLnb .navList > li").find(".subList > li").removeClass("on");
+                        $(".cvLnb .navList > li:eq("+comm.getParameterName("index").split('_')[0]+")").find(".subList > li").eq(comm.getParameterName("index").split('_')[1]).addClass("on");
+                    };
                     // });
                 };
 
@@ -593,17 +605,24 @@ var comm = {
 
         // guide, page list 이벤트
         $(".cvLnb .subList > li > button").unbind("click").bind("click", function(e){
+            if( $(e.target).closest("li").hasClass("on") == false ){
+                $(e.target).closest(".navList").find(".subList > li").removeClass("on");
+                $(e.target).closest("li").addClass("on");
+                console.log("index", $(e.target).closest(".subList").find("> li.on").index());
+            };
+
             if( $(".cvGnb li.on").find(".menu_guide").length > 0 ){ // guide type
                 comm.template = "./guide/resource/template/guide/guide_template.html";
+                if( comm.getParameterName("client") !== "single" ) history.pushState(null, "", "?client=guide"+"&index="+$(e.target).closest(".part").index()+"_"+$(e.target).closest(".subList").find("> li.on").index());
             }else if( $(".cvGnb li.on").find(".menu_list").length > 0 ){ // page list type
                 comm.template = "./guide/resource/template/pageList/template_page_list.html";
             };
+            
             comm.param = $(e.target).data("info");
-            if( $(e.target).closest("li").hasClass("on") == false && comm.param != undefined ){
-                $(e.target).closest(".navList").find(".subList > li").removeClass("on");
-                $(e.target).closest("li").addClass("on");
-                comm.pageLtTxtUpdate(e.target);
+            
+            if( comm.param != undefined ){
                 // comm.dataTemplt("./guide/resource/template/pageList/template_page_list.html", comm.param);
+                comm.pageLtTxtUpdate(e.target);
                 comm.dataTemplt(comm.template, comm.param);
             };
         });
@@ -629,7 +648,11 @@ var comm = {
         if($(".cvGuide.search .navList.rdo").length > 0 &&  $(e).closest(".part").find(".subList").length > 0){
             crumbTxt2 = " > " + $(e).closest(".part").find(".subList > li > input:radio:checked+label").text();
         }else if($(e).closest(".subList").length > 0){
-            crumbTxt2 = " > " + $(e).closest(".subList").find("> li.on > button").text();
+            if( comm.getParameterName("index") !== "" ){
+                crumbTxt2 = " > " + $(e).text();
+            }else{
+                crumbTxt2 = " > " + $(e).closest(".subList").find("> li.on > button").text();
+            };
         };
         $(".cvContent > .top > h3").html(
             $(".cvLnb .nav h2").text()
