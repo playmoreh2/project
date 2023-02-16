@@ -559,6 +559,8 @@ var comm = {
 					$(prevCell2).attr("rowspan", prevRowspan2); // 첫 번째 row의 두 번째 cell에 rowspan 추가
 					$(secondCell).remove(); // 중복 cell element 삭제
                     $(prevCell2).addClass("dep2");
+
+                    $(prevCell2).closest("tr").addClass("merge_2");
 				}else{
 					prevRowspan2 = 1;
 					prevCell2 = secondCell;
@@ -567,7 +569,7 @@ var comm = {
 				$(prevCell1).attr("rowspan", prevRowspan1);
 				$(firstCell).remove();
                 $(prevCell1).addClass("dep1");
-                $(prevCell1).closest("tr").addClass("merge");
+                $(prevCell1).closest("tr").addClass("merge_1");
 			}else{
 				prevRowspan1 = 1;
 				prevRowspan2 = 1;
@@ -576,13 +578,14 @@ var comm = {
 			};
 		};
 
-        $(".page_list td").bind({
+        $(".page_list tbody td").bind({
             "mouseenter" : function(e){
-                // console.log( ($(e.target).parents("tr").index()+1), ($(e.target).parents("tr").prevAll(".merge").eq(0).index()), $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep1").attr("rowspan") );
-                if( $(e.target).parents("tr.merge").length === 0 && ($(e.target).parents("tr").index()+1) - ($(e.target).parents("tr").prevAll(".merge").eq(0).index()) <= $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep1").attr("rowspan") ){
-                    $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep1").addClass("hover");
-                    if( $(e.target).parents("tr.merge").length === 0 && ($(e.target).parents("tr").index()+1) - ($(e.target).parents("tr").prevAll(".merge").eq(0).index()) <= $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep2").attr("rowspan") ){
-                        $(e.target).parents("tr").prevAll(".merge").eq(0).find(".dep2").addClass("hover");
+                // console.log( ($(e.target).parents("tr").index()+1)-($(e.target).parents("tr").prevAll(".merge_1").eq(0).index()) <= $(e.target).parents("tr").prevAll(".merge_1").eq(0).find(".dep1").attr("rowspan") );
+                // console.log( $(e.target).parents("tr.merge_1"), "sdfsdsdf" )
+                if( $(e.target).parents("tr.merge_1").length === 0 && ($(e.target).parents("tr").index()+1) - ($(e.target).parents("tr").prevAll(".merge_1").eq(0).index()) <= $(e.target).parents("tr").prevAll(".merge_1").eq(0).find(".dep1").attr("rowspan") ){
+                    $(e.target).parents("tr").prevAll(".merge_1").eq(0).find(".dep1").addClass("hover");
+                    if( $(e.target).parents("tr.merge_2").length === 0 && ($(e.target).parents("tr").index()+1) - ($(e.target).parents("tr").prevAll(".merge_2").eq(0).index()) <= $(e.target).parents("tr").prevAll(".merge_2").eq(0).find(".dep2").attr("rowspan") ){
+                        $(e.target).parents("tr").prevAll(".merge_2").eq(0).find(".dep2").addClass("hover");
                     };
                 };
                 $(e.target).closest("tr").find("td").addClass("hover");
@@ -614,7 +617,6 @@ var comm = {
             if( $(e.target).closest("li").hasClass("on") == false ){
                 $(e.target).closest(".navList").find(".subList > li").removeClass("on");
                 $(e.target).closest("li").addClass("on");
-                console.log("index", $(e.target).closest(".subList").find("> li.on").index());
             };
 
             if( $(".cvGnb li.on").find(".menu_guide").length > 0 ){ // guide type
