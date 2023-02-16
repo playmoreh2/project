@@ -140,20 +140,20 @@ strong {font-weight:normal;}
 .cvGnb li.on button, .cvGnb li button:hover, .cvGnb li button:focus {color:var(--c-text-1);}
 .cvGnb li.on button:after, .cvGnb li button:hover:after, .cvGnb li button:focus:after {transform: scale(1,1)}
 
-/* cvUtil */
-.cvUtil .cvBtn_switch {position: absolute; top:50%; right:0; width:40px; height:22px; overflow: hidden; transform: translateY(-50%);}
-.cvUtil .knobs,
-.cvUtil .layer {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
-.cvUtil .cvBtn_switch,
-.cvUtil .cvBtn_switch .layer {border-radius: 50px;}
-.cvUtil .cvBtn_switch input[type=checkbox] {position: relative; width: 100%; height: 100%; padding: 0; margin: 0; opacity: 0; cursor: pointer; z-index: 3;}
-.cvUtil .knobs {z-index: 2;}
-.cvUtil .layer {width: 100%; background-color:var(--c-bg-mute); border:1px solid var(--c-divider); transition: 0.3s ease all; z-index: 1;}
-.cvUtil .cvBtn_switch .knobs:before {content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background-color: var(--c-bg); border-radius: 50%; transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;}
-.cvUtil .cvBtn_switch input[type=checkbox]:checked + .knobs:before {content: ""; left: 20px;}
-.cvUtil .cvBtn_switch .knobs,
-.cvUtil .cvBtn_switch .knobs:before,
-.cvUtil .cvBtn_switch .layer {transition: 0.3s ease all;}
+/* cvBtn_switch */
+.cvBtn_switch {position: absolute; top:50%; right:0; width:40px; height:22px; overflow: hidden; transform: translateY(-50%);}
+.knobs,
+.cvBtn_switch .layer {position: absolute; top: 0; right: 0; bottom: 0; left: 0;}
+.cvBtn_switch,
+.cvBtn_switch .layer {border-radius: 50px;}
+.cvBtn_switch input[type=checkbox] {position: relative; width: 100%; height: 100%; padding: 0; margin: 0; opacity: 0; cursor: pointer; z-index: 3;}
+.cvBtn_switch .knobs {z-index: 2;}
+.cvBtn_switch .layer {width: 100%; background-color:var(--c-bg-mute); border:1px solid var(--c-divider); transition: 0.3s ease all; z-index: 1;}
+.cvBtn_switch .knobs:before {content: ""; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background-color: var(--c-bg); border-radius: 50%; transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;}
+.cvBtn_switch input[type=checkbox]:checked + .knobs:before {content: ""; left: 20px;}
+.cvBtn_switch .knobs,
+.cvBtn_switch .knobs:before,
+.cvBtn_switch .layer {transition: 0.3s ease all;}
 
 cvContainer {position:relative;}
 /* lnb */
@@ -193,6 +193,8 @@ cvContainer {position:relative;}
 .cvContent .page_list .noData {height:250px; line-height:250px; margin-top:0;}
 
 /* dashboard */
+.page_summary {position: relative;}
+.page_summary .cvBtn_switch {top:0; transform:translateY(0);}
 .dashboard_area {width:100%;}
 .dashboard_area .section {margin-top:30px;}
 .dashboard_area .tit {display:block; font-size:18px; font-weight:500;}

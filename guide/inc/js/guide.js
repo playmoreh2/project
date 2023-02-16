@@ -903,16 +903,20 @@ var comm = {
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
+    switchChk : function(){
+        if ($('.cvBtn_switch input').is(':checked')){
+            $('body.cvGuide').addClass('dark');
+            $('header .logo img').attr('src', './guide/inc/img/logo.png');
+        }else{
+            $('body.cvGuide').removeClass('dark');
+            $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
+        };
+    },
     switchMode : function(){
+        comm.switchChk();
         $('.cvUtil .cvBtn_switch input').bind('click', function(){
-            if ($('.cvBtn_switch input').is(':checked')){
-                $('body.cvGuide').addClass('dark');
-                $('header .logo img').attr('src', './guide/inc/img/logo.png');
-            }else{
-                $('body.cvGuide').removeClass('dark');
-                $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
-            };
-        })
+            comm.switchChk();
+        });
     },    
     loadInit : function(){
         if($(".loading_wrap").length == 0){
