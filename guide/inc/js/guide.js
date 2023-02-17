@@ -462,14 +462,6 @@ var comm = {
                                                     // 퍼블리싱
                                                     $(".page_list tbody tr").eq(idx).addClass("chk_u");
                                                     break;
-                                                case "complete":
-                                                    // 완료
-                                                    $(".page_list tbody tr").eq(idx).addClass("chk_complt");
-                                                    break;
-                                                case "incomplete":
-                                                    // 미완료
-                                                    $(".page_list tbody tr").eq(idx).addClass("chk_incomplt");
-                                                    break;
                                                 default :
                                                     // 전체
 
@@ -1345,18 +1337,45 @@ var custom = {
         let selData = $(".sub_sel input:checkbox[name=chk]:checked+label").text(); // 선택된 데이터 텍스트 값
         $(".custom_slt .sel .tit").html(selData);
 
+        // case 없을 경우 : class disable
+        // 기획
+        if( $(".cvContent .page_list tbody tr.chk_p").length == 0 ){
+            $(".sub_sel input:checkbox[value=p]").prop("disabled", true);
+            $(".sub_sel input:checkbox[value=p]").closest("li").addClass("disable");
+        };
+        // 디자인
+        if( $(".cvContent .page_list tbody tr.chk_d").length == 0 ){
+            $(".sub_sel input:checkbox[value=d]").prop("disabled", true);
+            $(".sub_sel input:checkbox[value=d]").closest("li").addClass("disable");
+        };
+        // 퍼블리싱
+        if( $(".cvContent .page_list tbody tr.chk_u").length == 0 ){
+            $(".sub_sel input:checkbox[value=u]").prop("disabled", true);
+            $(".sub_sel input:checkbox[value=u]").closest("li").addClass("disable");
+        };
+        // 완료
+        if( $(".cvContent .page_list tbody tr.finish").length == 0 ){
+            $(".sub_sel input:checkbox[value=finish]").prop("disabled", true);
+            $(".sub_sel input:checkbox[value=finish]").closest("li").addClass("disable");
+        };
+        // 미완료
+        if( $(".cvContent .page_list tbody tr.ing").length == 0 ){
+            $(".sub_sel input:checkbox[value=ing]").prop("disabled", true);
+            $(".sub_sel input:checkbox[value=ing]").closest("li").addClass("disable");
+        };
+
         $(".custom_slt .sel").bind("click", function(e){
             e.preventDefault();
             if($(e.target).closest(".custom_slt").hasClass("on") == true){
                 $(e.target).closest(".custom_slt").find(".sel_group").stop().slideUp({
-                    duration: 300,
+                    duration: 250,
                     complete: function(){
                         $(e.target).closest(".custom_slt").removeClass("on");
                     }
                 });
             }else{
                 $(e.target).closest(".custom_slt").find(".sel_group").stop().slideDown({
-                    duration: 300
+                    duration: 250
                   });
                 $(e.target).closest(".custom_slt").addClass("on");
             };
@@ -1365,69 +1384,109 @@ var custom = {
         
         $(".sel_list .sub_sel input:checkbox[name=chk]").bind("change", function(e){
             e.preventDefault();
-            if($(e.target).closest("li").hasClass("select") == false){
-                // $(e.target).closest(".sel_list").find("> li").removeClass("select");
-                $(e.target).closest("li").addClass("select");
-            };
-        
-            // $(e.target).closest(".sel_group").stop().slideUp({
-            //     duration: 300,
-            //     complete: function(){
-            //         $(e.target).closest(".custom_slt").removeClass("on");
-            //     }
-            // });
             
             // data text 추가
-            if( $(e.target).is(':checked') == true ){
-                // text
+            if( $(e.target).is(':checked') == true ){ // 활성화
+                // text check                
+                if($(e.target).closest(".custom_slt").find(".sel .tit").text() === "전체"){
+                    selData = "";
+                };
+
                 if( $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text() != undefined ){
-                    if( selData == "" ){
-                        selData += $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text();
-                    }else{
-                        selData += "," + $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text();
-                    };
-                    $(e.target).closest(".custom_slt").find(".sel .tit").html(selData);
+                    selData += $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text();
                 };
                 
-                // val
+                // val check
                 switch($(e.target).val()){
                     case "p":
                         // 기획
+                        $(".sel_list .sub_sel input:checkbox[value=all]").prop("checked", false);
                         $(".page_list tbody tr.chk_p").addClass("selBg");
                         break;
                     case "d":
                         // 디자인
+                        $(".sel_list .sub_sel input:checkbox[value=all]").prop("checked", false);
                         $(".page_list tbody tr.chk_d").addClass("selBg");
                         break;
                     case "u":
                         // 퍼블
+                        $(".sel_list .sub_sel input:checkbox[value=all]").prop("checked", false);
                         $(".page_list tbody tr.chk_u").addClass("selBg");
                         break;
-                    case "complete":
+                    case "finish":
                         // 완료
-                        $(".page_list tbody tr.chk_complt").addClass("selBg");
+                        $(".sel_list .sub_sel input:checkbox[value=all]").prop("checked", false);
+                        $(".page_list tbody tr.finish").addClass("selBg");
                         break;
-                    case "incomplete":
+                    case "ing":
                         // 미완료
-                        $(".page_list tbody tr.chk_incomplt").addClass("selBg");
+                        $(".sel_list .sub_sel input:checkbox[value=all]").prop("checked", false);
+                        $(".page_list tbody tr.ing").addClass("selBg");
                         break;
-                    default :
+                    case "all":
+                        // 전체
+                        $(".sel_list .sub_sel input:checkbox:not([value=all])").prop("checked", false);
+                        $(".page_list tbody tr").removeClass("selBg");
+                        $(".page_list").removeClass("tblSel");
+                        // text check
+                        if( $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text() != undefined ){
+                            selData = $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text();
+                        };
+                };
+
+                // 모두 체크시 전체로 값 할당
+                if( $(".sel_list .sub_sel input:checkbox:not([value=all]):not([disabled])").length == $(".sel_list .sub_sel input:checkbox:not([value=all]):not([disabled]):checked").length ){
+                    $(".sel_list .sub_sel input:checkbox").prop("checked", false);
+                    $(".sel_list .sub_sel input:checkbox[value=all]").prop("checked", true);
+                    selData = $(".sel_list .sub_sel input:checkbox[value=all]+label").text();
+                };
+
+                $(e.target).closest(".custom_slt").find(".sel .tit").html(selData);
+
+                if( $(".page_list tbody tr.selBg").length > 0 ){
+                    $(".page_list").addClass("tblSel");
+                };             
+            }else{ // 비활성화
+                selData = selData.replace($(e.target).closest(".sub_sel").find("input:checkbox[name=chk]+label").text(), "");
+                
+                // val check
+                switch($(e.target).val()){
+                    case "p":
+                        // 기획
+                        $(".page_list tbody tr.chk_p").removeClass("selBg");
+                        break;
+                    case "d":
+                        // 디자인
+                        $(".page_list tbody tr.chk_d").removeClass("selBg");
+                        break;
+                    case "u":
+                        // 퍼블
+                        $(".page_list tbody tr.chk_u").removeClass("selBg");
+                        break;
+                    case "finish":
+                        // 완료
+                        $(".page_list tbody tr.finish").removeClass("selBg");
+                        break;
+                    case "ing":
+                        // 미완료
+                        $(".page_list tbody tr.ing").removeClass("selBg");
+                        break;
+                    case "all":
                         // 전체
                         
                 };
-                if($(e.target).val() == "u"){
-                    $(".cvContent .page_list tr.ing").addClass("chk_u");
+                
+                if( $(".sel_list .sub_sel input:checkbox[name=chk]:checked").length == 0 ){
+                    $(".sel_list .sub_sel input:checkbox[value=all]").prop("checked", true);
+                    $(".page_list tbody tr").removeClass("selBg");
+                    selData = $(".sel_list .sub_sel input:checkbox[value=all]+label").text();
                 };
-            }else{
-                // text
-                selData = selData.replace($(e.target).closest(".sub_sel").find("input:checkbox[name=chk]+label").text(), "")
-                if( selData.slice(-1) == "," ){
-                    selData = selData.slice(0, -1)
-                };
+                
                 $(e.target).closest(".custom_slt").find(".sel .tit").html(selData);
 
-                // val
-
+                if( $(".page_list tbody tr.selBg").length == 0 ){
+                    $(".page_list").removeClass("tblSel");
+                };
             };
         }); 
     },
