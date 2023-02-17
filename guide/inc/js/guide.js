@@ -885,10 +885,17 @@ var comm = {
                 let totalData0 = 0; // 전체 완료 개수
                 let totalData1 = 0; // 전체 개수
                 for(let i=0; i<comm.dataArrayFnsh[idx].length; i++){
-                    $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
-                        height: ((comm.finishNum[idx][i]/comm.totalNum[idx][i])*100).toFixed(1)+"%",
-                        opacity: 1
-                    }, 1400);
+                    if($(".dashboard_area").hasClass('type') === false){
+                        $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
+                            height: ((comm.finishNum[idx][i]/comm.totalNum[idx][i])*100).toFixed(1)+"%",
+                            opacity: 1
+                        }, 1400);
+                    }else{
+                        $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
+                            width: ((comm.finishNum[idx][i]/comm.totalNum[idx][i])*100).toFixed(1)+"%",
+                            opacity: 1
+                        }, 1400);
+                    }
                     totalData0 += comm.finishNum[idx][i];
                     totalData1 += comm.totalNum[idx][i];
                 };
@@ -898,10 +905,18 @@ var comm = {
                 $(".dashboard_area .inner:eq("+idx+") .total .summary .num > em").text(totalData0);
                 $(".dashboard_area .inner:eq("+idx+") .total .summary .num .total_num").text(totalData1);
                 
-                $(".dashboard_area .inner:eq("+idx+") > .total .graph .state").animate({
-                    height: ((totalData0/totalData1)*100).toFixed(1)+"%",
-                    opacity: 1
-                }, 1400);
+                if($(".dashboard_area").hasClass('type') === false){
+                    
+                    $(".dashboard_area .inner:eq("+idx+") > .total .graph .state").animate({
+                        height: ((totalData0/totalData1)*100).toFixed(1)+"%",
+                        opacity: 1
+                    }, 1400);
+                }else{
+                    $(".dashboard_area .inner:eq("+idx+") > .total .graph .state").animate({
+                        width: ((totalData0/totalData1)*100).toFixed(1)+"%",
+                        opacity: 1
+                    }, 1400);
+                }
     
                 // 전체 진척률 (추후 수정)
                 let totalVal = ((totalData0/totalData1)*100).toFixed(1);
@@ -933,15 +948,20 @@ var comm = {
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
+    switchChk : function(){
+        if ($('.cvUtil .cvBtn_switch input').is(':checked')){
+            $('body.cvGuide').addClass('dark');
+            $('header .logo img').attr('src', './guide/inc/img/logo.png');
+        }else{
+            $('body.cvGuide').removeClass('dark');
+            $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
+        }
+    },
     switchMode : function(){
-        $('.cvUtil .cvBtn_switch input').bind('click', function(){
-            if ($('.cvBtn_switch input').is(':checked')){
-                $('body.cvGuide').addClass('dark');
-                $('header .logo img').attr('src', './guide/inc/img/logo.png');
-            }else{
-                $('body.cvGuide').removeClass('dark');
-                $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
-            };
+        comm.switchChk();
+        //comm.switchGraph();
+        $('.cvBtn_switch input').bind('click', function(){
+            comm.switchChk();
         })
     },    
     loadInit : function(){
