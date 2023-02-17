@@ -190,6 +190,7 @@ $(document).ready(function(){
 
 // 공통 template/data 함수
 var comm = {
+    zIndex : "",
     ctgParam : "./guide/resource/menu/category/ctg_summary.json", // 디폴트
     gnbTemplt : "./guide/resource/template/summary/template_summary.html", // 디폴트
     dataParam : "./guide/resource/template/summary/template_dashboard.html", // 디폴트
@@ -445,12 +446,41 @@ var comm = {
                                                 $(".page_list tbody tr").eq(idx).addClass("finish");
                                             }else{
                                                 $(".page_list tbody tr").eq(idx).addClass("ing");
+                                            }; 
+
+                                            // check 여부
+                                            switch(infoData[idx].check){
+                                                case "p":
+                                                    // 기획
+                                                    $(".page_list tbody tr").eq(idx).addClass("chk_p");
+                                                    break;
+                                                case "d":
+                                                    // 디자인
+                                                    $(".page_list tbody tr").eq(idx).addClass("chk_d");
+                                                    break;
+                                                case "u":
+                                                    // 퍼블리싱
+                                                    $(".page_list tbody tr").eq(idx).addClass("chk_u");
+                                                    break;
+                                                case "complete":
+                                                    // 완료
+                                                    $(".page_list tbody tr").eq(idx).addClass("chk_complt");
+                                                    break;
+                                                case "incomplete":
+                                                    // 미완료
+                                                    $(".page_list tbody tr").eq(idx).addClass("chk_incomplt");
+                                                    break;
+                                                default :
+                                                    // 전체
+
                                             };
+
                                         };
                                     });
                                     // });
                                     
                                     comm.pageLtMerge();
+                                    custom.selectBox();
 
                                     clearTimeout(comm.time);
                                     comm.time = setTimeout(comm.countState, 600);
@@ -1287,4 +1317,98 @@ var acco = {
             };
 		};
 	}
+};
+
+// custom ui
+var custom = {
+    selectBox : function(){ // select box
+        let selData = $(".sub_sel input:checkbox[name=chk]:checked+label").text(); // 선택된 데이터 텍스트 값
+        $(".custom_slt .sel .tit").html(selData);
+
+        $(".custom_slt .sel").bind("click", function(e){
+            e.preventDefault();
+            if($(e.target).closest(".custom_slt").hasClass("on") == true){
+                $(e.target).closest(".custom_slt").find(".sel_group").stop().slideUp({
+                    duration: 300,
+                    complete: function(){
+                        $(e.target).closest(".custom_slt").removeClass("on");
+                    }
+                });
+            }else{
+                $(e.target).closest(".custom_slt").find(".sel_group").stop().slideDown({
+                    duration: 300
+                  });
+                $(e.target).closest(".custom_slt").addClass("on");
+            };
+            $(e.target).closest(".custom_slt").css({"z-index":comm.zIndex++});
+        });
+        
+        $(".sel_list .sub_sel input:checkbox[name=chk]").bind("change", function(e){
+            e.preventDefault();
+            if($(e.target).closest("li").hasClass("select") == false){
+                // $(e.target).closest(".sel_list").find("> li").removeClass("select");
+                $(e.target).closest("li").addClass("select");
+            };
+        
+            // $(e.target).closest(".sel_group").stop().slideUp({
+            //     duration: 300,
+            //     complete: function(){
+            //         $(e.target).closest(".custom_slt").removeClass("on");
+            //     }
+            // });
+            
+            // data text 추가
+            if( $(e.target).is(':checked') == true ){
+                // text
+                if( $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text() != undefined ){
+                    if( selData == "" ){
+                        selData += $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text();
+                    }else{
+                        selData += "," + $(e.target).closest(".sub_sel").find("input:checkbox[name=chk]:checked+label").text();
+                    };
+                    $(e.target).closest(".custom_slt").find(".sel .tit").html(selData);
+                };
+                
+                // val
+                switch($(e.target).val()){
+                    case "p":
+                        // 기획
+                        $(".page_list tbody tr.chk_p").addClass("selBg");
+                        break;
+                    case "d":
+                        // 디자인
+                        $(".page_list tbody tr.chk_d").addClass("selBg");
+                        break;
+                    case "u":
+                        // 퍼블
+                        $(".page_list tbody tr.chk_u").addClass("selBg");
+                        break;
+                    case "complete":
+                        // 완료
+                        $(".page_list tbody tr.chk_complt").addClass("selBg");
+                        break;
+                    case "incomplete":
+                        // 미완료
+                        $(".page_list tbody tr.chk_incomplt").addClass("selBg");
+                        break;
+                    default :
+                        // 전체
+                        
+                };
+                if($(e.target).val() == "u"){
+                    $(".cvContent .page_list tr.ing").addClass("chk_u");
+                };
+            }else{
+                // text
+                selData = selData.replace($(e.target).closest(".sub_sel").find("input:checkbox[name=chk]+label").text(), "")
+                if( selData.slice(-1) == "," ){
+                    selData = selData.slice(0, -1)
+                };
+                $(e.target).closest(".custom_slt").find(".sel .tit").html(selData);
+
+                // val
+
+            };
+        }); 
+    },
 };

@@ -9,8 +9,50 @@
         <div class="dscBox">
             화면ID <span class="txt_ing">초록 : 퍼블작업중</span> | 화면ID 검정 : 퍼블완료
         </div>
-        <div class="seltBox">
-            
+        <div class="custom_slt">
+            <a href="#" class="sel" role="button" tabindex="0" title="리스트 선택">
+                <span class="tit"></span>
+            </a>
+            <div class="sel_group" tabindex="0">
+                <ul class="sel_list">
+                    <li>
+                        <span class="sub_sel">
+                            <input type="checkbox" class="ipt" id="chk_1" name="chk" value="all" checked="">
+                            <label for="chk_1" class="tit">전체</label>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="sub_sel">
+                            <input type="checkbox" class="ipt" id="chk_2" name="chk" value="p">
+                            <label for="chk_2" class="tit">P</label>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="sub_sel">
+                            <input type="checkbox" class="ipt" id="chk_3" name="chk" value="d">
+                            <label for="chk_3" class="tit">D</label>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="sub_sel">
+                            <input type="checkbox" class="ipt" id="chk_4" name="chk" value="u">
+                            <label for="chk_4" class="tit">U</label>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="sub_sel">
+                            <input type="checkbox" class="ipt" id="chk_5" name="chk" value="complete">
+                            <label for="chk_5" class="tit">완료</label>
+                        </span>
+                    </li>
+                    <li class="disable"> <!-- case 없을 경우 : class disable -->
+                        <span class="sub_sel">
+                            <input type="checkbox" class="ipt" id="chk_6" name="chk" value="incomplete">
+                            <label for="chk_6" class="tit">미완료</label>
+                        </span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
