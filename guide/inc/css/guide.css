@@ -200,7 +200,7 @@ cvContainer {position:relative;}
 .dashboard_area .section {margin-top:30px;}
 .dashboard_area .tit {display:block; font-size:18px; font-weight:500;}
 .dashboard_area .tit + .inner {margin-top:16px;}
-.dashboard_area .inner {display:flex; justify-content: flex-start; gap:80px; width:100%; height:100%;}
+.dashboard_area .inner {display:flex; justify-content: flex-start; gap:60px; width:100%; height:100%;}
 .dashboard_area .inner > [class^='total'] {display:flex; flex-direction: column; justify-content:center; gap:10px; width:320px; height:300px; padding:20px 40px; border-radius:8px;  background: var(--c-bg-soft); box-shadow: var(--box-shadow);}
 .dashboard_area .inner [class^='total'] .graph_area {display:flex; justify-content: center;}
 .dashboard_area .inner [class^='total'] .graph {display:flex; justify-content: center; align-items: flex-end; width:10px; height:200px; background-color: var(--c-bg-mute);}
@@ -223,7 +223,7 @@ cvContainer {position:relative;}
 .dashboard_area.type .inner .total_pc .graph .state {background-color:var(--c-blue-darker);}
 .dashboard_area.type .inner .total_mo .graph .state {background-color:var(--c-blue);}
 
-.dashboard_area .inner [class^='total'] .summary {flex:1 1 250px;}
+.dashboard_area.type .inner [class^='total'] .summary {flex:1 1 250px;}
 
 /* guide */
 .cvContent .cvGuide_area {padding:10px 0 20px;}
