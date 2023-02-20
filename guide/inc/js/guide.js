@@ -737,16 +737,17 @@ var comm = {
     copyTo : function(){
         if( $(".page_guide .code_view .code xmp").length > 0 ){
             for(let i=0; i<$(".cvGuide_area").length; i++){
-                $(".cvGuide_area:eq("+i+") .code_view .code xmp").html($(".cvGuide_area:eq("+i+") .cvGuide_view .code").html());
+                $(".cvGuide_area:eq("+i+") .code_view .code xmp").html($(".cvGuide_area:eq("+i+") .cvGuide_view .code").html().replace(/&quot;/g, '\"'));
             };
         };
         
         $(".cvGuide_area:not(.not) .cvBtn_copy").unbind("click").bind("click", function(e){
-            var val = $(e.target).closest(".cvGuide_area").find(".cvGuide_view .code").html();
+            var val = $(e.target).closest(".cvGuide_area").find(".cvGuide_view .code").html().replace(/&quot;/g, '\"');
             var dataTag = document.createElement("textarea");
             dataTag.className = "copyVal";
             document.body.append(dataTag);
             dataTag.value = val;
+            console.log("복사", val);
             dataTag.select();
             if( document.execCommand('copy') ){
                 $("body.cvGuide .cvContent").append('<div class="pop_alert"><p>복사되었습니다!</p></div>');
