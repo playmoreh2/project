@@ -249,12 +249,18 @@ cvContainer {position:relative;}
 /* page list */
 .cvContent .page_list > table {margin-top:5px; border: 1px solid var(--c-divider-dark-1); border-radius:8px; box-shadow: 2px 2px 4px 2px rgb(0 0 0 / 10%); overflow: hidden;}
 .cvContent .page_list th {padding:10px 3px; border-left:1px solid var(--c-divider-dark-1); background-color: #292d3e; color:#fff;}
-.dark .cvContent .page_list th {background-color: var(--c-bg-soft);}
+.dark .cvContent .page_list th {background-color:var(--c-bg-soft);}
 .cvContent .page_list th:first-child {border-left:0 none;}
 .cvContent .page_list td {padding:10px; border-top:1px solid var(--c-divider-dark-1); border-left:1px solid var(--c-divider-dark-1);}
 .cvContent .page_list td:first-child {border-left:0 none;}
 .cvContent .page_list tbody > tr > td.pageID {color:var(--c-ing); font-weight:500;}
 .cvContent .page_list tbody > tr.finish > td.pageID {color:inherit;}
+
+.cvContent .page_list.tblSel tbody > tr.chk_p:not(.selBg) > td,
+.cvContent .page_list.tblSel tbody > tr.chk_d:not(.selBg) > td,
+.cvContent .page_list.tblSel tbody > tr.chk_u:not(.selBg) > td,
+.cvContent .page_list.tblSel tbody > tr.finish:not(.selBg) > td,
+.cvContent .page_list.tblSel tbody > tr.ing:not(.selBg) > td {color:#fff;}
 
 .cvContent .page_list .progress {width:100%; height:6px; margin-bottom:42px; background-color:var(--c-bg-mute);}
 .cvContent .page_list .progress .graph {display:block; position:relative; width:0%; height:6px; background-color:var(--c-text-code);}
@@ -334,5 +340,5 @@ textarea:-ms-input-placeholder {font-size:16px; color:#999;}
 .custom_slt .sel_group .sel_list > li:first-child {border-top:0;}
 .custom_slt .sel_group .sel_list > li {position:relative; padding:0 16px; border-top:1px solid #eee; overflow:hidden;}
 .custom_slt .sel_group .sel_list .sub_sel {display:block; padding:8px 0;}
-.custom_slt .sel_group .sel_list > li.disable {}
+.custom_slt .sel_group .sel_list > li.disable {background-color:#ccc; color:var(--c-text-dark-2);}
 .custom_slt .sel_group .sel_list > li.disable .sub_sel {}
