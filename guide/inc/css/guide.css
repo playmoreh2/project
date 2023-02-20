@@ -1,5 +1,4 @@
 @charset "utf-8";
-@import url('fonts.css');
 
 /*================================================ Common ================================================*/
 :root {
@@ -108,13 +107,13 @@
   --c-ing: var(--c-green-dark);
   --box-shadow:var(--box-shadow-light);
 }
-body {background: var(--c-bg); font-size:13px; font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; color: var(--c-text-1); letter-spacing:-0.003em; word-break:keep-all; word-wrap:break-word;}
+body {background: var(--c-bg); font-size:13px; font-family:'Pretendard', 'Roboto', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; color: var(--c-text-1); letter-spacing:-0.003em; word-break:keep-all; word-wrap:break-word;}
 .bold, .cvGnb li, .cvLnb .nav h2, .cvLnb .nav > ul > li > a, .cvLnb .depth > li.on > a, .cvContent > .top > h3, .cvGuide [class^='tit'], 
 .cvGuide .section .btn, .cvGuide .cvLnb .nav .selectLnb select, .tbl thead th, .tbl td .menuTitle, .tbl td .menuTitle.hover, 
-.tbl.mobile .d1, .cvGuide.single .sch .btn, .cvGuide ul.desc > li:before, .accoWrap .acco .accoHead strong {font-family:'Roboto Regular', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
-.normal, .copyWrap .copy .inner .tit, .badge {font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
-.cvGnb button {font-family:'Roboto Regular', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
-.cvLnb a {font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
+.tbl.mobile .d1, .cvGuide.single .sch .btn, .cvGuide ul.desc > li:before, .accoWrap .acco .accoHead strong {font-family:'Pretendard', 'Roboto', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
+.normal, .copyWrap .copy .inner .tit, .badge {font-family:'Pretendard', 'Roboto', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
+.cvGnb button {font-family:'Pretendard', 'Roboto', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
+.cvLnb a {font-family:'Pretendard', 'Roboto', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
 
 strong {font-weight:normal;}
 
@@ -235,7 +234,7 @@ cvContainer {position:relative;}
 .cvContent .cvGuide_area .code_view .cvBtn_area {text-align:right;}
 
 /* 가이드페이지 적용 */
-.cvContent .cvGuide_area .cvGuide_view {margin-top:10px; padding:10px; border-radius:7px; color: #666; font-size: 16px; font-family:'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif;}
+.cvContent .cvGuide_area .cvGuide_view {margin-top:10px; padding:10px; border-radius:7px; color: #666; font-size: 16px; font-family:'Pretendard', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif;}
 .dark .cvContent .cvGuide_area .cvGuide_view {background-color:#fff;}
 .cvContent .cvGuide_area .code_view .code {display:none; color:#fff; background-color:#000;}
 .cvContent .cvGuide_area .code_view .code xmp {margin:0; padding:10px;}

@@ -56,7 +56,7 @@ button,
 input[type=button], input[type=reset], input[type=submit] {vertical-align:middle; cursor:pointer; -webkit-appearance:button;}
 button[disabled], button[disabled]:hover, input[disabled] {cursor:default;}
 
-button, input, select, option, optgroup, textarea {border-radius:0; color:#222; font-family:'Roboto Light', 'NotoSans Light', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-size:16px; font-weight:300; word-spacing:0.1rem;}
+button, input, select, option, optgroup, textarea {border-radius:0; color:#222; font-family:'Roboto', 'NotoSans Light', 'Malgun Gothic', 'Dotum', '돋움', 'gulim', '굴림', Helvetica, sans-serif; font-size:16px; font-weight:300; word-spacing:0.1rem;}
 button, select {text-transform:none;}
 
 /* 아이폰(사파리) 터치 메뉴 활성화 관련 */
