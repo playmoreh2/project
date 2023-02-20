@@ -64,7 +64,6 @@
   --c-purple-dark: #823c83;
   --c-purple-darker: #602960;
   --box-shadow: 0 14px 44px rgba(0, 0, 0, .12), 0 3px 9px rgba(0, 0, 0, .12);
-  --box-shadow-light: 0 14px 44px rgba(250, 250, 250, .12), 0 3px 9px rgba(250, 250, 250, .12);
 }
 :root {
   --c-bg: var(--c-white);
@@ -105,7 +104,6 @@
   --c-text-inverse-4: var(--c-text-light-4);
   --c-link: var(--c-blue);
   --c-ing: var(--c-green-dark);
-  --box-shadow:var(--box-shadow-light);
 }
 body {background: var(--c-bg); font-size:13px; font-family:'Pretendard', 'Roboto', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; color: var(--c-text-1); letter-spacing:-0.003em; word-break:keep-all; word-wrap:break-word;}
 .bold, .cvGnb li, .cvLnb .nav h2, .cvLnb .nav > ul > li > a, .cvLnb .depth > li.on > a, .cvContent > .top > h3, .cvGuide [class^='tit'], 
@@ -214,7 +212,7 @@ cvContainer {position:relative;}
 .dashboard_area .inner [class^='total'] .summary .num > em {font-weight:700;}
 
 /* dashboard - type */
-.dashboard_area.type .inner {flex-direction: column; gap:10px; width:100%; height:100%; padding:30px 20px; border-radius:8px; box-shadow: var(--box-shadow);}
+.dashboard_area.type .inner {flex-direction: column; gap:10px; width:100%; height:100%; padding:30px 20px; border-radius:8px;}
 .dashboard_area.type .inner > [class^='total'] {flex-direction: row; justify-content:center; align-items: center; gap:10px; width:100%; height:40px; padding:0; border-radius:0;  background:none; box-shadow: none;}
 .dashboard_area.type .inner [class^='total'] .graph_area {justify-content: flex-start; width:100%; height:10px;}
 .dashboard_area.type .inner [class^='total'] .graph {justify-content:flex-start; align-items: center; width: 100%; height: 10px;}
