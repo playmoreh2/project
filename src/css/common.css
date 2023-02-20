@@ -408,3 +408,57 @@ textarea:-ms-input-placeholder {font-size:16px; color:#999;}
 
 .ipt[type=radio]:focus + label,
 .ipt[type=radio]:hover + label {outline:1px solid #8980b9;}
+
+/*================================================== swipe ==================================================*/
+/* 공통 swipe */
+.swiper-wrap {position:relative;}
+.swiper-container {position:static; overflow:hidden;}
+.swiper-wrapper {height:auto; box-sizing:border-box;}
+
+/* vertical(위아래) */
+.swiper-container.swiper-container-vertical {height:100px; overflow:hidden;}
+.swiper-container.swiper-container-vertical .swiper-wrapper { -webkit-box-orient: vertical; -webkit-box-direction:normal; -webkit-flex-direction:column; -ms-flex-direction:column; flex-direction:column;}
+.swiper-container.swiper-container-vertical .swiper-slide { min-height:auto; } 
+.swiper-container.swiper-container-vertical .swiper-pagination > button { display:inline-block; margin:0; } 
+.swiper-container.swiper-container-vertical .swiper-pagination-vertical.swiper-pagination-bullets { transform:translate3d(0, 0, 0); }
+
+/* 인디케이터(버튼) 영역 */
+.swiper-btn-control {z-index:10;}
+.swiper-btn-area {position:absolute; left:50%; bottom:10px; transform:translateX(-50%); white-space:nowrap; z-index:10;}
+.swiper-btn-area > * {margin:0 4px;}
+.swiper-btn-area .swiper-pagination {display:inline-block; position:static; height:22px; vertical-align:middle;}
+/* bullet 버튼 */
+.swiper-btn-area .swiper-pagination > button {position:relative; width:20px; height:20px; background-color:transparent; vertical-align:top;}
+.swiper-btn-area .swiper-pagination > button:before {content:""; position:absolute; top:50%; left:50%; width:8px; height:8px; transform:translate(-50%, -50%); border-radius:50%; background-color:#000;}
+.swiper-btn-area .swiper-pagination > button.swiper-pagination-bullet-active:before {background-color:#000;}
+/* 분수형 버튼 */
+.swiper-btn-area .swiper-pagination.swiper-pagination-fraction {width:auto; margin:0; padding:0 10px; font-size:0; background-color:rgba(0,0,0,0.3); border-radius:12px;}
+.swiper-btn-area .swiper-pagination.swiper-pagination-fraction > span {line-height:22px; font-size:12px; color:#fff;}
+.swiper-btn-area .swiper-pagination.swiper-pagination-fraction > span:nth-child(2) {margin:0 2px;}
+.swiper-btn-area .swiper-pagination.swiper-pagination-fraction > .swiper-pagination-total {color:#fff; font-weight:700;}
+
+/* 정지/재생 */
+.swiper-btn-area .btn-visual-play,
+.swiper-btn-area .btn-visual-stop {display:inline-block; position:relative; width:22px; height:22px; padding:0; vertical-align:middle; background-color:rgba(0,0,0,0.3); border-radius:50%;}
+.swiper-btn-area .btn-visual-stop:before {content:""; display:inline-block; position:absolute; top:50%; left:50%; width:4px; height:8px; border:1px solid #fff; border-width:0 2px; transform:translate(-50%, -50%);}
+.swiper-btn-area .btn-visual-play {display:none;}
+.swiper-btn-area .btn-visual-play .bar {display:inline-block; width:8px; height:1px; margin:0 0 6px -4px; background:#fff; transform:rotate(90deg);}
+.swiper-btn-area .btn-visual-play .bar:before,
+.swiper-btn-area .btn-visual-play .bar:after {content:""; display:inline-block; position:absolute; top:-3px; width:8px; height:1px; background:#fff;}
+.swiper-btn-area .btn-visual-play .bar:before {-webkit-transform:rotate(56deg); -moz-transform:rotate(56deg); -ms-transform:rotate(56deg); transform:rotate(56deg); right:-2px;}
+.swiper-btn-area .btn-visual-play .bar:after {-webkit-transform:rotate(-56deg); -moz-transform:rotate(-56deg); -ms-transform:rotate(-56deg); transform:rotate(-56deg); right:2px;}
+
+/* 좌,우 버튼 */
+.swiper-button-prev,
+.swiper-button-next {top:50%; width:40px; height:40px; margin-top:0; transform:translateY(-50%); background:transparent;}
+.swiper-button-prev {left:0;}
+.swiper-button-next {right:0;}
+.swiper-button-prev:after,
+.swiper-button-next:after {content:""; position:absolute; top:50%; left:50%; width:18px; height:18px; transform:translate(-50%, -50%); border:2px solid #888; border-width:0 0 2px 2px; transform:translate(-50%, -50%) rotate(45deg);}
+.swiper-button-next:after {margin-left:-4px; transform:translate(-50%, -50%) rotate(-135deg);}
+
+/* 좌,우 버튼 : 비활성화 */
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {opacity:1; /*pointer-events:auto; cursor:pointer;*/}
+.swiper-button-prev.swiper-button-disabled:after,
+.swiper-button-next.swiper-button-disabled:after {opacity:0.6;}

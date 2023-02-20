@@ -34,14 +34,14 @@
 			
 			$('.swiper-container').each(function(idx, obj){
 				if( $(obj).closest(".swiper-wrap").hasClass("on") == false ){
-					var slideNum = $(obj).find(".swiper-slide").length;
+					let slideNum = $(obj).find(".swiper-slide").length;
 		
 					if(slideNum > 1){
 						// 인디케이터 커스텀
 						if( $(obj).find(".swiper-btn-control").length == 0 ){
 							$(obj).append('<div class="swiper-btn-control"><div class="swiper-btn-area"><div class="swiper-pagination"></div></div></div>');
-							$(obj).find('.swiper-btn-area').append('<button type="button" class="btn-visual-stop"><span class="hidden">stop</span></button><button type="button" class="btn-visual-play"><span class="bar"></span><span class="hidden">play</span></button>');
-							$(obj).find(".swiper-btn-control").append('<button type="button" class="swiper-button-prev"><span class="hidden">이전 슬라이드</span></button><button type="button" class="swiper-button-next"><span class="hidden">다음 슬라이드</span></button>');
+							$(obj).find('.swiper-btn-area').append('<button type="button" class="btn-visual-stop"><span class="blind">stop</span></button><button type="button" class="btn-visual-play"><span class="bar"></span><span class="blind">play</span></button>');
+							$(obj).find(".swiper-btn-control").append('<button type="button" class="swiper-button-prev"><span class="blind">이전 슬라이드</span></button><button type="button" class="swiper-button-next"><span class="blind">다음 슬라이드</span></button>');
 						};
 		
 						swipes[idx] = new Swiper(obj, {
@@ -76,7 +76,7 @@
 								clickable: true,
 								type: $(this).data('option').pagination == "fraction" ? "fraction" : "bullets" , // 버튼 디자인 bullets" / "fraction"
 								renderBullet : function (index, className) {
-									return '<button type="button" title="' + (index + 1) + '번 슬라이드로 이동하기" class="' + className + '"><span class="hidden">' + (index + 1) + '</span></button>'
+									return '<button type="button" title="' + (index + 1) + '번 슬라이드로 이동하기" class="' + className + '"><span class="blind">' + (index + 1) + '</span></button>'
 								},
 								renderFraction : function (currentClass, totalClass) {
 									return '<span class="' + currentClass + '"></span>' + ' <span>/</span> ' + '<span class="' + totalClass + '"></span>'
