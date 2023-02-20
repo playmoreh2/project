@@ -10,7 +10,6 @@
 			ui.progressInit();
 		},
 		progressInit : function(){
-			console.log($('.progress').length);
 			for(var  i = 0 ; i < $('.progress').length ; ++i ){
 				if( $('.progress').eq(i).hasClass('uiAct') == false ){
 					$('.progress').eq(i).addClass('uiAct');
