@@ -106,12 +106,10 @@
   --c-ing: var(--c-green-dark);
 }
 body {background: var(--c-bg); font-size:13px; font-family:'Pretendard', 'Roboto', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; color: var(--c-text-1); letter-spacing:-0.003em; word-break:keep-all; word-wrap:break-word;}
-.bold, .cvGnb li, .cvLnb .nav h2, .cvLnb .nav > ul > li > a, .cvLnb .depth > li.on > a, .cvContent > .top > h3, .cvGuide [class^='tit'], 
+.bold, .cvGnb li, .cvGnb button, .cvGnb a, .cvLnb .nav h2, .cvLnb a, .cvLnb button, .cvLnb .depth > li.on > a, .cvContent > .top > h3, .cvGuide [class^='tit'], 
 .cvGuide .section .btn, .cvGuide .cvLnb .nav .selectLnb select, .tbl thead th, .tbl td .menuTitle, .tbl td .menuTitle.hover, 
 .tbl.mobile .d1, .cvGuide.single .sch .btn, .cvGuide ul.desc > li:before, .accoWrap .acco .accoHead strong {font-family:'Pretendard', 'Roboto', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
 .normal, .copyWrap .copy .inner .tit, .badge {font-family:'Pretendard', 'Roboto', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif; font-weight:normal;}
-.cvGnb button {font-family:'Pretendard', 'Roboto', 'NotoSans Medium', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
-.cvLnb a {font-family:'Pretendard', 'Roboto', 'NotoSans Light', 'Malgun Gothic', '맑은 고딕', 'Apple SD Gothic Neo', sans-serif;}
 
 strong {font-weight:normal;}
 
