@@ -1,5 +1,7 @@
 @charset "UTF-8";
-@import 'swiper.min.css';
+
+@import url('jquery-ui.css');
+@import url('swiper.min.css');
 
 /*================================================== Text ==================================================*/
 /* 텍스트 컬러 */
