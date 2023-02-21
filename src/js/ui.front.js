@@ -139,10 +139,10 @@
 									};
 								},
 								reachBeginning: function(){
-		
+									
 								},
 								reachEnd: function(){
-		
+									
 								}
 							},
 							threshold: 20,
@@ -152,9 +152,7 @@
 							observer: true,
 							observeParents: true,
 							centeredSlides: false,
-							mousewheel: { // 마우스휠 스와이프 이동 제어
-								enabled: false,
-							},
+							mousewheel: $(obj).data('option').mousewheel == true ? true : false,
 							slidesPerColumnFill: "column",
 							slidesPerColumn: $(obj).data('option').grid == undefined ? false : $(obj).data('option').grid
 						});
@@ -182,13 +180,13 @@
 				};
 				
 				// 스와이프 배열 선택
-				if( $(obj).data('option').swipeIdx !== undefined ){
+				if( $(obj).data('option').swipeIdx != undefined ){
 					swipeIdx[$(obj).data('option').swipeIdx] = idx;
 					// swipes[swipeIdx["val"]].slideTo( 1 ); // 개발에서 해당 스와이프 목적으로 필요할시 사용(attr "swipeIdx":"" 추가시에만 사용 가능)
 				};
 		
 				// 스와이프 해당 포커스로 이동
-				if( $(obj).data('option').focusIdx !== undefined && $(obj).data('option').loop == false ){
+				if( $(obj).data('option').focusIdx != undefined && $(obj).data('option').loop == false ){
 					if( $(obj).closest(".swiper-wrap").hasClass("focusIdx") == false ){ // 처음 실행
 						swipeFocIdx = $(obj).data('option').focusIdx || 0;
 						$(obj).closest(".swiper-wrap").addClass("focusIdx");
