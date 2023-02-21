@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-/* @import url('jquery-ui.css');
-@import url('swiper.min.css'); */
-
 /*================================================== Text ==================================================*/
 /* 텍스트 컬러 */
 .basicC1 {color:#111 !important;}
@@ -178,11 +175,6 @@
 .pageTit .desc.lg {font-size:1.6px;}
 .pageTit .links {margin-left:0;}
 
-/*================================================== Button ==================================================*/
-.btn_wrap {display: flex; justify-content: center; gap: 8px; margin-top: 40px;}
-.btn_wrap [class*=btn_] {min-width: 240px;}
-
-
 /*================================================ Table ================================================*/
 /* 가로형 & 세로형 공통 */
 .tblArea {border-top:2px solid #21409A; margin:16px 0 0 0;}
@@ -239,8 +231,11 @@
 .paging [class^=icoBtn_][disabled] {opacity:0.4;}
 
 /*================================================== Button ==================================================*/
+.btn_wrap {display: flex; justify-content: center; gap: 8px; margin-top: 40px;}
+.btn_wrap [class*=btn_] {min-width: 240px;}
+
 /* 텍스트 버튼 */
-[class^=btn_] {display:inline-block; max-width:100%; min-height:52px; margin:16px 0 4px; padding:5px 30px; border:1px solid transparent; font-size:1.8rem; font-weight:400; letter-spacing:-0.05rem; text-align:center; border-radius:6px;}
+[class^=btn_] {display:inline-block; max-width:100%; min-height:52px; padding:5px 30px; border:1px solid transparent; font-size:1.8rem; font-weight:400; letter-spacing:-0.05rem; text-align:center; border-radius:6px;}
 [class^=btn_][disabled],
 [class^=btn_].disabled {border-color:#ccc !important; color:#ccc !important;}
 [class^=btn_]:focus,
