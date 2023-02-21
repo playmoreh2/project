@@ -27,10 +27,7 @@
 		},
 		swipes : [],
 		swipeIdx : {}, // 스와이프 obj index 저장
-		swipeInit : function(){
-			let swipeFocIdx = 0; // 스와이프 이동할 index 저장(slideTo)
-			let swipeIdxTarget; // 스와이프 slideTo실행시 선택자
-			
+		swipeInit : function(){			
 			$('.swiper-container').each(function(idx, obj){
 				if( $(obj).closest(".swiper-wrap").hasClass("on") == false ){
 					let slideNum = $(obj).find(".swiper-slide").length;
@@ -179,24 +176,20 @@
 					// ui.swipes[idx].init();
 				};
 				
-				// 스와이프 배열 선택
+				// 스와이프 obj index 저장
 				if( $(obj).data('option').swipeIdx != undefined ){
-					swipeIdx[$(obj).data('option').swipeIdx] = idx;
-					// ui.swipes[swipeIdx["val"]].slideTo( 1 ); // 개발에서 해당 스와이프 목적으로 필요할시 사용(attr "swipeIdx":"" 추가시에만 사용 가능)
+					ui.swipeIdx[$(obj).data('option').swipeIdx] = idx;
 				};
-				console.log(swipeIdx["aaa"])
+				// ui.swipes[ui.swipeIdx["val"]].slideTo( 1 ); // 개발에서 처리시 전달 예시 (attr "swipeIdx":"" 추가시에만 사용 가능)
 				
-				// 스와이프 해당 포커스로 이동
+				// 스와이프 해당 포커스로 이동(index 고정)
 				if( $(obj).data('option').focusIdx != undefined && $(obj).data('option').loop == false ){
 					if( $(obj).closest(".swiper-wrap").hasClass("focusIdx") == false ){ // 처음 실행
-						swipeFocIdx = $(obj).data('option').focusIdx || 0;
+						let swipeFocIdx  = $(obj).data('option').focusIdx || 0; // 스와이프 이동할 index 저장(slideTo index 고정일때만 사용)
+						let swipeFocIdxMove = $(obj).data('option').move || 0; // 애니메이션
 						$(obj).closest(".swiper-wrap").addClass("focusIdx");
-						ui.swipes[idx].slideTo( swipeFocIdx, 0 );
-						// ui.swipes[swipeIdx[$(obj).data('option').swipeIdx]].slideTo( swipeFocIdx );
-					}else if( $(obj).data('option').swipeIdx != undefined && swipeIdxTarget != undefined){ // 해당 스와이프만 slideTo 실행
-						ui.swipes[swipeIdx[swipeIdxTarget]].slideTo( swipeFocIdx, 600 );
-					}else{
-						ui.swipes[idx].slideTo( swipeFocIdx, 0 );
+						ui.swipes[idx].slideTo( swipeFocIdx, swipeFocIdxMove );
+						// ui.swipes[ui.swipeIdx[$(obj).data('option').swipeIdx]].slideTo( swipeFocIdx );
 					};
 				};
 			});
