@@ -34,7 +34,7 @@
 			$('.swiper-container').each(function(idx, obj){
 				if( $(obj).closest(".swiper-wrap").hasClass("on") == false ){
 					let slideNum = $(obj).find(".swiper-slide").length;
-		
+					
 					if(slideNum > 1){
 						// 인디케이터 커스텀
 						if( $(obj).find(".swiper-btn-control").length == 0 ){
@@ -42,7 +42,7 @@
 							$(obj).find('.swiper-btn-area').append('<button type="button" class="btn-visual-stop"><span class="blind">stop</span></button><button type="button" class="btn-visual-play"><span class="bar"></span><span class="blind">play</span></button>');
 							$(obj).find(".swiper-btn-control").append('<button type="button" class="swiper-button-prev"><span class="blind">이전 슬라이드</span></button><button type="button" class="swiper-button-next"><span class="blind">다음 슬라이드</span></button>');
 						};
-		
+						
 						swipes[idx] = new Swiper(obj, {
 							// init: true,
 							effect: $(obj).data('option').effect == "fade" ? "fade" : "slide",
