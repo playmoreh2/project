@@ -25,9 +25,9 @@
 				}
 			}
 		},
+		swipes : [],
+		swipeIdx : {}, // 스와이프 obj index 저장
 		swipeInit : function(){
-			let swipes = [];
-			let swipeIdx = {}; // 스와이프 obj 저장
 			let swipeFocIdx = 0; // 스와이프 이동할 index 저장(slideTo)
 			let swipeIdxTarget; // 스와이프 slideTo실행시 선택자
 			
@@ -43,7 +43,7 @@
 							$(obj).find(".swiper-btn-control").append('<button type="button" class="swiper-button-prev"><span class="blind">이전 슬라이드</span></button><button type="button" class="swiper-button-next"><span class="blind">다음 슬라이드</span></button>');
 						};
 						
-						swipes[idx] = new Swiper(obj, {
+						ui.swipes[idx] = new Swiper(obj, {
 							// init: true,
 							effect: $(obj).data('option').effect == "fade" ? "fade" : "slide",
 							fadeEffect: { // fade
@@ -160,7 +160,7 @@
 						// 정지
 						$(obj).find('.btn-visual-stop').off("click").on('click', function(e){
 							e.preventDefault();
-							swipes[idx].autoplay.stop();
+							ui.swipes[idx].autoplay.stop();
 							$(obj).find('.btn-visual-stop').css({"display":"none"});
 							$(obj).find('.btn-visual-play').css({"display":"inline-block"});
 							$(obj).find('.btn-visual-play').focus();
@@ -169,33 +169,34 @@
 						// 재생
 						$(obj).find('.btn-visual-play').off("click").on('click', function(e){
 							e.preventDefault();
-							swipes[idx].autoplay.start();
+							ui.swipes[idx].autoplay.start();
 							$(obj).find('.btn-visual-play').css({"display":"none"});
 							$(obj).find('.btn-visual-stop').css({"display":"inline-block"}); 
 							$(obj).find('.btn-visual-stop').focus();
 							return false;
 						});
 					};
-					// swipes[idx].init();
+					// ui.swipes[idx].init();
 				};
 				
 				// 스와이프 배열 선택
 				if( $(obj).data('option').swipeIdx != undefined ){
 					swipeIdx[$(obj).data('option').swipeIdx] = idx;
-					// swipes[swipeIdx["val"]].slideTo( 1 ); // 개발에서 해당 스와이프 목적으로 필요할시 사용(attr "swipeIdx":"" 추가시에만 사용 가능)
+					// ui.swipes[swipeIdx["val"]].slideTo( 1 ); // 개발에서 해당 스와이프 목적으로 필요할시 사용(attr "swipeIdx":"" 추가시에만 사용 가능)
 				};
-		
+				console.log(swipeIdx["aaa"])
+				
 				// 스와이프 해당 포커스로 이동
 				if( $(obj).data('option').focusIdx != undefined && $(obj).data('option').loop == false ){
 					if( $(obj).closest(".swiper-wrap").hasClass("focusIdx") == false ){ // 처음 실행
 						swipeFocIdx = $(obj).data('option').focusIdx || 0;
 						$(obj).closest(".swiper-wrap").addClass("focusIdx");
-						swipes[idx].slideTo( swipeFocIdx, 0 );
-						// swipes[swipeIdx[$(obj).data('option').swipeIdx]].slideTo( swipeFocIdx );
+						ui.swipes[idx].slideTo( swipeFocIdx, 0 );
+						// ui.swipes[swipeIdx[$(obj).data('option').swipeIdx]].slideTo( swipeFocIdx );
 					}else if( $(obj).data('option').swipeIdx != undefined && swipeIdxTarget != undefined){ // 해당 스와이프만 slideTo 실행
-						swipes[swipeIdx[swipeIdxTarget]].slideTo( swipeFocIdx, 600 );
+						ui.swipes[swipeIdx[swipeIdxTarget]].slideTo( swipeFocIdx, 600 );
 					}else{
-						swipes[idx].slideTo( swipeFocIdx, 0 );
+						ui.swipes[idx].slideTo( swipeFocIdx, 0 );
 					};
 				};
 			});
