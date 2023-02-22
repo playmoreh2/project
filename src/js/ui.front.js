@@ -27,7 +27,7 @@
 		},
 		swipes : [],
 		swipeIdx : {}, // 스와이프 obj index 저장
-		swipeInit : function(){			
+		swipeInit : function(){
 			$('.swiper-container').each(function(idx, obj){
 				if( $(obj).closest(".swiper-wrap").hasClass("on") == false ){
 					let slideNum = $(obj).find(".swiper-slide").length;
@@ -194,8 +194,80 @@
 				};
 			});
 		},
-	}
+	};
+
+	// 공통 팝업
+	var popup = {
+		btnFocus : [], // 파닥페이지 포커스 위치 저장
+		open : function(el){
+			$(el).css({"display":"block"});
+			setTimeout(function(){
+				$(el).parents("html").addClass("pop_open");
+				$(el).addClass('open');
+			}, 200);
+			
+			$("#wrapper").attr("aria-hidden", true);
+			
+			// 팝업 포커스 이동
+			if( this.btnFocus !== undefined ){
+				this.btnFocus.push($(':focus'));
+			};
+			
+			$(el).each(function(idx, item){
+				$(item).attr("tabindex", -1);
+				$(item).find(".pop_cont").attr("role", "dialog");
+				$(item).find(".pop_body").attr("tabindex", 0);
+
+				if($(item).find(".focus_idx").length == 0){
+					$(item).prepend('<div class="focus_idx first" tabindex="0"></div>');
+					$(item).append('<div class="focus_idx last" tabindex="0"></div>');
+				};
+				
+
+				$(item).find('.focus_idx').bind('focusin', function(e){
+					var focusTag = "";
+					focusTag += el + ' .pop_cont div:visible[tabindex="0"],'
+					focusTag += el + ' .pop_cont li:visible[tabindex="0"],'
+					focusTag += el + ' .pop_cont button:visible:not([tabindex="-1"]),'
+					focusTag += el + ' .pop_cont a:visible:not([tabindex="-1"]),'
+					focusTag += el + ' .pop_cont input:visible:not([tabindex="-1"]),'
+					focusTag += el + ' .pop_cont select:visible:not([tabindex="-1"]),'
+					focusTag += el + ' .pop_cont textarea:visible:not([tabindex="-1"])'
+					
+					if($(e.target).hasClass('first')){
+						$(focusTag).last().focus();
+					}else{ 
+						$(focusTag).first().focus();
+					};
+				});
+				
+				$(item).focus();
+			});
+		},
+		close : function(el){
+			// 선택자가 없을 경우
+			if(el == undefined){
+				el = $(':focus').parents('.pop_wrap');
+			};
+
+			$(el).removeClass('open');
+
+			setTimeout(function(){
+				$(el).css({"display":"none"});
+			}, 200);
+
+			if( $(".pop_wrap.open").length == 0 ){
+				$("#wrapper").removeAttr("aria-hidden");
+				$(el).parents("html").removeClass("pop_open");
+			};
+
+			this.btnFocus[this.btnFocus.length - 1].focus();
+			this.btnFocus.pop();
+		}
+	};
+
 	t.ui = ui;
+	t.popup = popup;
 })(this)
 
 $(document).ready(function(){

@@ -24,84 +24,86 @@
 	<link rel="stylesheet" type="text/css" href="./guide/inc/css/guide.css">
 	<script type="text/javascript" src="./guide/inc/js/guide.js"></script>
 	<!-- <script type="text/javascript" src="./inc/js/jquery.slimscroll.min.js"></script> -->
-	
 </head>
-
 <body class="cvGuide">
-	<header>
-		<h1 class="logo"><a href="./index.html"><img src="./guide/inc/img/logo_red.png" alt="" title="FUZ"></a></h1>
-		<nav class="cvGnb">
-			<ul>
-				<li class="on">
-					<button type="button" title="Summary" class="menu_summary">Summary</button>
-				</li>
-				<li>
-					<button type="button" title="Guide" class="menu_guide">Guide</buttona>
-				</li>
-				<li>
-					<button type="button" title="Page List" id="list_1" class="menu_list">Page List</button>
-				</li>
-				<li>
-					<button type="button" title="Page List2" id="list_2" class="menu_list list2">Page List2</button>
-				</li>
-				<li>
-					<a href="./search.html" title="Search" target="_blank" class="menu_search">Search</a>
-				</li>
-			</ul>
-		</nav>
-		<div class="cvUtil">
-			<div class="cvBtn_switch">
-				<input type="checkbox" ><!-- checked="checked"초기상태 설정 -->
-				<div class="knobs"></div>
-				<div class="layer"></div>
-			</div>
-		</div>
-	</header>
-
-	<div class="cvContainer">
-		<div class="cvLnb">
-			<div class="nav">
-				<h2></h2>
-				<ul class="navList acco">
-					<li class="part">
-						<button type="button" title="" class="tit"></button>
-						<ul class="subList body">
-							<li>
-								<button type="button" title=""></button>
-								<div class="progressInfo">
-									<span class="num">
-										<em>0</em>/<span class="total_num">0</span>
-									</span>
-									<span class="count">(<em>0</em>%)</span>
-								</div>
-							</li>
-						</ul>
+	<div id="skipNavi">
+		<a href="#cvContainer">본문 바로가기</a>
+		<a href="#cvGnb">주메뉴 바로가기</a>
+	</div>
+	
+	<div id="wrapper">
+		<header>
+			<h1 class="logo"><a href="./index.html"><img src="./guide/inc/img/logo_red.png" alt="" title="FUZ"></a></h1>
+			<nav class="cvGnb" id="cvGnb">
+				<ul>
+					<li class="on">
+						<button type="button" title="Summary" class="menu_summary">Summary</button>
+					</li>
+					<li>
+						<button type="button" title="Guide" class="menu_guide">Guide</buttona>
+					</li>
+					<li>
+						<button type="button" title="Page List" id="list_1" class="menu_list">Page List</button>
+					</li>
+					<li>
+						<button type="button" title="Page List2" id="list_2" class="menu_list list2">Page List2</button>
+					</li>
+					<li>
+						<a href="./search.html" title="Search" target="_blank" class="menu_search">Search</a>
 					</li>
 				</ul>
+			</nav>
+			<div class="cvUtil">
+				<div class="cvBtn_switch">
+					<input type="checkbox" ><!-- checked="checked"초기상태 설정 -->
+					<div class="knobs"></div>
+					<div class="layer"></div>
+				</div>
 			</div>
-		</div>
+		</header>
 
-		<div class="cvContent">
-			<div class="top">
-				<h3></h3>
-			</div>
-			
-			<div class="cont"><!-- likeSubpage -->
-				<!-- 여기서부터 내용 s -->
-				
-				
-				
-				
-				
-				
-				
-				<!-- 여기서부터 내용 e -->
+		<div class="cvContainer" id="cvContainer">
+			<div class="cvLnb">
+				<div class="nav">
+					<h2></h2>
+					<ul class="navList acco">
+						<li class="part">
+							<button type="button" title="" class="tit"></button>
+							<ul class="subList body">
+								<li>
+									<button type="button" title=""></button>
+									<div class="progressInfo">
+										<span class="num">
+											<em>0</em>/<span class="total_num">0</span>
+										</span>
+										<span class="count">(<em>0</em>%)</span>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
 			</div>
 
+			<div class="cvContent">
+				<div class="top">
+					<h3></h3>
+				</div>
+				
+				<div class="cont"><!-- likeSubpage -->
+					<!-- 여기서부터 내용 s -->
+					
+					
+					
+					
+					
+					
+					
+					<!-- 여기서부터 내용 e -->
+				</div>
+
+			</div>
 		</div>
 	</div>
 </body>
-<script>
-	
-</script>
 </html>
