@@ -3,7 +3,7 @@
 		init : function(){
 			// ui.tabInit();//
 			// ui.iptInit();//
-			// ui.accoInit();//
+			ui.accoInit();//
 			// ui.tblInit();//
 			ui.swipeInit();//
 			// tip.init();//
@@ -194,6 +194,93 @@
 				};
 			});
 		},
+		accoInit : function(){ // 초기화
+			// 접근성 attr 추가
+			
+			for(let i=0; i<$(".acco_list > li.acco_item").length; i++){
+				// 접근성 attr 추가
+				$(".acco_list > li.acco_item:eq("+i+") .acco_btn").attr({
+					"role": "button",
+					"tabindex": "0",
+					"aria-controls": "acco_"+i
+				});
+				$(".acco_list > li.acco_item:eq("+i+") .acco_body").attr({
+					"id": "acco_"+i
+				});
+
+				if($(".acco_list > li.acco_item:eq("+i+")").hasClass("on") == true){
+					// 접근성 attr 추가
+					$(".acco_list > li.acco_item:eq("+i+") .acco_btn .tit").append('<span class="blind">접기</span>');
+					$(".acco_list > li.acco_item:eq("+i+") .acco_btn").attr({
+						"aria-expanded": "true"
+					}); 
+					$(".acco_list > li.acco_item:eq("+i+")").find(".acco_body").stop(true, true).slideDown(200);
+				}else{
+					$(".acco_list > li.acco_item:eq("+i+") .acco_btn .tit").append('<span class="blind">펼치기</span>');
+					$(".acco_list > li.acco_item:eq("+i+") .acco_btn").attr({
+						"aria-expanded": "false"
+					}); 
+					$(".acco_list > li.acco_item:eq("+i+")").find(".acco_body").stop(true, true).slideUp(200);
+				};
+			};
+
+			$(".acco_list > .acco_item .acco_btn").unbind("click").bind("click", function(e){
+				e.preventDefault();
+				ui.accoClick(this);
+			});
+		},
+		accoClick : function(target, callback){ // click
+			if( $(target).closest(".acco_item").find(".acco_body").length > 0 ){ // body 있을 때
+				if( $(target).closest(".acco_wrap.single").length > 0){ // 한개씩
+					if( $(target).closest(".acco_item.on").length > 0 ){ // 펼침상태
+						$(target).closest(".acco_item.on").removeClass("on");
+						$(target).find(".blind").text("펼치기");
+						$(target).closest(".acco_list").find(".acco_item .acco_btn").attr({
+							"aria-expanded": "false"
+						}); 
+						$(target).closest(".acco_item").find(".acco_body").stop(true, true).slideUp(200);
+					}else{
+						$(target).closest(".acco_list").find("> .acco_item").removeClass("on");
+						$(target).closest(".acco_item").addClass("on");
+						$(target).closest(".acco_list").find("> .acco_item .acco_btn .blind").text("펼치기");
+						$(target).find(".blind").text("접기");
+						$(target).closest(".acco_list").find(".acco_item .acco_btn").attr({
+							"aria-expanded": "false"
+						});
+						$(target).attr({
+							"aria-expanded": "true"
+						}); 
+						$(target).closest(".acco_list").find("> .acco_item .acco_body").stop(true, true).slideUp(200);
+						$(target).closest(".acco_item").find(".acco_body").stop(true, true).slideDown({
+							duration: 200
+						});
+					};
+				}else{
+					if( $(target).closest(".acco_item.on").length > 0 ){
+						$(target).closest(".acco_item").removeClass("on");
+						$(target).find(".blind").text("펼치기");
+						$(target).attr({
+							"aria-expanded": "false"
+						});  
+						$(target).closest(".acco_item").find(".acco_body").stop(true, true).slideUp(200);
+					}else{
+						$(target).closest(".acco_item").addClass("on");
+						$(target).closest(".acco_wrap").find("> .acco_item .acco_btn .blind").text("펼치기");
+						$(target).find(".blind").text("접기");
+						$(target).attr({
+							"aria-expanded": "true"
+						});
+						$(target).closest(".acco_item").find(".acco_body").stop(true, true).slideDown({
+							duration: 200
+						});
+					};
+				};
+				// callback 처리
+				if(callback != null){
+					callback(target);
+				};
+			};
+		}
 	};
 
 	// 공통 팝업

@@ -1281,18 +1281,6 @@ var acco = {
             acco.accoClick(this);
         });
 	},
-	accoOverIn : function(target){ // over
-		$(target).addClass("on");
-		// $(target).find("> .blind").text("접기");
-		$(target).find(".body").stop(true, true).slideDown({
-			duration: 200
-		});
-	},
-	accoOverOut : function(target){
-        $(target).closest(".acco").find("li").removeClass("on");
-        // $(target).find("> .blind").text("펼치기");
-        $(target).closest(".acco").find("li .body").stop(true, true).slideUp(200);
-	},
 	accoClick : function(target, callback){ // click
 		if( $(target).closest(".part").find(".body").length > 0 ){ // 소카테고리 있을때만
 			if( $(target).closest(".acco.single").length > 0){ // 한개씩

@@ -482,3 +482,15 @@ html.pop_open body {overflow:hidden;}
 .pop_cont.medium {width:600px;}
 /* 사이즈 : 소 */
 .pop_cont.small {width:400px;}
+
+/*================================================== Accordion ==================================================*/
+.acco_wrap {}
+.acco_list {border-top:1px solid #000;} 
+.acco_item {border-bottom:1px solid #ccc;}
+.acco_item .acco_head {}
+.acco_item .acco_head .acco_btn {display:block; position:relative; padding:20px 45px 20px 15px;}
+.acco_item .acco_head .acco_btn:after {content:""; position:absolute; top:50%; right:15px; width:10px; height:10px; margin-top:-4px; border:1px solid var(--c-divider); border-width:0 2px 2px 0; transition:all 0.25s; transform:translateY(-50%) rotate(45deg);}
+.acco_item.on .acco_head .acco_btn:after {margin-top:0; transform:translateY(-50%) rotate(-135deg);}
+.acco_item .acco_head .tit {font-size:24px; font-weight:700; color:#000;}
+.acco_item .acco_body {display:none; padding:24px; background-color:#eee;}
+
