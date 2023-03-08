@@ -54,6 +54,11 @@
                         "data_info": "./guide/resource/template/guide/guide_swipe.html",
                         "working": "N"
                   },{
+                        "so_menu": "Tooltip",
+                        "active": false,
+                        "data_info": "./guide/resource/template/guide/guide_tooltip.html",
+                        "working": "N"
+                  },{
                         "so_menu": "Etc",
                         "active": false,
                         "data_info": "./guide/resource/template/guide/guide_etc.html",

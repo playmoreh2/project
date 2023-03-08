@@ -494,3 +494,17 @@ html.pop_open body {overflow:hidden;}
 .acco_item .acco_head .tit {font-size:24px; font-weight:700; color:#000;}
 .acco_item .acco_body {display:none; padding:24px; background-color:#eee;}
 
+/*================================================== Tooltip ==================================================*/
+.tooltip_wrap {display:inline-block; position:relative; text-align:left; z-index:10; top: -1px;}
+.tooltip_wrap.on {}
+.tooltip_wrap .btn_tip {min-height:auto; padding:0; border:2px solid #000; border-radius:50%; background-color:#e0e0e0; font-size:20px;}
+.tooltip_wrap .btn_tip:after {content:"?"; display:inline-block; width:25px; height:25px;}
+.tooltip {display:none; min-width:250px; padding:17px; background-color:#fff; border:1px solid #333; border-radius:6px;}
+.tooltip.open {display:block; position:absolute; top:50px; left:0;}
+.tooltip .titArea {margin:0;}
+.tooltip .titArea + .cont {margin-top:10px;}
+.tooltip .btn_close {position:absolute; top:17px; right:17px; min-height:auto; width:20px; height:20px; padding:0;}
+.tooltip .btn_close:before,
+.tooltip .btn_close:after {content:""; position:absolute; top:50%; right:50%; width:1px; height:25px; transform:translate(-50%, -50%) rotate(-45deg); background-color:#000;}
+.tooltip .btn_close:after {transform:translate(-50%, -50%) rotate(-135deg);}
+

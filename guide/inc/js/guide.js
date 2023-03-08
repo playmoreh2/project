@@ -1322,9 +1322,6 @@ var acco = {
 
 // custom ui
 var custom = {
-    objSel : {
-        
-    },
     selectBox : function(){ // select box
         let selData = $(".sub_sel input:checkbox[name=chk]:checked+label").text(); // 선택된 데이터 텍스트 값
         $(".custom_slt .sel .tit").html(selData);

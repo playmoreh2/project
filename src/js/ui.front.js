@@ -1,5 +1,6 @@
 (function(t){
 	var ui = {
+		zIndex: 99,
 		init : function(){
 			// ui.tabInit();//
 			// ui.iptInit();//
@@ -8,6 +9,7 @@
 			ui.swipeInit();//
 			// tip.init();//
 			ui.progressInit();
+			ui.tooltip();
 		},
 		progressInit : function(){
 			for(var  i = 0 ; i < $('.progress').length ; ++i ){
@@ -280,7 +282,28 @@
 					callback(target);
 				};
 			};
-		}
+		},
+		tooltip: function(){ // 튤팁
+			for (var i = 0; i < $('.tooltip_wrap').length; i++){
+				$('.tooltip_wrap').eq(i).find('.btn_tip').attr('aria-labelledby', 'tooltip_0' + i);
+				$('.tooltip_wrap').eq(i).find('.tooltip').attr('id', 'tooltip_0' + i);
+			};
+
+			$(".tooltip_wrap .btn_tip").bind("click", function(e){
+				//e.preventDefault();
+				var tooltip = $(this).closest(".tooltip_wrap");
+				tooltip.addClass("on");
+				tooltip.find(".tooltip").addClass("open");
+				tooltip.find(".tooltip.open").attr("tabindex", -1);
+				tooltip.css({"z-index":ui.zIndex++});
+			});
+			$(".tooltip_wrap .btn_close").bind("click", function(){
+				var tooltip = $(this).closest(".tooltip_wrap");
+				tooltip.removeClass("on");
+				tooltip.find(".tooltip").removeClass("open");
+				tooltip.css({"z-index":""});
+			});
+		},
 	};
 
 	// 공통 팝업
