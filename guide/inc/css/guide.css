@@ -157,7 +157,7 @@ strong {font-weight:normal;}
 .cvBtn_switch .knobs:before,
 .cvBtn_switch .layer {transition: 0.3s ease all;}
 
-cvContainer {position:relative;}
+.cvContainer {position:relative;}
 /* lnb */
 .cvContainer .cvLnb {position:fixed; top:80px; width:240px; height:calc(100% - 80px); border-right:1px solid var(--c-divider-light); z-index:10;}
 .cvContainer .cvLnb .nav {min-height:100%; padding:35px 30px; background-color:var(--c-bg);}
@@ -292,8 +292,17 @@ cvContainer {position:relative;}
 .cvGuide .loading_wrap .icon {display:block; width:68px; height:24px; margin:0 auto; background:url('../img/logo_red.png') no-repeat 50% 0; background-size:68px auto;}
 .cvGuide .loading_wrap .txt {margin-top:15px; color:#fff; text-align:center;}
 
-/* 커스텀 셀렉트 박스 */
+
 .cvGuide .support {display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+.cvGuide .cvBadgeBox {display: flex; gap:10px; align-items: center;}
+.cvGuide .cvBadge {display:inline-block; padding:2px 5px; font-size:12px; line-height:normal; border-radius:3px; background-color:#eee;}
+.cvGuide .cvBadge.round {padding-left:10px; padding-right:10px; border-radius:22px;}
+.cvGuide .cvBadge.com {background-color:#f4a221; color:#000;}
+.cvGuide .cvBadge.plan {background-color:#a44ce8; color:#fff;}
+.cvGuide .cvBadge.des {background-color:#f63b6f; color:#fff;}
+.cvGuide .cvBadge.pub {background-color:#0094e5; color:#fff;}
+.cvGuide .cvBadge.dev {background-color:#3453a0; color:#fff;}
+/* 커스텀 셀렉트 박스 */
 .cvGuide .custom_slt {position:relative; width:250px}
 .cvGuide .custom_slt .sel {display:block; position:relative; padding:8px 40px 8px 12px; border-color:#333; border:1px solid var(--c-divider-dark-1); border-radius:6px;}
 .cvGuide .custom_slt.on .sel {border-radius:6px 6px 0 0;}
