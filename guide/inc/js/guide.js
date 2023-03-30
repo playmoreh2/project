@@ -951,13 +951,11 @@ var comm = {
         modeState = localStorage['modeState'] || false;
         modeState = modeState === "true";
         if (modeState){
-            console.log('here')
             $('body.cvGuide').addClass('dark');
-            $('header .logo img').attr('src', './guide/inc/img/logo_row_kr_negative.png');
+            $('header .logo img').attr('src', './guide/inc/img/logo.png');
         }else{
-            console.log('here')
             $('body.cvGuide').removeClass('dark');
-            $('header .logo img').attr('src', './guide/inc/img/logo_row_kr.png');
+            $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
         }
         let modeIpt = $('.cvUtil .cvBtn_switch input');
         modeIpt.prop('checked', modeState);
@@ -967,10 +965,10 @@ var comm = {
             localStorage["modeState"] = modeState;
             if (modeState){
                 $('body.cvGuide').addClass('dark');
-                $('header .logo img').attr('src', './guide/inc/img/logo_row_kr_negative.png');
+                $('header .logo img').attr('src', './guide/inc/img/logo.png');
             }else{
                 $('body.cvGuide').removeClass('dark');
-                $('header .logo img').attr('src', './guide/inc/img/logo_row_kr.png');
+                $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
             }
         })
     },    
