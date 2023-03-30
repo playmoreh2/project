@@ -869,7 +869,7 @@ var comm = {
             };
         };
 
-        // 막대그래프 높이        
+        // 막대그래프 높이
         clearTimeout(comm.time);
         comm.time = setTimeout(function(){
             comm.countState();
@@ -879,10 +879,16 @@ var comm = {
                 let totalData1 = 0; // 전체 개수
                 for(let i=0; i<comm.dataArrayFnsh[idx].length; i++){
                     if($(".dashboard_area").hasClass('type') === false){
-                        $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
-                            height: ((comm.finishNum[idx][i]/comm.totalNum[idx][i])*100).toFixed(1)+"%",
-                            opacity: 1
-                        }, 1400);
+                        if(comm.totalNum[idx][i] !== 0){
+                            $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
+                                height: ((comm.finishNum[idx][i]/comm.totalNum[idx][i])*100).toFixed(1)+"%",
+                                opacity: 1
+                            }, 1400);
+                        }else{
+                            $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
+                                opacity: 0
+                            }, 1);
+                        }
                     }else{
                         $(".dashboard_area .inner:eq("+idx+") > [class^='total_']:eq("+i+") .graph .state").animate({
                             width: ((comm.finishNum[idx][i]/comm.totalNum[idx][i])*100).toFixed(1)+"%",
@@ -941,20 +947,31 @@ var comm = {
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     },
-    switchChk : function(){
-        if ($('.cvUtil .cvBtn_switch input').is(':checked')){
-            $('body.cvGuide').addClass('dark');
-            $('header .logo img').attr('src', './guide/inc/img/logo.png');
-        }else{
-            $('body.cvGuide').removeClass('dark');
-            $('header .logo img').attr('src', './guide/inc/img/logo_red.png');
-        }
-    },
     switchMode : function(){
-        comm.switchChk();
-        //comm.switchGraph();
-        $('.cvBtn_switch input').bind('click', function(){
-            comm.switchChk();
+        modeState = localStorage['modeState'] || false;
+        modeState = modeState === "true";
+        if (modeState){
+            console.log('here')
+            $('body.cvGuide').addClass('dark');
+            $('header .logo img').attr('src', './guide/inc/img/logo_row_kr_negative.png');
+        }else{
+            console.log('here')
+            $('body.cvGuide').removeClass('dark');
+            $('header .logo img').attr('src', './guide/inc/img/logo_row_kr.png');
+        }
+        let modeIpt = $('.cvUtil .cvBtn_switch input');
+        modeIpt.prop('checked', modeState);
+        // comm.switchState();
+        modeIpt.change(function(){
+            modeState = !!modeIpt.is(":checked")
+            localStorage["modeState"] = modeState;
+            if (modeState){
+                $('body.cvGuide').addClass('dark');
+                $('header .logo img').attr('src', './guide/inc/img/logo_row_kr_negative.png');
+            }else{
+                $('body.cvGuide').removeClass('dark');
+                $('header .logo img').attr('src', './guide/inc/img/logo_row_kr.png');
+            }
         })
     },    
     loadInit : function(){
